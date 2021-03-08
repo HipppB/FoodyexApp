@@ -14,6 +14,7 @@ export default function App() {
               color="black"
               onPress={() => Alert.alert('Simple Button 1 pressed')}
             />
+            <Text>Test</Text>
           </View>
           <View style={styles.ButtonSlider}>
             <Button
@@ -35,23 +36,34 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "red",
+    backgroundColor: "#F2F2F2",
     flex: 1,
     flexDirection: "column", //horizontal
     justifyContent: "flex-start", //main axis
     alignItems: "center" //secondary axis
   },
   containerTopSection: {
-    backgroundColor: "gold",
+    backgroundColor: "#FFFFFF",
     width: "100%",
     height: "45%",
     flexShrink: 1,
     alignContent: "center",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
+    borderBottomLeftRadius: 30,
+    borderBottomEndRadius: 30,
+    zIndex: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 6.27,
   },
+
   containerBottomSection: {
-    backgroundColor: "red",
+    backgroundColor: "#F2F2F2",
     width: "100%",
     flex: 1
   },
@@ -62,15 +74,22 @@ const styles = StyleSheet.create({
     bottom: "12%"
   },
   ButtonSlider: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFFFF",
+    borderStyle: 'solid',
+    borderBottomWidth: 5,
+    borderBottomColor: "#F29B13",
+    fontFamily: "Roboto",
+    fontSize: 10
   },
   menuConnexion: {
-    backgroundColor: "blue",
+    backgroundColor: "#FFFFFF",
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "flex-end",
-    zIndex: 1
+    zIndex: 1,
+    borderBottomLeftRadius: 30,
+    borderBottomEndRadius: 30,
   },
 
 });
