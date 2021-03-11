@@ -8,7 +8,6 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import Style from "./ConnexionScreen";
 export default function RegisterScreen({ navigation }) {
   return (
     <View style={styles.container}>
