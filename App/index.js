@@ -12,8 +12,20 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-      <AuthStack.Screen name="ConnexionScreen" component={ConnexionScreen} />
-      <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <AuthStack.Screen
+        name="ConnexionScreen"
+        component={ConnexionScreen}
+        options={{
+          animationEnabled: false,
+        }}
+      />
+      <AuthStack.Screen
+        name="RegisterScreen"
+        component={RegisterScreen}
+        options={{
+          animationEnabled: false,
+        }}
+      />
       <AuthStack.Screen name="ModalConnexion" component={ModalConnexion} />
     </AuthStack.Navigator>
   </NavigationContainer>

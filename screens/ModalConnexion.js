@@ -16,13 +16,24 @@ const ModalConnexion = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
+            <View tyle={styles.headermodal}>
+              <Text style={styles.modalHeadertext}>Simulate Connexion</Text>
+            </View>
+            <View tyle={styles.bodyModal}>
+              <Text style={styles.modalText}>Simulate Connexion</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}></Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Hide Modal</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
@@ -43,12 +54,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
+
+  headermodal: {
+    backgroundColor: "red",
+    width: "100%",
+    paddingHorizontal: 35,
+    height: 50,
+    borderRadius: 20,
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  bodyModal: {
+    height: "50%",
+    backgroundColor: "red",
+  },
+  modalHeadertext: {
+    height: 50,
+    borderRadius: 50,
+    width: "100%",
+  },
   modalView: {
-    margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
+    width: "50%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
