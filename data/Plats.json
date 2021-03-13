@@ -2,7 +2,7 @@
   {
     "ID": 0,
     "OnMarket": true,
-    "Nom": "Un Plat",
+    "Nom": "Un Plat avec un nom trop long pour l'affichage",
     "IDVendeur": "1",
     "Date": "12/03/2021 17h",
     "prixUnePart": 5,
@@ -41,7 +41,7 @@
     "Nom": "Plat 3",
     "IDVendeur": "1",
     "Date": "12/03/2021 17h",
-    "prixUnePart": 5,
+    "prixUnePart": 1,
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "",

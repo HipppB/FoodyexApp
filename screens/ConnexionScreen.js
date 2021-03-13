@@ -13,9 +13,10 @@ import {
 import { useFonts } from "expo-font";
 
 export default function ConnexionScreen({ navigation }) {
-  const [loaded] = useFonts({
+  const forcefonts = useFonts({
     Roboto: require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
     RobotoBold: require("../assets/fonts/Roboto/Roboto Bold.ttf"),
+    RobotoThin: require("../assets/fonts/Roboto/Roboto Thin.ttf"),
   });
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

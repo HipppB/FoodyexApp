@@ -11,10 +11,12 @@ import plats from "../../data/Plats.json";
 import { useFonts } from "expo-font";
 
 export default function MarketScreen({ navigation }) {
-  const [loaded] = useFonts({
+  const forcefonts = useFonts({
     Roboto: require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
     RobotoBold: require("../../assets/fonts/Roboto/Roboto Bold.ttf"),
+    RobotoThin: require("../../assets/fonts/Roboto/Roboto Thin.ttf"),
   });
+
   return (
     <View style={styles.maincontainer}>
       <View style={styles.containerTopSection}>
@@ -38,9 +40,18 @@ export default function MarketScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
+      <Text
+        style={{
+          fontFamily: "RobotoThin",
+          textAlign: "center",
+          paddingTop: 20,
+        }}
+      >
+        Il y a actuellement 12 plats sur le Marché
+      </Text>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollArea}>
-          {plats.map((m) => (
+          {plats.map((plat) => (
             <TouchableOpacity
               style={styles.touchable}
               onPress={() => alert("To do")}
@@ -52,30 +63,42 @@ export default function MarketScreen({ navigation }) {
                     width: 130,
                     height: 130,
                     // @ts-ignore
-                    uri: m["LinkImage"],
+                    uri: plat["LinkImage"],
                   }}
                 />
               </View>
-              <Text
-                style={{
-                  color: "black",
-                  fontSize: 20,
-                  paddingBottom: 5,
-                  textAlign: "center",
-                }}
-              >
-                {m["Nom"]}
-              </Text>
-              <Text
-                style={{
-                  color: "black",
-                  fontSize: 20,
-                  paddingBottom: 25,
-                  textAlign: "center",
-                }}
-              >
-                Ceci est {m["Nom"]}
-              </Text>
+              <View style={{ width: "90%", height: 110 }}>
+                <Text
+                  numberOfLines={2}
+                  style={{
+                    color: "black",
+                    fontSize: 22,
+                    paddingBottom: 5,
+                    textAlign: "center",
+                    width: "100%",
+                    fontFamily: "Content",
+                    fontWeight: "bold",
+                    paddingBottom: 10,
+                  }}
+                >
+                  {plat["Nom"]}
+                </Text>
+                <Text
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    color: "black",
+                    fontSize: 17,
+                    paddingBottom: 25,
+                    textAlign: "center",
+                    width: "100%",
+                    fontFamily: "RobotoBold",
+                    color: "#FA4A0C",
+                  }}
+                >
+                  {plat["prixUnePart"]} ‡
+                </Text>
+              </View>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -96,7 +119,6 @@ const styles = StyleSheet.create({
   touchable: {
     paddingTop: 0,
     alignContent: "flex-end",
-    alignItems: "flex-end",
     justifyContent: "center",
     width: "35%",
     flexDirection: "row",
