@@ -1,15 +1,14 @@
-import React, { cloneElement } from "react";
+import * as React from "react";
 import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TouchableOpacity,
-  TextInput,
   ScrollView,
+  TouchableOpacity,
+  Image,
 } from "react-native";
-import { useFonts } from "expo-font";
 import plats from "../../data/Plats.json";
+import { useFonts } from "expo-font";
 
 export default function MarketScreen({ navigation }) {
   const [loaded] = useFonts({
@@ -17,7 +16,7 @@ export default function MarketScreen({ navigation }) {
     RobotoBold: require("../../assets/fonts/Roboto/Roboto Bold.ttf"),
   });
   return (
-    <View style={styles.container}>
+    <View style={styles.maincontainer}>
       <View style={styles.containerTopSection}>
         <View style={styles.menuConnexion}>
           <TouchableOpacity onPress={() => navigation.push("MyPlatesScreen")}>
@@ -39,63 +38,102 @@ export default function MarketScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.containerBottomSection}>
-        <ScrollView style={styleListMarket.scrollarea}>
-          {plats.map((p) => (
-            <View style={styleListMarket.Item}>
-              <TouchableOpacity
-                style={styleListMarket.touchable}
-                onPress={() => alert("To do")}
-              >
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollArea}>
+          {plats.map((m) => (
+            <TouchableOpacity
+              style={styles.touchable}
+              onPress={() => alert("To do")}
+            >
+              <View style={styles.imagecontainer}>
                 <Image
-                  style={styleListMarket.image}
+                  style={styles.image}
                   source={{
-                    width: 100,
-                    height: 100,
+                    width: 130,
+                    height: 130,
                     // @ts-ignore
-                    uri: p["LinkImage"],
+                    uri: m["LinkImage"],
                   }}
                 />
-                <Text
-                  style={styleListMarket.text}
-                  style={{
-                    color: "black",
-                    fontSize: 20,
-                    paddingBottom: 5,
-                    textAlign: "center",
-                  }}
-                >
-                  {p["Nom"]}
-                </Text>
-              </TouchableOpacity>
-            </View>
+              </View>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 20,
+                  paddingBottom: 5,
+                  textAlign: "center",
+                }}
+              >
+                {m["Nom"]}
+              </Text>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 20,
+                  paddingBottom: 25,
+                  textAlign: "center",
+                }}
+              >
+                Ceci est {m["Nom"]}
+              </Text>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
     </View>
   );
 }
-const styleListMarket = StyleSheet.create({
-  scrollarea: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  Item: {
-    backgroundColor: "red",
-  },
-  touchable: {},
-  image: {},
-  text: {},
-});
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#F2F2F2",
+  maincontainer: {
     flex: 1,
-    flexDirection: "column", //horizontal
-    justifyContent: "flex-start", //main axis
-    alignItems: "center", //secondary axis
+    backgroundColor: "#F9F9F9",
   },
+  container: {
+    flex: 1,
+    backgroundColor: "#F9F9F9",
+  },
+  touchable: {
+    paddingTop: 0,
+    alignContent: "flex-end",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    width: "35%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    backgroundColor: "white",
+    marginBottom: 20,
+    marginTop: 70,
+    height: 200,
+    width: 150,
+    position: "relative",
+    borderRadius: 30,
+    //Ombres
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+  },
+  scrollArea: {
+    marginTop: 0,
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingTop: 0,
+  },
+  imagecontainer: {
+    position: "absolute",
+    top: -50,
+  },
+  image: {
+    marginTop: 0,
+    borderRadius: 100,
+  },
+
+  //Header
   containerTopSection: {
     backgroundColor: "#FFFFFF",
     width: "100%",
@@ -116,13 +154,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6.27,
   },
 
-  containerBottomSection: {
-    backgroundColor: "#F2F2F2",
-    width: "100%",
-    flex: 1,
-    padding: 0,
-    justifyContent: "space-around",
-  },
   ButtonSlider: {
     backgroundColor: "#FFFFFF",
     marginBottom: 5,
