@@ -8,62 +8,89 @@ import {
   Button,
   TouchableOpacity,
   TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useFonts } from "expo-font";
 
 export default function RegisterScreen({ navigation }) {
-  const [loaded] = useFonts({
-    Roboto: require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
-    RobotoBold: require("../assets/fonts/Roboto/Roboto Bold.ttf"),
-  });
   return (
-    <View style={styles.container}>
-      <View style={styles.containerTopSection}>
-        <Image
-          style={styles.stretch}
-          source={require("../assets/Images/logo.png")}
-        />
-        <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <View style={styles.ButtonSlider}>
-              <Text style={styles.buttontext}>Se connecter</Text>
-            </View>
-          </TouchableOpacity>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <View style={styles.containerTopSection}>
+          <Image
+            style={styles.stretch}
+            source={require("../assets/Images/logo.png")}
+          />
+          <View style={styles.menuConnexion}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <View style={styles.ButtonSlider}>
+                <Text style={styles.buttontext}>Se connecter</Text>
+              </View>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
-            <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
-              <Text style={styles.buttontext}>S'inscrire</Text>
-            </View>
+            <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
+              <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
+                <Text style={styles.buttontext}>S'inscrire</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.containerBottomSection}>
+          <KeyboardAvoidingView
+            KeyboardAvoidingView
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+            behavior={Platform.OS == "ios" ? "height" : "height"}
+            enabled
+            keyboardVerticalOffset={370}
+          >
+            <ScrollView style={styleForms.ScrollView}>
+              <View style={styleForms.containersmall}>
+                <View style={styleForms.containersmallinput}>
+                  <Text style={styleForms.smallplaceholders}>NOM</Text>
+                  <TextInput style={styleForms.smallinput} />
+                </View>
+                <View style={styleForms.containersmallinput}>
+                  <Text style={styleForms.smallplaceholders}>PRÉNOM</Text>
+                  <TextInput style={styleForms.smallinput} />
+                </View>
+              </View>
+              <Text style={styleForms.placeholders}>ADRESSE E-MAIL ISEP</Text>
+              <TextInput style={styleForms.longinput} />
+              <Text style={styleForms.placeholders}>TÉLÉPHONE</Text>
+              <TextInput style={styleForms.longinput} />
+              <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
+              <TextInput style={styleForms.longinput} />
+
+              <Text
+                onPress={() => alert("Todo")}
+                style={styleForms.buttonquestion}
+              >
+                Besoin d'aide ?
+              </Text>
+            </ScrollView>
+          </KeyboardAvoidingView>
+          <TouchableOpacity style={styleForms.button}>
+            <Text style={styleForms.buttontext}>S'inscrire</Text>
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.containerBottomSection}>
-        <View style={styleForms.containersmall}>
-          <View style={styleForms.containersmallinput}>
-            <Text style={styleForms.smallplaceholders}>NOM</Text>
-            <TextInput style={styleForms.smallinput} />
-          </View>
-          <View style={styleForms.containersmallinput}>
-            <Text style={styleForms.smallplaceholders}>PRÉNOM</Text>
-            <TextInput style={styleForms.smallinput} />
-          </View>
-        </View>
-        <Text style={styleForms.placeholders}>ADRESSE E-MAIL ISEP</Text>
-        <TextInput style={styleForms.longinput} />
-        <Text style={styleForms.placeholders}>TÉLÉPHONE</Text>
-        <TextInput style={styleForms.longinput} />
-        <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
-        <TextInput style={styleForms.longinput} />
-        <Text style={styleForms.buttonquestion}>Besoin d'aide ?</Text>
-        <TouchableOpacity style={styleForms.button}>
-          <Text style={styleForms.buttontext}>S'inscrire</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
 const styleForms = StyleSheet.create({
+  ScrollView: {
+    padding: 40,
+    zIndex: 1,
+  },
   containersmall: {
     width: "100%",
     flexDirection: "row",
@@ -90,7 +117,6 @@ const styleForms = StyleSheet.create({
     flexShrink: 1,
     height: 35,
     marginBottom: 30,
-    paddingBottom: 0,
     borderBottomWidth: 0.7,
     borderBottomColor: "#000000",
   },
@@ -100,7 +126,7 @@ const styleForms = StyleSheet.create({
     fontSize: 15,
   },
   buttonquestion: {
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontSize: 16,
     color: "#F29B13",
   },
@@ -113,12 +139,13 @@ const styleForms = StyleSheet.create({
     width: 314,
     height: 70,
     justifyContent: "center",
+    zIndex: 2,
   },
   buttontext: {
     alignSelf: "center",
     lineHeight: 70,
     color: "#F6F6F9",
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontSize: 24,
     alignItems: "center",
   },
@@ -155,7 +182,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2F2F2",
     width: "100%",
     flex: 1,
-    padding: 40,
   },
   stretch: {
     width: 250,
@@ -173,7 +199,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#F29B13",
   },
   buttontext: {
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontWeight: "bold",
     fontSize: 18,
   },
