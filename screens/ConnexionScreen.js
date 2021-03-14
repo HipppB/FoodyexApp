@@ -22,7 +22,7 @@ export default function ConnexionScreen({ navigation }) {
             source={require("../assets/Images/logo.png")}
           />
           <View style={styles.menuConnexion}>
-            <TouchableOpacity onPress={() => navigation.push("ModalConnexion")}>
+            <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
               <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
                 <Text style={styles.buttontext}>Se connecter</Text>
               </View>
