@@ -28,7 +28,7 @@
   },
   "rnpm": {
     "assets": [
-      "./assets/fonts/"
+      "./assets/fonts"
     ]
   },
   "private": true

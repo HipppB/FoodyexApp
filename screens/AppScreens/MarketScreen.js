@@ -13,8 +13,8 @@ import { useFonts } from "expo-font";
 export default function MarketScreen({ navigation }) {
   const forcefonts = useFonts({
     Roboto: require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
-    RobotoBold: require("../../assets/fonts/Roboto/Roboto Bold.ttf"),
-    RobotoThin: require("../../assets/fonts/Roboto/Roboto Thin.ttf"),
+    RobotoBold: require("../../assets/fonts/Roboto/Roboto-Bold.ttf"),
+    RobotoThin: require("../../assets/fonts/Roboto/Roboto-Thin.ttf"),
   });
 
   return (
@@ -76,7 +76,7 @@ export default function MarketScreen({ navigation }) {
                     paddingBottom: 5,
                     textAlign: "center",
                     width: "100%",
-                    fontFamily: "Content",
+                    //fontFamily: "Content",
                     fontWeight: "bold",
                     paddingBottom: 10,
                   }}

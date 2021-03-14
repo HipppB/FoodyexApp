@@ -12,7 +12,7 @@ import { useFonts } from "expo-font";
 export default function MyPlatesScreen({ navigation }) {
   const [loaded] = useFonts({
     Roboto: require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
-    RobotoBold: require("../../assets/fonts/Roboto/Roboto Bold.ttf"),
+    RobotoBold: require("../../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
   return (
     <View style={styles.container}>

@@ -10,10 +10,6 @@ import {
 import { useFonts } from "expo-font";
 
 export default function AccountScreen({ navigation }) {
-  const [loaded] = useFonts({
-    Roboto: require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
-    RobotoBold: require("../../assets/fonts/Roboto/Roboto Bold.ttf"),
-  });
   return (
     <View style={styles.container}>
       <View style={styles.containerTopSection}>
@@ -78,7 +74,7 @@ const styleForms = StyleSheet.create({
     fontSize: 15,
   },
   buttonquestion: {
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontSize: 16,
     color: "#F29B13",
   },
@@ -96,7 +92,7 @@ const styleForms = StyleSheet.create({
     alignSelf: "center",
     lineHeight: 70,
     color: "#F6F6F9",
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontSize: 24,
     alignItems: "center",
   },
@@ -151,7 +147,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#F29B13",
   },
   buttontext: {
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontWeight: "bold",
     fontSize: 18,
   },
