@@ -6,14 +6,10 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from "react-native";
-import { useFonts } from "expo-font";
 
 export default function MyPlatesScreen({ navigation }) {
-  const [loaded] = useFonts({
-    Roboto: require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
-    RobotoBold: require("../../assets/fonts/Roboto/Roboto-Bold.ttf"),
-  });
   return (
     <View style={styles.container}>
       <View style={styles.containerTopSection}>
@@ -37,73 +33,58 @@ export default function MyPlatesScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.containerBottomSection}></View>
+      <ScrollView style={styles.containerBottomSection}>
+        <TouchableOpacity
+          onPress={() => alert("To do")}
+          style={styleMenuButton.container}
+        >
+          <Text style={styleMenuButton.texte}>Mes réservations (4)</Text>
+          <Image
+            style={styleMenuButton.chevron}
+            source={require("../../assets/Images/chevron-left.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => alert("To do")}
+          style={styleMenuButton.container}
+        >
+          <Text style={styleMenuButton.texte}>Mes plats sur le marché (2)</Text>
+          <Image
+            style={styleMenuButton.chevron}
+            source={require("../../assets/Images/chevron-left.png")}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => alert("To do")}
+          style={styleMenuButton.container}
+        >
+          <Text style={styleMenuButton.texte}>Mes réservations (4)</Text>
+          <Image
+            style={styleMenuButton.chevron}
+            source={require("../../assets/Images/chevron-left.png")}
+          />
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 }
-const styleForms = StyleSheet.create({
-  containersmall: {
+const styleMenuButton = StyleSheet.create({
+  container: {
+    backgroundColor: "#FFFFFF",
+    height: 60,
     width: "100%",
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    marginBottom: 40,
+    alignItems: "center",
     flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "space-between",
   },
-  containersmallinput: {
-    width: "40%",
-  },
-  smallinput: {
-    flexShrink: 1,
-    height: 35,
-    marginBottom: 30,
-    paddingBottom: 0,
-    borderBottomWidth: 0.7,
-    borderBottomColor: "#000000",
-  },
-  smallplaceholders: {
-    opacity: 0.4,
-    fontFamily: "Roboto",
-    fontSize: 15,
-  },
-  longinput: {
-    flexShrink: 1,
-    height: 35,
-    marginBottom: 30,
-    paddingBottom: 0,
-    borderBottomWidth: 0.7,
-    borderBottomColor: "#000000",
-  },
-  placeholders: {
-    opacity: 0.4,
-    fontFamily: "Roboto",
-    fontSize: 15,
-  },
-  buttonquestion: {
-    fontFamily: "RobotoBold",
-    fontSize: 16,
-    color: "#F29B13",
-  },
-  button: {
-    alignSelf: "center",
-    position: "absolute",
-    bottom: 45,
-    backgroundColor: "#F29B13",
-    borderRadius: 30,
-    width: 314,
-    height: 70,
-    justifyContent: "center",
-  },
-  buttontext: {
-    alignSelf: "center",
-    lineHeight: 70,
-    color: "#F6F6F9",
-    fontFamily: "RobotoBold",
-    fontSize: 24,
-    alignItems: "center",
-  },
+  texte: { fontFamily: "Roboto-Medium", fontSize: 18 },
 });
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#F9F9F9",
     flex: 1,
     flexDirection: "column", //horizontal
     justifyContent: "flex-start", //main axis
@@ -130,10 +111,11 @@ const styles = StyleSheet.create({
   },
 
   containerBottomSection: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#F9F9F9",
     width: "100%",
     flex: 1,
-    padding: 40,
+    paddingHorizontal: 40,
+    paddingVertical: 60,
   },
   stretch: {
     width: 250,
@@ -151,7 +133,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#F29B13",
   },
   buttontext: {
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontWeight: "bold",
     fontSize: 18,
   },

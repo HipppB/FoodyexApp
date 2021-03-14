@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, StyleSheet } from "react-native";
 import * as Font from "expo-font";
-
+import isSignedIn from "../App/index";
 export default function Loadingscreen({ navigation }) {
   useEffect(() => {
     async function loadFonts() {
@@ -9,11 +9,16 @@ export default function Loadingscreen({ navigation }) {
         Roboto: require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
         "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
         "Roboto-Thin": require("../assets/fonts/Roboto/Roboto-Thin.ttf"),
+        "Roboto-Medium": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
       })
         .then((res) => {
           console.log("FONTS LOADED!");
           setTimeout(() => {
-            navigation.push("ConnexionScreen");
+            if (isSignedIn) {
+              navigation.push("MarketScreen");
+            } else {
+              navigation.push("ConnexionScreen");
+            }
           }, 1000);
         })
         .catch((Err) => {

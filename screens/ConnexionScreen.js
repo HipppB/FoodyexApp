@@ -40,7 +40,9 @@ export default function ConnexionScreen({ navigation }) {
           <TextInput style={styleForms.longinput} />
           <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
           <TextInput style={styleForms.longinput} />
-          <Text style={styleForms.buttonquestion}>Mot de passe oublié ?</Text>
+          <Text onPress={() => alert("Todo")} style={styleForms.buttonquestion}>
+            Mot de passe oublié ?
+          </Text>
           <TouchableOpacity
             onPress={() => alert("Todo")}
             style={styleForms.button}

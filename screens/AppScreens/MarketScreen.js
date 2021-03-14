@@ -8,15 +8,8 @@ import {
   Image,
 } from "react-native";
 import plats from "../../data/Plats.json";
-import { useFonts } from "expo-font";
 
 export default function MarketScreen({ navigation }) {
-  const forcefonts = useFonts({
-    Roboto: require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
-    RobotoBold: require("../../assets/fonts/Roboto/Roboto-Bold.ttf"),
-    RobotoThin: require("../../assets/fonts/Roboto/Roboto-Thin.ttf"),
-  });
-
   return (
     <View style={styles.maincontainer}>
       <View style={styles.containerTopSection}>
@@ -40,17 +33,20 @@ export default function MarketScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-      <Text
-        style={{
-          fontFamily: "RobotoThin",
-          textAlign: "center",
-          paddingTop: 20,
-        }}
-      >
-        Il y a actuellement 12 plats sur le Marché
-      </Text>
+
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollArea}>
+          <Text
+            style={{
+              fontFamily: "Roboto-Thin",
+              textAlign: "center",
+              paddingTop: 20,
+              width: "100%",
+              fontSize: 18,
+            }}
+          >
+            Il y a actuellement 12 plats sur le Marché
+          </Text>
           {plats.map((plat) => (
             <TouchableOpacity
               style={styles.touchable}
@@ -92,7 +88,7 @@ export default function MarketScreen({ navigation }) {
                     paddingBottom: 25,
                     textAlign: "center",
                     width: "100%",
-                    fontFamily: "RobotoBold",
+                    fontFamily: "Roboto-Bold",
                     color: "#FA4A0C",
                   }}
                 >
@@ -186,7 +182,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#F29B13",
   },
   buttontext: {
-    fontFamily: "RobotoBold",
+    fontFamily: "Roboto-Bold",
     fontWeight: "bold",
     fontSize: 18,
   },

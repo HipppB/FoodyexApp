@@ -69,7 +69,12 @@ export default function RegisterScreen({ navigation }) {
               <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
               <TextInput style={styleForms.longinput} />
 
-              <Text style={styleForms.buttonquestion}>Besoin d'aide ?</Text>
+              <Text
+                onPress={() => alert("Todo")}
+                style={styleForms.buttonquestion}
+              >
+                Besoin d'aide ?
+              </Text>
             </ScrollView>
           </KeyboardAvoidingView>
           <TouchableOpacity style={styleForms.button}>

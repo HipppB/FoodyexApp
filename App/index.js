@@ -9,7 +9,7 @@ import AccountScreen from "../screens/AppScreens/AccountScreen";
 import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
 import Loadingscreen from "../screens/LoadingScreen";
 const AppStack = createStackNavigator();
-let isSignedIn = false;
+let isSignedIn = true;
 
 export default () => (
   <NavigationContainer>
@@ -34,6 +34,7 @@ export default () => (
       </AppStack.Navigator>
     ) : (
       <AppStack.Navigator screenOptions={{ headerShown: false }}>
+        <AppStack.Screen name="LoadingScreen" component={Loadingscreen} />
         <AppStack.Screen
           name="MarketScreen"
           component={MarketScreen}
