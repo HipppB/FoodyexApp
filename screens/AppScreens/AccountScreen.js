@@ -14,7 +14,7 @@ export default function AccountScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.containerTopSection}>
         <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => navigation.push("MyPlatesScreen")}>
+          <TouchableOpacity onPress={() => navigation.navigate("NavPlates")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mes Plats</Text>
             </View>
@@ -36,43 +36,43 @@ export default function AccountScreen({ navigation }) {
       <ScrollView style={styles.containerBottomSection}>
         <Text style={styleMenuButton.solde}>Solde : 13 ‡</Text>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("MyProfileScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mon profil</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("ListMessageScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Messages</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("HistoryScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Historique</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("NavLogin")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Déconnexion</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
       </ScrollView>

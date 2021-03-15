@@ -26,7 +26,7 @@ export default function MyPlatesScreen({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.push("AccountScreen")}>
+          <TouchableOpacity onPress={() => navigation.push("NavAccount")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mon Compte</Text>
             </View>
@@ -35,33 +35,33 @@ export default function MyPlatesScreen({ navigation }) {
       </View>
       <ScrollView style={styles.containerBottomSection}>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("MyReservationsScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mes réservations (4)</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("MyDishesOnMarketScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mes plats sur le marché (2)</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => alert("To do")}
+          onPress={() => navigation.push("NewPlatesScreen")}
           style={styleMenuButton.container}
         >
-          <Text style={styleMenuButton.texte}>Mes réservations (4)</Text>
+          <Text style={styleMenuButton.texte}>Nouveau Plat</Text>
           <Image
             style={styleMenuButton.chevron}
-            source={require("../../assets/Images/chevron-left.png")}
+            source={require("../../assets/Images/chevron-right.png")}
           />
         </TouchableOpacity>
       </ScrollView>

@@ -14,7 +14,7 @@ export default function MarketScreen({ navigation }) {
     <View style={styles.maincontainer}>
       <View style={styles.containerTopSection}>
         <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => navigation.push("MyPlatesScreen")}>
+          <TouchableOpacity onPress={() => navigation.push("NavPlates")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mes Plats</Text>
             </View>
@@ -26,7 +26,7 @@ export default function MarketScreen({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.push("AccountScreen")}>
+          <TouchableOpacity onPress={() => navigation.push("NavAccount")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mon Compte</Text>
             </View>

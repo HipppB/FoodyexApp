@@ -44,7 +44,7 @@ export default function ConnexionScreen({ navigation }) {
             Mot de passe oublié ?
           </Text>
           <TouchableOpacity
-            onPress={() => alert("Todo")}
+            onPress={() => navigation.push("NavMenu")}
             style={styleForms.button}
           >
             <Text style={styleForms.buttontext}>Connexion</Text>
