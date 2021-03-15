@@ -8,13 +8,17 @@ import {
   Image,
 } from "react-native";
 import plats from "../../data/Plats.json";
-
+let NbPlat = 0;
+let NbPlatMarket = 0;
 export default function MarketScreen({ navigation }) {
+  if (NbPlat === 0) {
+    NbPlatMarket = NombredePlat(plats);
+  }
   return (
     <View style={styles.maincontainer}>
       <View style={styles.containerTopSection}>
         <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => navigation.push("MyPlatesScreen")}>
+          <TouchableOpacity onPress={() => navigation.push("NavPlates")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mes Plats</Text>
             </View>
@@ -26,7 +30,7 @@ export default function MarketScreen({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.push("AccountScreen")}>
+          <TouchableOpacity onPress={() => navigation.push("NavAccount")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mon Compte</Text>
             </View>
@@ -45,62 +49,135 @@ export default function MarketScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Il y a actuellement 12 plats sur le Marché
+            Il y a actuellement {NbPlatMarket} plats sur le Marché
           </Text>
-          {plats.map((plat) => (
-            <TouchableOpacity
-              style={styles.touchable}
-              onPress={() => alert("To do")}
-            >
-              <View style={styles.imagecontainer}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    width: 130,
-                    height: 130,
-                    // @ts-ignore
-                    uri: plat["LinkImage"],
-                  }}
-                />
-              </View>
-              <View style={{ width: "90%", height: 110 }}>
-                <Text
-                  numberOfLines={2}
-                  style={{
-                    color: "black",
-                    fontSize: 22,
-                    paddingBottom: 5,
-                    textAlign: "center",
-                    width: "100%",
-                    //fontFamily: "Content",
-                    fontWeight: "bold",
-                    paddingBottom: 10,
-                  }}
-                >
-                  {plat["Nom"]}
-                </Text>
-                <Text
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    color: "black",
-                    fontSize: 17,
-                    paddingBottom: 25,
-                    textAlign: "center",
-                    width: "100%",
-                    fontFamily: "Roboto-Bold",
-                    color: "#FA4A0C",
-                  }}
-                >
-                  {plat["prixUnePart"]} ‡
-                </Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+          {plats.map((plat) => PlatMarche(plat), (NbPlat = 0))}
         </ScrollView>
       </View>
     </View>
   );
+}
+
+function NombredePlat(plats) {
+  let NombredePlatSurLeMarche = 0;
+  plats.map((plat) => {
+    if (plat["OnMarket"] === true) {
+      NombredePlatSurLeMarche += 1;
+    }
+  });
+  return NombredePlatSurLeMarche;
+}
+function PlatMarche(plat) {
+  if (plat["OnMarket"] === false) {
+    return null;
+  } else {
+    NbPlat += 1;
+    if (NbPlat % 2 === 1) {
+      return (
+        <TouchableOpacity
+          style={styles.touchableimpaire}
+          onPress={() => alert("To do")}
+          key={plat["ID"]}
+        >
+          <View style={styles.imagecontainer}>
+            <Image
+              style={styles.image}
+              source={{
+                width: 130,
+                height: 130,
+                // @ts-ignore
+                uri: plat["LinkImage"],
+              }}
+            />
+          </View>
+          <View style={{ width: "90%", height: 110 }}>
+            <Text
+              numberOfLines={2}
+              style={{
+                color: "black",
+                fontSize: 22,
+                paddingBottom: 5,
+                textAlign: "center",
+                width: "100%",
+                //fontFamily: "Content",
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}
+            >
+              {plat["Nom"]}
+            </Text>
+            <Text
+              style={{
+                position: "absolute",
+                top: "50%",
+                color: "black",
+                fontSize: 17,
+                paddingBottom: 25,
+                textAlign: "center",
+                width: "100%",
+                fontFamily: "Roboto-Bold",
+                color: "#FA4A0C",
+              }}
+            >
+              {plat["prixUnePart"]} ‡
+            </Text>
+          </View>
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <TouchableOpacity
+          style={styles.touchable}
+          onPress={() => alert("To do")}
+          key={plat["ID"]}
+        >
+          <View style={styles.imagecontainer}>
+            <Image
+              style={styles.image}
+              source={{
+                width: 130,
+                height: 130,
+                // @ts-ignore
+                uri: plat["LinkImage"],
+              }}
+            />
+          </View>
+          <View style={{ width: "90%", height: 110 }}>
+            <Text
+              numberOfLines={2}
+              style={{
+                color: "black",
+                fontSize: 22,
+                paddingBottom: 5,
+                textAlign: "center",
+                width: "100%",
+                //fontFamily: "Content",
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}
+            >
+              {plat["Nom"]}
+            </Text>
+            <Text
+              style={{
+                position: "absolute",
+                top: "50%",
+                color: "black",
+                fontSize: 17,
+                paddingBottom: 25,
+                textAlign: "center",
+                width: "100%",
+                fontFamily: "Roboto-Bold",
+                color: "#FA4A0C",
+              }}
+            >
+              {plat["prixUnePart"]} ‡
+            </Text>
+          </View>
+        </TouchableOpacity>
+      );
+    }
+  }
 }
 
 const styles = StyleSheet.create({
@@ -113,7 +190,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F9F9F9",
   },
   touchable: {
-    paddingTop: 0,
     alignContent: "flex-end",
     justifyContent: "center",
     width: "35%",
@@ -135,12 +211,36 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.08,
     shadowRadius: 6,
   },
+  touchableimpaire: {
+    alignContent: "flex-end",
+    justifyContent: "center",
+    width: "35%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    backgroundColor: "white",
+    marginBottom: 20,
+    marginTop: 70,
+    height: 200,
+    width: 150,
+    position: "relative",
+    borderRadius: 30,
+    //Ombres
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    transform: [{ translateY: "150%" }],
+  },
   scrollArea: {
     marginTop: 0,
     justifyContent: "space-evenly",
     flexDirection: "row",
     flexWrap: "wrap",
     paddingTop: 0,
+    paddingBottom: 200,
   },
   imagecontainer: {
     position: "absolute",

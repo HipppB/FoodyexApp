@@ -22,7 +22,7 @@ export default function ConnexionScreen({ navigation }) {
             source={require("../assets/Images/logo.png")}
           />
           <View style={styles.menuConnexion}>
-            <TouchableOpacity onPress={() => navigation.push("ModalConnexion")}>
+            <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
               <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
                 <Text style={styles.buttontext}>Se connecter</Text>
               </View>
@@ -44,7 +44,7 @@ export default function ConnexionScreen({ navigation }) {
             Mot de passe oublié ?
           </Text>
           <TouchableOpacity
-            onPress={() => alert("Todo")}
+            onPress={() => navigation.push("NavMenu")}
             style={styleForms.button}
           >
             <Text style={styleForms.buttontext}>Connexion</Text>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet, ActivityIndicator } from "react-native";
 import * as Font from "expo-font";
-import isSignedIn from "../App/index";
+
+let isSignedIn = false;
 export default function Loadingscreen({ navigation }) {
   useEffect(() => {
     async function loadFonts() {
@@ -13,11 +14,12 @@ export default function Loadingscreen({ navigation }) {
       })
         .then((res) => {
           console.log("FONTS LOADED!");
+          console.log(isSignedIn);
           setTimeout(() => {
             if (isSignedIn) {
-              navigation.push("MarketScreen");
+              navigation.push("NavMenu");
             } else {
-              navigation.push("ConnexionScreen");
+              navigation.push("NavLogin");
             }
           }, 1000);
         })
@@ -38,6 +40,11 @@ export default function Loadingscreen({ navigation }) {
       <Image
         style={styles.stretch}
         source={require("../assets/Images/logo.png")}
+      />
+      <ActivityIndicator
+        size="large"
+        color="#F29B13"
+        style={{ position: "absolute", bottom: "20%" }}
       />
     </View>
   );
