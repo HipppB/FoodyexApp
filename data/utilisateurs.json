@@ -1,0 +1,18 @@
+{
+  "0": {
+    "ID": 0,
+    "nom": "Bach",
+    "prenom": "Hippolyte",
+    "email": "hippolyte.bach@eleve.isep.fr",
+    "telephone": "0600000000",
+    "motdepasse": "Admin"
+  },
+  "1": {
+    "ID": 1,
+    "nom": "Bach2",
+    "prenom": "Hippolyte2",
+    "email": "hippolyte@eleve.isep.fr",
+    "telephone": "0600000000",
+    "motdepasse": "Admin"
+  }
+}
