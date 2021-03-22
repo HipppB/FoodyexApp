@@ -77,15 +77,15 @@ function ReserverModale(props) {
           <View style={styles.footerModal}>
             <View>
               <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={[styles.button, styles.buttonCancel]}
                 onPress={() => props.ChangeVisibility(false)}
               >
-                <Text style={styles.textStyle}>close Modal</Text>
+                <Text style={styles.textStyleCancel}>Annuler</Text>
               </Pressable>
             </View>
             <View>
               <Pressable
-                style={[styles.button, styles.buttonClose]}
+                style={[styles.button, styles.buttonConfirm]}
                 onPress={() => props.ChangeVisibility(false)}
               >
                 <Text style={styles.textStyle}>Réserver ({totalPrice}‡)</Text>
@@ -131,14 +131,14 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   soustitre: {
-    fontFamily: "Roboto-Regular",
-    fontSize: 15,
+    fontFamily: "Poppins-Regular",
+    fontSize: 16,
     opacity: 0.5,
     marginBottom: 5,
   },
   textInfo: {
     fontFamily: "Poppins-Regular",
-    fontSize: 15,
+    fontSize: 17,
   },
   centeredView: {
     flex: 1,
@@ -195,10 +195,21 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
-  buttonClose: {
+  buttonCancel: {
+    backgroundColor: "#FFFFFF",
+  },
+  buttonConfirm: {
     backgroundColor: "#F29B13",
   },
+  textStyleCancel: {
+    fontFamily: "Poppins-SemiBold",
+    opacity: 0.5,
+    fontSize: 17,
+    textAlign: "center",
+  },
   textStyle: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 17,
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
