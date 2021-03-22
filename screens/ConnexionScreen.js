@@ -11,21 +11,24 @@ import {
   Keyboard,
   Button,
 } from "react-native";
-import * as Font from "expo-font";
 
+import ReserverModale from "./AppScreens/Modales/ReserverModale";
 export default function ConnexionScreen({ navigation }) {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
+        <ReserverModale
+          Visible={modalVisible}
+          ChangeVisibility={setModalVisible}
+        />
         <View style={styles.containerTopSection}>
           <Image
             style={styles.stretch}
             source={require("../assets/Images/logo.png")}
           />
           <View style={styles.menuConnexion}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("ReserverModale")}
-            >
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
                 <Text style={styles.buttontext}>Se connecter</Text>
               </View>

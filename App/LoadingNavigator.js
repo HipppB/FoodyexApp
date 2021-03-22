@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import ConnexionScreen from "../screens/ConnexionScreen";

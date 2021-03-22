@@ -10,10 +10,11 @@ import {
   Button,
 } from "react-native";
 import * as users from "../../../data/utilisateurs.json";
-
+import ReserverModale from "../Modales/ReserverModale";
 let PartIndividuelle = Boolean;
 let iduser;
 export default function PlateDetailsScreen({ navigation, route }) {
+  const [modalVisible, setModalVisible] = useState(false);
   if (route.params.selected["PartIndividuelle"]) {
     PartIndividuelle = "Oui";
   } else {
@@ -22,6 +23,16 @@ export default function PlateDetailsScreen({ navigation, route }) {
   iduser = route.params.selected["IDVendeur"];
   return (
     <View style={StyleLowerMenu.container}>
+      <ReserverModale
+        Visible={modalVisible}
+        ChangeVisibility={setModalVisible}
+        Plat={route.params.selected["Nom"]}
+        SellerFirstName={users[iduser]["prenom"]}
+        SellerName={users[iduser]["nom"]}
+        NumberOfSlice={route.params.selected["NombrePart"]}
+        PartIndividuelle={route.params.selected["PartIndividuelle"]}
+        prixUnePart={route.params.selected["prixUnePart"]}
+      />
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
@@ -91,7 +102,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
           </TouchableOpacity>
           <TouchableOpacity
             style={styleForms.button}
-            onPress={() => alert("Todo")}
+            onPress={() => setModalVisible(true)}
           >
             <Text style={styleForms.buttontext}>Réserver</Text>
           </TouchableOpacity>

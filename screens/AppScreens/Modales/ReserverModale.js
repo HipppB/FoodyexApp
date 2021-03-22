@@ -9,92 +9,92 @@ import {
   Button,
 } from "react-native";
 
-function ReserverModale() {
-  const [modalVisible, setModalVisible] = useState(false);
-  let nombreDepartMax = 20;
-  const [stepper, valuestepper] = useState(10);
+function ReserverModale(props) {
+  let nombreDepartMax = props.NumberOfSlice;
+  let defaultstep = 1;
+  if (!props.PartIndividuelle) {
+    defaultstep = props.NumberOfSlice;
+  }
+  const [openModal, changeopen] = useState(props.Visible.modalVisible);
+  const [stepper, valuestepper] = useState(defaultstep);
+  const [totalPrice, changeprice] = useState(defaultstep * props.prixUnePart);
   function changevalue(step) {
     if (stepper + step > 0 && stepper + step < nombreDepartMax + 1) {
       valuestepper(stepper + step);
+      changeprice((stepper + step) * props.prixUnePart);
     }
   }
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View style={styles.headermodal}>
-              <Text style={styles.Headertext} numberOfLines={1}>
-                Réservation
+    <Modal
+      animationType="fade"
+      transparent={true}
+      visible={props.Visible}
+      onRequestClose={() => {}}
+    >
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <View style={styles.headermodal}>
+            <Text style={styles.Headertext} numberOfLines={1}>
+              Réservation
+            </Text>
+          </View>
+          <View style={styles.bodyModal}>
+            <View>
+              <Text style={styles.soustitre}>PLAT</Text>
+              <Text style={styles.textInfo}>{props.Plat}</Text>
+            </View>
+            <View style={styles.lineStyle} />
+            <View>
+              <Text style={styles.soustitre}>VENDEUR</Text>
+              <Text style={styles.textInfo}>
+                {props.SellerFirstName} {props.SellerName}
               </Text>
             </View>
-            <View style={styles.bodyModal}>
-              <View>
-                <Text style={styles.soustitre}>PLAT</Text>
-                <Text style={styles.textInfo}>Couscous</Text>
+            <View style={styles.lineStyle} />
+            <View>
+              <Text style={styles.soustitre}>
+                NOMBRE DE PART ({props.prixUnePart} ‡/PART)
+              </Text>
+              <View style={Stylestepper.container}>
+                <Pressable
+                  style={Stylestepper.button}
+                  onPress={() => changevalue(-defaultstep)}
+                >
+                  <Text style={Stylestepper.text}>-</Text>
+                </Pressable>
+                <Text style={Stylestepper.text}>{stepper}</Text>
+                <Pressable
+                  style={Stylestepper.button}
+                  onPress={() => changevalue(defaultstep)}
+                >
+                  <Text style={Stylestepper.text}>+</Text>
+                </Pressable>
               </View>
-              <View style={styles.lineStyle} />
-              <View>
-                <Text style={styles.soustitre}>VENDEUR</Text>
-                <Text style={styles.textInfo}>Nom Prénom</Text>
-              </View>
-              <View style={styles.lineStyle} />
-              <View>
-                <Text style={styles.soustitre}>NOMBRE DE PART (3 ‡/PART)</Text>
-                <View style={Stylestepper.container}>
-                  <Pressable
-                    style={Stylestepper.button}
-                    onPress={() => changevalue(-1)}
-                  >
-                    <Text style={Stylestepper.text}>-</Text>
-                  </Pressable>
-                  <Text style={Stylestepper.text}>{stepper}</Text>
-                  <Pressable
-                    style={Stylestepper.button}
-                    onPress={() => changevalue(1)}
-                  >
-                    <Text style={Stylestepper.text}>+</Text>
-                  </Pressable>
-                </View>
-              </View>
-              <View style={styles.lineStyle} />
             </View>
+            <View style={styles.lineStyle} />
+          </View>
 
-            <View style={styles.footerModal}>
-              <View>
-                <Pressable
-                  style={[styles.button, styles.buttonOpen]}
-                  onPress={() => setModalVisible(false)}
-                >
-                  <Text style={styles.textStyle}>close Modal</Text>
-                </Pressable>
-              </View>
-              <View>
-                <Pressable
-                  style={[styles.button, styles.buttonOpen]}
-                  onPress={() => setModalVisible(false)}
-                >
-                  <Text style={styles.textStyle}>close Modal</Text>
-                </Pressable>
-              </View>
+          <View style={styles.footerModal}>
+            <View>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => props.ChangeVisibility(false)}
+              >
+                <Text style={styles.textStyle}>close Modal</Text>
+              </Pressable>
+            </View>
+            <View>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => props.ChangeVisibility(false)}
+              >
+                <Text style={styles.textStyle}>Réserver ({totalPrice}‡)</Text>
+              </Pressable>
             </View>
           </View>
         </View>
-      </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
-    </View>
+      </View>
+    </Modal>
   );
 }
 
@@ -154,6 +154,8 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
+    borderTopEndRadius: 30,
+    borderTopLeftRadius: 30,
   },
   bodyModal: {
     flex: 1,
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     backgroundColor: "white",
-    borderRadius: 20,
+    borderRadius: 30,
     width: "65%",
     height: 300,
     flex: 0.5,
@@ -193,11 +195,8 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#F29B13",
   },
   textStyle: {
     color: "white",

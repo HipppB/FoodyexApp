@@ -6,19 +6,19 @@
     "IDVendeur": "1",
     "Date": "12/03/2021 17h",
     "prixUnePart": 5,
-    "NombrePart": 2,
+    "NombrePart": 6,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
     "LinkImage": "lasagnes"
   },
   {
     "ID": 1,
-    "OnMarket": false,
+    "OnMarket": true,
     "Nom": "Pate Carbonara",
     "IDVendeur": "76",
     "Date": "12/03/2021 17h",
     "prixUnePart": 6,
-    "NombrePart": 1,
+    "NombrePart": 7,
     "PartIndividuelle": false,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
     "LinkImage": "carbonara"
