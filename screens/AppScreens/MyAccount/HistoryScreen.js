@@ -16,6 +16,17 @@ export default function HistoryScreen({ navigation }) {
             style={{ marginLeft: 15 }}
             source={require("../../../assets/Images/chevron-left.png")}
           />
+          <Text
+            style={{
+              position: "absolute",
+              alignSelf: "center",
+              top: 2,
+              fontFamily: "Roboto-Thin",
+              fontSize: 18,
+            }}
+          >
+            Coming Soon !
+          </Text>
         </TouchableOpacity>
       </SafeAreaView>
       <View style={StyleLowerMenu.containerbottom}></View>

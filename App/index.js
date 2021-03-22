@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import ConnexionScreen from "../screens/ConnexionScreen";
-import RegisterScreen from "../screens/RegisterScreen";
+
 import ModalConnexion from "../screens/ModalConnexion";
-import MarketScreen from "../screens/AppScreens/MarketScreen";
-import AccountScreen from "../screens/AppScreens/AccountScreen";
 import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
 import Loadingscreen from "../screens/LoadingScreen";
 import MyReservationsScreen from "../screens/AppScreens/Myplates/MyReservationsScreen";
@@ -14,67 +11,64 @@ import NewPlatesScreen from "../screens/AppScreens/Myplates/NewPlatesScreen";
 import MyProfileScreen from "../screens/AppScreens/MyAccount/MyProfileScreen";
 import HistoryScreen from "../screens/AppScreens/MyAccount/HistoryScreen";
 import ListMessageScreen from "../screens/AppScreens/MyAccount/ListMessageScreen";
+
 import PlateDetailsScreen from "../screens/AppScreens/TheMarket/PlateDetailsScreen";
 import PublicProfileScreen from "../screens/AppScreens/TheMarket/PublicProfileScreen";
+import ReserverModale from "../screens/AppScreens/Modales/ReserverModale";
+
+import MarketScreen from "../screens/AppScreens/MarketScreen";
+import AccountScreen from "../screens/AppScreens/AccountScreen";
+
+import NavLogin from "./LoadingNavigator";
+//import NavMarket from "./MarketNavigator";
+
 const AppStack = createStackNavigator();
-const LoginStack = createStackNavigator();
-const MenuStack = createStackNavigator();
-const MyPlatestStack = createStackNavigator();
-const AccountStack = createStackNavigator();
-const MarketStack = createStackNavigator();
-
-export default () => (
-  <NavigationContainer>
-    <AppStack.Navigator screenOptions={{ headerShown: false }}>
-      <AppStack.Screen
-        name="LoadingScreen"
-        component={Loadingscreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <AppStack.Screen
-        name="NavLogin"
-        component={NavLogin}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <AppStack.Screen
-        name="NavMenu"
-        component={NavMenu}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-    </AppStack.Navigator>
-  </NavigationContainer>
-);
-
-function NavLogin() {
+export default function App() {
+  const [isLoading, LoadFinished] = useState(true);
   return (
-    <LoginStack.Navigator screenOptions={{ headerShown: false }}>
-      <LoginStack.Screen
-        name="ConnexionScreen"
-        component={ConnexionScreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <LoginStack.Screen
-        name="RegisterScreen"
-        component={RegisterScreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-    </LoginStack.Navigator>
+    <NavigationContainer>
+      <AppStack.Navigator screenOptions={{ headerShown: false }}>
+        <AppStack.Screen
+          name="LoadingScreen"
+          component={Loadingscreen}
+          options={{
+            animationEnabled: false,
+          }}
+        />
+
+        <AppStack.Screen
+          name="NavLogin"
+          component={NavLogin}
+          options={{
+            animationEnabled: false,
+          }}
+        />
+        <AppStack.Screen
+          name="NavMenu"
+          component={NavMenu}
+          options={{
+            animationEnabled: false,
+          }}
+        />
+        <AppStack.Screen
+          name="ReserverModale"
+          component={ReserverModale}
+          options={{
+            animationEnabled: true,
+          }}
+        />
+      </AppStack.Navigator>
+    </NavigationContainer>
   );
 }
 
+const MenuStack = createStackNavigator();
 function NavMenu() {
   return (
-    <MenuStack.Navigator screenOptions={{ headerShown: false }}>
+    <MenuStack.Navigator
+      initialRouteName="NavMarket"
+      screenOptions={{ headerShown: false }}
+    >
       <MenuStack.Screen
         name="NavMarket"
         component={NavMarket}
@@ -99,33 +93,8 @@ function NavMenu() {
     </MenuStack.Navigator>
   );
 }
-function NavMarket() {
-  return (
-    <MarketStack.Navigator screenOptions={{ headerShown: false }}>
-      <MarketStack.Screen
-        name="MarketScreen"
-        component={MarketScreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <MarketStack.Screen
-        name="PlateDetailsScreen"
-        component={PlateDetailsScreen}
-        options={{
-          animationEnabled: true,
-        }}
-      />
-      <MarketStack.Screen
-        name="PublicProfileScreen"
-        component={PublicProfileScreen}
-        options={{
-          animationEnabled: true,
-        }}
-      />
-    </MarketStack.Navigator>
-  );
-}
+
+const MyPlatestStack = createStackNavigator();
 function NavPlates() {
   return (
     <MyPlatestStack.Navigator screenOptions={{ headerShown: false }}>
@@ -160,6 +129,8 @@ function NavPlates() {
     </MyPlatestStack.Navigator>
   );
 }
+
+const AccountStack = createStackNavigator();
 function NavAccount() {
   return (
     <AccountStack.Navigator screenOptions={{ headerShown: false }}>
@@ -192,5 +163,34 @@ function NavAccount() {
         }}
       />
     </AccountStack.Navigator>
+  );
+}
+
+const MarketStack = createStackNavigator();
+function NavMarket() {
+  return (
+    <MarketStack.Navigator screenOptions={{ headerShown: false }}>
+      <MarketStack.Screen
+        name="MarketScreen"
+        component={MarketScreen}
+        options={{
+          animationEnabled: false,
+        }}
+      />
+      <MarketStack.Screen
+        name="PlateDetailsScreen"
+        component={PlateDetailsScreen}
+        options={{
+          animationEnabled: true,
+        }}
+      />
+      <MarketStack.Screen
+        name="PublicProfileScreen"
+        component={PublicProfileScreen}
+        options={{
+          animationEnabled: true,
+        }}
+      />
+    </MarketStack.Navigator>
   );
 }

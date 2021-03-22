@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Button,
 } from "react-native";
 import * as Font from "expo-font";
 
@@ -22,7 +23,9 @@ export default function ConnexionScreen({ navigation }) {
             source={require("../assets/Images/logo.png")}
           />
           <View style={styles.menuConnexion}>
-            <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ReserverModale")}
+            >
               <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
                 <Text style={styles.buttontext}>Se connecter</Text>
               </View>
@@ -39,12 +42,15 @@ export default function ConnexionScreen({ navigation }) {
           <Text style={styleForms.placeholders}>ADRESSE E-MAIL</Text>
           <TextInput style={styleForms.longinput} />
           <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
+
           <TextInput style={styleForms.longinput} />
           <Text onPress={() => alert("Todo")} style={styleForms.buttonquestion}>
             Mot de passe oublié ?
           </Text>
           <TouchableOpacity
-            onPress={() => navigation.push("NavMenu")}
+            onPress={() =>
+              navigation.navigate("NavMenu", { screen: "NavMarket" })
+            }
             style={styleForms.button}
           >
             <Text style={styleForms.buttontext}>Connexion</Text>
@@ -76,6 +82,7 @@ const styleForms = StyleSheet.create({
     opacity: 0.4,
     fontFamily: "Roboto",
     fontSize: 15,
+    zIndex: 1,
   },
   longinput: {
     flexShrink: 1,
