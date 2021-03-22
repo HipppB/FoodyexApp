@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.08,
     shadowRadius: 6,
-    transform: [{ translateY: "150%" }],
+    transform: [{ translateY: 150 }],
   },
   scrollArea: {
     marginTop: 0,

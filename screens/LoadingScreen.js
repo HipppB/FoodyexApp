@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, StyleSheet, ActivityIndicator } from "react-native";
 import * as Font from "expo-font";
-
 let isSignedIn = false;
 export default function Loadingscreen({ navigation }) {
   useEffect(() => {
@@ -12,15 +11,18 @@ export default function Loadingscreen({ navigation }) {
         "Roboto-Thin": require("../assets/fonts/Roboto/Roboto-Thin.ttf"),
         "Roboto-Medium": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
         "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
+        "Poppins-Medium": require("../assets/fonts/Poppins/Poppins-Medium.ttf"),
+        "Poppins-SemiBold": require("../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
+        "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
       })
         .then((res) => {
           console.log("FONTS LOADED!");
           console.log(isSignedIn);
           setTimeout(() => {
             if (isSignedIn) {
-              navigation.push("NavMenu");
+              navigation.navigate("NavMenu");
             } else {
-              navigation.push("NavLogin");
+              navigation.navigate("NavLogin");
             }
           }, 1000);
         })
