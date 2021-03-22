@@ -8,7 +8,8 @@ import {
   SafeAreaView,
 } from "react-native";
 
-export default function MyProfileScreen({ navigation }) {
+let user;
+export default function PublicProfileScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -17,24 +18,97 @@ export default function MyProfileScreen({ navigation }) {
             style={{ marginLeft: 15 }}
             source={require("../../../assets/Images/chevron-left.png")}
           />
-          <Text
-            style={{
-              position: "absolute",
-              alignSelf: "center",
-              top: 2,
-              fontFamily: "Roboto-Thin",
-              fontSize: 18,
-            }}
-          >
-            Coming Soon !
-          </Text>
+          <Text style={StyleLowerMenu.title}>Profil de Nom Prénom</Text>
         </TouchableOpacity>
       </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}></View>
+      <View style={StyleLowerMenu.containerbottom}>
+        <View style={StyleProfile.container}>
+          <Image
+            style={StyleProfile.Image}
+            source={{ uri: "https://randomuser.me/api/portraits/men/99.jpg" }}
+          />
+          <Text style={StyleProfile.Name}>Prénom Nom</Text>
+          <Text style={StyleProfile.section}>Adresse e-mail</Text>
+          <Text style={StyleProfile.contenu}>email</Text>
+          <Text style={StyleProfile.section}>Numéro de téléphone :</Text>
+          <Text style={StyleProfile.contenu}>## ## ## ## ##</Text>
+          <Text style={StyleProfile.section}>Promotion :</Text>
+          <Text style={StyleProfile.contenu}>Non définie</Text>
+          <Text style={StyleProfile.section}>Courte présentation :</Text>
+          <Text style={StyleProfile.contenu}>description</Text>
+          <TouchableOpacity
+            style={styleForms.button}
+            onPress={() =>
+              navigation.push("NavMarket", { screen: "MarketScreen" })
+            }
+          >
+            <Text style={styleForms.buttontext}>Modifier</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
 
+const styleForms = StyleSheet.create({
+  button: {
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 20,
+    backgroundColor: "#F29B13",
+    borderRadius: 30,
+    width: 200,
+    height: 55,
+  },
+  buttontext: {
+    alignSelf: "center",
+    lineHeight: 55,
+    color: "#F6F6F9",
+    fontFamily: "Roboto-Bold",
+    fontSize: 24,
+    alignItems: "center",
+  },
+});
+
+const StyleProfile = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "flex-start",
+    top: "5%",
+    flex: 0.8,
+    width: "100%",
+    padding: 30,
+    borderRadius: 30,
+  },
+  Image: {
+    alignSelf: "center",
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    position: "absolute",
+    top: -100,
+  },
+  Name: {
+    marginTop: 90,
+    fontFamily: "Roboto-Regular",
+    fontSize: 22,
+    textAlign: "center",
+    alignSelf: "center",
+    justifyContent: "flex-end",
+  },
+  section: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 15,
+    opacity: 0.5,
+    marginBottom: 14,
+    marginTop: 22,
+  },
+  contenu: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 17,
+  },
+});
 const StyleLowerMenu = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,7 +116,19 @@ const StyleLowerMenu = StyleSheet.create({
     backgroundColor: "#F6F6F9",
   },
   containerHeader: {},
-  containerbottom: {},
+  containerbottom: {
+    justifyContent: "center",
+    alignSelf: "center",
+    flex: 1,
+    marginVertical: "20%",
+    width: "100%",
+  },
   chevron: {},
-  title: {},
+  title: {
+    position: "absolute",
+    alignSelf: "center",
+    top: 2,
+    fontFamily: "Roboto-Thin",
+    fontSize: 18,
+  },
 });

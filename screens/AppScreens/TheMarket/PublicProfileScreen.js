@@ -36,7 +36,9 @@ export default function PublicProfileScreen({ navigation, route }) {
           <Text style={StyleProfile.contenu}>{user["description"]}</Text>
           <TouchableOpacity
             style={styleForms.button}
-            onPress={() => alert("Todo")}
+            onPress={() =>
+              navigation.push("NavAccount", { screen: "MyProfileScreen" })
+            }
           >
             <Text style={styleForms.buttontext}>Contacter</Text>
           </TouchableOpacity>

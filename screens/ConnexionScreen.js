@@ -13,7 +13,15 @@ import {
 } from "react-native";
 
 import ReserverModale from "./AppScreens/Modales/ReserverModale";
-export default function ConnexionScreen({ navigation }) {
+
+//On ignore Le warning Non-serializable values
+import { LogBox } from "react-native";
+LogBox.ignoreLogs([
+  "Non-serializable values were found in the navigation state",
+]);
+//
+
+export default function ConnexionScreen(props) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -34,7 +42,9 @@ export default function ConnexionScreen({ navigation }) {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.push("RegisterScreen")}>
+            <TouchableOpacity
+              onPress={() => props.navigation.push("RegisterScreen")}
+            >
               <View style={styles.ButtonSlider}>
                 <Text style={styles.buttontext}>S'inscrire</Text>
               </View>
@@ -51,9 +61,7 @@ export default function ConnexionScreen({ navigation }) {
             Mot de passe oublié ?
           </Text>
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("NavMenu", { screen: "NavMarket" })
-            }
+            onPress={() => props.route.params.SetIsLoggedIn(true)}
             style={styleForms.button}
           >
             <Text style={styleForms.buttontext}>Connexion</Text>

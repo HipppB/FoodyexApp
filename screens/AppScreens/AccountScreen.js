@@ -9,18 +9,20 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function AccountScreen({ navigation }) {
+export default function AccountScreen(props) {
   return (
     <View style={styles.container}>
       <View style={styles.containerTopSection}>
         <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => navigation.navigate("NavPlates")}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("NavPlates")}
+          >
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Mes Plats</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.push("NavMarket")}>
+          <TouchableOpacity onPress={() => props.navigation.push("NavMarket")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Le Marché</Text>
             </View>
@@ -36,7 +38,7 @@ export default function AccountScreen({ navigation }) {
       <ScrollView style={styles.containerBottomSection}>
         <Text style={styleMenuButton.solde}>Solde : 13 ‡</Text>
         <TouchableOpacity
-          onPress={() => navigation.push("MyProfileScreen")}
+          onPress={() => props.navigation.push("MyProfileScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mon profil</Text>
@@ -46,7 +48,7 @@ export default function AccountScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("ListMessageScreen")}
+          onPress={() => props.navigation.push("ListMessageScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Messages</Text>
@@ -56,7 +58,7 @@ export default function AccountScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("HistoryScreen")}
+          onPress={() => props.navigation.push("HistoryScreen")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Historique</Text>
@@ -66,7 +68,7 @@ export default function AccountScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("NavLogin")}
+          onPress={() => props.route.params.SetIsLoggedIn(false)}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Déconnexion</Text>

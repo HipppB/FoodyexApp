@@ -25,7 +25,7 @@ export default function HistoryScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Coming Soon !
+            Coming Soon ! :)
           </Text>
         </TouchableOpacity>
       </SafeAreaView>

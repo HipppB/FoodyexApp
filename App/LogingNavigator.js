@@ -6,7 +6,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 const LoginStack = createStackNavigator();
 
-export default function NavLogin() {
+export default function NavLogin(props) {
   return (
     <LoginStack.Navigator screenOptions={{ headerShown: false }}>
       <LoginStack.Screen
@@ -15,6 +15,7 @@ export default function NavLogin() {
         options={{
           animationEnabled: false,
         }}
+        initialParams={{ SetIsLoggedIn: props.route.params.SetIsLoggedIn }}
       />
       <LoginStack.Screen
         name="RegisterScreen"

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, StyleSheet, ActivityIndicator } from "react-native";
 import * as Font from "expo-font";
-let isSignedIn = false;
-export default function Loadingscreen({ navigation }) {
+export default function Loadingscreen(props) {
   useEffect(() => {
     async function loadFonts() {
       await Font.loadAsync({
@@ -17,14 +16,9 @@ export default function Loadingscreen({ navigation }) {
       })
         .then((res) => {
           console.log("FONTS LOADED!");
-          console.log(isSignedIn);
           setTimeout(() => {
-            if (isSignedIn) {
-              navigation.navigate("NavMenu");
-            } else {
-              navigation.navigate("NavLogin");
-            }
-          }, 1000);
+            props.route.params.LoadFinished(false);
+          }, 500);
         })
         .catch((Err) => {
           console.log(Err);

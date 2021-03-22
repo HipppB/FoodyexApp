@@ -7,7 +7,7 @@ import NavPlates from "./MyplatesNavigator";
 
 const MenuStack = createStackNavigator();
 
-export default function NavMenu() {
+export default function NavMenu(props) {
   return (
     <MenuStack.Navigator
       initialRouteName="NavMarket"
@@ -33,6 +33,7 @@ export default function NavMenu() {
         options={{
           animationEnabled: false,
         }}
+        initialParams={{ SetIsLoggedIn: props.route.params.SetIsLoggedIn }}
       />
     </MenuStack.Navigator>
   );

@@ -7,7 +7,7 @@ import HistoryScreen from "../screens/AppScreens/MyAccount/HistoryScreen";
 import ListMessageScreen from "../screens/AppScreens/MyAccount/ListMessageScreen";
 
 const AccountStack = createStackNavigator();
-export default function NavAccount() {
+export default function NavAccount(props) {
   return (
     <AccountStack.Navigator screenOptions={{ headerShown: false }}>
       <AccountStack.Screen
@@ -16,6 +16,7 @@ export default function NavAccount() {
         options={{
           animationEnabled: false,
         }}
+        initialParams={{ SetIsLoggedIn: props.route.params.SetIsLoggedIn }}
       />
       <AccountStack.Screen
         name="MyProfileScreen"
