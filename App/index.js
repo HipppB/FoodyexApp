@@ -14,12 +14,14 @@ import NewPlatesScreen from "../screens/AppScreens/Myplates/NewPlatesScreen";
 import MyProfileScreen from "../screens/AppScreens/MyAccount/MyProfileScreen";
 import HistoryScreen from "../screens/AppScreens/MyAccount/HistoryScreen";
 import ListMessageScreen from "../screens/AppScreens/MyAccount/ListMessageScreen";
-
+import PlateDetailsScreen from "../screens/AppScreens/TheMarket/PlateDetailsScreen";
+import PublicProfileScreen from "../screens/AppScreens/TheMarket/PublicProfileScreen";
 const AppStack = createStackNavigator();
 const LoginStack = createStackNavigator();
 const MenuStack = createStackNavigator();
 const MyPlatestStack = createStackNavigator();
 const AccountStack = createStackNavigator();
+const MarketStack = createStackNavigator();
 
 export default () => (
   <NavigationContainer>
@@ -74,8 +76,8 @@ function NavMenu() {
   return (
     <MenuStack.Navigator screenOptions={{ headerShown: false }}>
       <MenuStack.Screen
-        name="MarketScreen"
-        component={MarketScreen}
+        name="NavMarket"
+        component={NavMarket}
         options={{
           animationEnabled: false,
         }}
@@ -97,7 +99,33 @@ function NavMenu() {
     </MenuStack.Navigator>
   );
 }
-
+function NavMarket() {
+  return (
+    <MarketStack.Navigator screenOptions={{ headerShown: false }}>
+      <MarketStack.Screen
+        name="MarketScreen"
+        component={MarketScreen}
+        options={{
+          animationEnabled: false,
+        }}
+      />
+      <MarketStack.Screen
+        name="PlateDetailsScreen"
+        component={PlateDetailsScreen}
+        options={{
+          animationEnabled: true,
+        }}
+      />
+      <MarketStack.Screen
+        name="PublicProfileScreen"
+        component={PublicProfileScreen}
+        options={{
+          animationEnabled: true,
+        }}
+      />
+    </MarketStack.Navigator>
+  );
+}
 function NavPlates() {
   return (
     <MyPlatestStack.Navigator screenOptions={{ headerShown: false }}>

@@ -11,6 +11,7 @@ export default function Loadingscreen({ navigation }) {
         "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
         "Roboto-Thin": require("../assets/fonts/Roboto/Roboto-Thin.ttf"),
         "Roboto-Medium": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
+        "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
       })
         .then((res) => {
           console.log("FONTS LOADED!");

@@ -20,7 +20,7 @@ export default function AccountScreen({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.push("MarketScreen")}>
+          <TouchableOpacity onPress={() => navigation.push("NavMarket")}>
             <View style={styles.ButtonSlider}>
               <Text style={styles.buttontext}>Le Marché</Text>
             </View>

@@ -8,8 +8,23 @@ import {
   Image,
 } from "react-native";
 import plats from "../../data/Plats.json";
+//import { getImage } from "../../assets/Images/Plats/app";
+const IMAGES = {
+  lasagnes: require("../../assets/Images/Plats/lasagnes.jpg"),
+  carbonara: require("../../assets/Images/Plats/Carbonara.jpg"),
+  couscous: require("../../assets/Images/Plats/Couscous.jpg"),
+  lasagnesSaumon: require("../../assets/Images/Plats/lasagnesS.jpg"),
+  OssoBucco: require("../../assets/Images/Plats/OssoBucco.jpg"),
+  ratatouille: require("../../assets/Images/Plats/ratatouille.jpg"),
+  rizaulait: require("../../assets/Images/Plats/rizaulait.jpg"),
+  tartetatin: require("../../assets/Images/Plats/tartetatin.jpg"),
+  tartiflette: require("../../assets/Images/Plats/Tartiflette.jpg"),
+};
+
 let NbPlat = 0;
 let NbPlatMarket = 0;
+let path = "../../assets/Images/Plats/";
+let imagepath = "";
 export default function MarketScreen({ navigation }) {
   if (NbPlat === 0) {
     NbPlatMarket = NombredePlat(plats);
@@ -51,7 +66,7 @@ export default function MarketScreen({ navigation }) {
           >
             Il y a actuellement {NbPlatMarket} plats sur le Marché
           </Text>
-          {plats.map((plat) => PlatMarche(plat), (NbPlat = 0))}
+          {plats.map((plat) => PlatMarche(navigation, plat), (NbPlat = 0))}
         </ScrollView>
       </View>
     </View>
@@ -67,28 +82,29 @@ function NombredePlat(plats) {
   });
   return NombredePlatSurLeMarche;
 }
-function PlatMarche(plat) {
+
+function PlatMarche(navigation, plat) {
   if (plat["OnMarket"] === false) {
     return null;
   } else {
+    let imagepath = path + "lasagnes.jpg";
+    let ObtainedImage = IMAGES["lasagnes"];
+
     NbPlat += 1;
     if (NbPlat % 2 === 1) {
       return (
         <TouchableOpacity
           style={styles.touchableimpaire}
-          onPress={() => alert("To do")}
+          onPress={() =>
+            navigation.push("PlateDetailsScreen", {
+              selected: plat,
+              selectedimage: IMAGES[plat["LinkImage"]],
+            })
+          }
           key={plat["ID"]}
         >
           <View style={styles.imagecontainer}>
-            <Image
-              style={styles.image}
-              source={{
-                width: 130,
-                height: 130,
-                // @ts-ignore
-                uri: plat["LinkImage"],
-              }}
-            />
+            <Image style={styles.image} source={IMAGES[plat["LinkImage"]]} />
           </View>
           <View style={{ width: "90%", height: 110 }}>
             <Text
@@ -128,19 +144,16 @@ function PlatMarche(plat) {
       return (
         <TouchableOpacity
           style={styles.touchable}
-          onPress={() => alert("To do")}
+          onPress={() =>
+            navigation.push("PlateDetailsScreen", {
+              selected: plat,
+              selectedimage: IMAGES[plat["LinkImage"]],
+            })
+          }
           key={plat["ID"]}
         >
           <View style={styles.imagecontainer}>
-            <Image
-              style={styles.image}
-              source={{
-                width: 130,
-                height: 130,
-                // @ts-ignore
-                uri: plat["LinkImage"],
-              }}
-            />
+            <Image style={styles.image} source={IMAGES[plat["LinkImage"]]} />
           </View>
           <View style={{ width: "90%", height: 110 }}>
             <Text
@@ -249,6 +262,8 @@ const styles = StyleSheet.create({
   image: {
     marginTop: 0,
     borderRadius: 100,
+    width: 130,
+    height: 130,
   },
 
   //Header
