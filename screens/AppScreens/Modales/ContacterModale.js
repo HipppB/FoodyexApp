@@ -14,22 +14,20 @@ import {
 } from "react-native";
 
 function ContacterModale(props) {
+  let seller = props.SellerFirstName;
   useEffect(() => {
     Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
     Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
   });
   const _keyboardDidShow = () => {
     keybOpen = true;
-    console.log(keybOpen);
   };
 
   const _keyboardDidHide = () => {
     keybOpen = false;
-    console.log(keybOpen);
   };
   let keybOpen = Boolean;
   function ToucherCote() {
-    console.log("TOUCHER");
     if (keybOpen) {
       Keyboard.dismiss();
     } else {
@@ -50,22 +48,24 @@ function ContacterModale(props) {
           <View style={[styles.modalView]}>
             <View style={styles.headermodal}>
               <Text style={styles.Headertext} numberOfLines={1}>
-                Contacter Nom-Prénom
+                Contacter {props.SellerFirstName} {props.SellerName}
               </Text>
             </View>
             <View style={styles.bodyModal}>
               <View>
-                <Text style={styles.soustitre}>DEPUIS</Text>
-                <Text style={styles.textInfo}>Marché - CousCous</Text>
+                <Text style={styles.soustitre}>Depuis</Text>
+                <Text style={styles.textInfo}>Marché - {props.Plat}</Text>
               </View>
               <View style={styles.lineStyle} />
               <View>
-                <Text style={styles.soustitre}>SERA PARTAGÉ AVEC Prénom</Text>
+                <Text style={styles.soustitre}>
+                  Sera partagé avec {props.SellerFirstName}
+                </Text>
                 <Text style={styles.textInfo}>Email et Téléphone</Text>
               </View>
               <View style={styles.lineStyle} />
               <View>
-                <Text style={styles.soustitre}>MESSAGE :</Text>
+                <Text style={styles.soustitre}>Message :</Text>
                 <TextInput
                   multiline
                   numberOfLines={3}
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   soustitre: {
+    textTransform: "uppercase",
     fontFamily: "Poppins-Regular",
     fontSize: 16,
     opacity: 0.5,
