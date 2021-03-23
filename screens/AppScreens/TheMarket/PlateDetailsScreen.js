@@ -11,10 +11,12 @@ import {
 } from "react-native";
 import * as users from "../../../data/utilisateurs.json";
 import ReserverModale from "../Modales/ReserverModale";
+import ContacterModale from "../Modales/ContacterModale";
 let PartIndividuelle = Boolean;
 let iduser;
 export default function PlateDetailsScreen({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalContactVisible, setContactModalVisible] = useState(false);
   if (route.params.selected["PartIndividuelle"]) {
     PartIndividuelle = "Oui";
   } else {
@@ -32,6 +34,13 @@ export default function PlateDetailsScreen({ navigation, route }) {
         NumberOfSlice={route.params.selected["NombrePart"]}
         PartIndividuelle={route.params.selected["PartIndividuelle"]}
         prixUnePart={route.params.selected["prixUnePart"]}
+      />
+      <ContacterModale
+        Visible={modalContactVisible}
+        ChangeVisibility={setContactModalVisible}
+        SellerFirstName={users[iduser]["prenom"]}
+        SellerName={users[iduser]["nom"]}
+        Plat={route.params.selected["Nom"]}
       />
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -70,7 +79,10 @@ export default function PlateDetailsScreen({ navigation, route }) {
           </View>
           <TouchableOpacity
             onPress={() =>
-              navigation.push("PublicProfileScreen", { user: users[iduser] })
+              navigation.push("PublicProfileScreen", {
+                user: users[iduser],
+                Plat: route.params.selected["Nom"],
+              })
             }
           >
             <View style={StyleDetailsPlat.Vendeur}>
@@ -96,7 +108,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
         <View style={styleForms.Buttoncontainer}>
           <TouchableOpacity
             style={styleForms.button}
-            onPress={() => alert("Todo")}
+            onPress={() => setContactModalVisible(true)}
           >
             <Text style={styleForms.buttontext}>Contacter</Text>
           </TouchableOpacity>

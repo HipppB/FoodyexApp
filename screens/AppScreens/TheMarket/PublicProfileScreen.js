@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
+import ContacterModale from "../Modales/ContacterModale";
 
 let user;
 export default function PublicProfileScreen({ navigation, route }) {
   user = route.params.user;
+  const [modalContactVisible, setContactModalVisible] = useState(false);
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -25,6 +27,13 @@ export default function PublicProfileScreen({ navigation, route }) {
         </TouchableOpacity>
       </SafeAreaView>
       <View style={StyleLowerMenu.containerbottom}>
+        <ContacterModale
+          Visible={modalContactVisible}
+          ChangeVisibility={setContactModalVisible}
+          SellerFirstName={user["prenom"]}
+          SellerName={user["nom"]}
+          Plat={route.params.Plat}
+        />
         <View style={StyleProfile.container}>
           <Image style={StyleProfile.Image} source={{ uri: user["photo"] }} />
           <Text style={StyleProfile.Name}>
@@ -36,9 +45,7 @@ export default function PublicProfileScreen({ navigation, route }) {
           <Text style={StyleProfile.contenu}>{user["description"]}</Text>
           <TouchableOpacity
             style={styleForms.button}
-            onPress={() =>
-              navigation.push("NavAccount", { screen: "MyProfileScreen" })
-            }
+            onPress={() => setContactModalVisible(true)}
           >
             <Text style={styleForms.buttontext}>Contacter</Text>
           </TouchableOpacity>

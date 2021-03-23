@@ -12,7 +12,7 @@ import {
   Button,
 } from "react-native";
 
-import ReserverModale from "./AppScreens/Modales/ReserverModale";
+import ContacterModale from "./AppScreens/Modales/ContacterModale";
 
 //On ignore Le warning Non-serializable values
 import { LogBox } from "react-native";
@@ -26,7 +26,7 @@ export default function ConnexionScreen(props) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <ReserverModale
+        <ContacterModale
           Visible={modalVisible}
           ChangeVisibility={setModalVisible}
         />

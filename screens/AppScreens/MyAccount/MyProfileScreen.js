@@ -39,7 +39,7 @@ export default function PublicProfileScreen({ navigation }) {
           <TouchableOpacity
             style={styleForms.button}
             onPress={() =>
-              navigation.push("NavMarket", { screen: "MarketScreen" })
+              alert("Vous ne pouvez pas encore modifier votre profil !")
             }
           >
             <Text style={styleForms.buttontext}>Modifier</Text>
