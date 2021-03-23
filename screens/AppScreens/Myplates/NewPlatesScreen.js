@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
+
 export default function NewPlatesScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>
@@ -25,7 +26,7 @@ export default function NewPlatesScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Coming Soon !
+            Page Under Construction
           </Text>
         </TouchableOpacity>
       </SafeAreaView>

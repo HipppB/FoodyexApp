@@ -39,7 +39,11 @@ export default function MarketScreen({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.push("NavPlates", { screen: "NewPlatesScreen" })
+            }
+          >
             <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
               <Text style={styles.buttontext}>Le Marché</Text>
             </View>

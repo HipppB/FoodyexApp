@@ -12,31 +12,129 @@ import {
   Button,
 } from "react-native";
 
-import ContacterModale from "./AppScreens/Modales/ContacterModale";
+import NewPlatesScreen from "./AppScreens/Myplates/NewPlatesScreen";
 
 //On ignore Le warning Non-serializable values
 import { LogBox } from "react-native";
 LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
-//
 
 export default function ConnexionScreen(props) {
-  const [modalVisible, setModalVisible] = useState(false);
+  //Gestion du formulaire
+  //Gestion des Erreurs
+  //variables
+  let textmail, textpassword;
+  let TestPassword,
+    TestEmail = false;
+  let error = { email: "", password: "" };
+  const [errorDiplay, ChangeDisplayedError] = useState(error);
+  //Récupération des inputs
+  const [emailtext, onChangeTextemail] = useState("hippolyte.bach@isep.fr");
+  const [passwordtext, onChangeTextpassword] = useState("");
+  //Fonction appelé lors de changement Email
+  function InputMailChanged(text) {
+    onChangeTextemail(text);
+    verification("mail", text);
+  }
+  //Fonction appelé lors de changement Password
+  function InputPassWordChanged(text) {
+    onChangeTextpassword(text);
+    verification("password", text);
+  }
+  //Etat du bouton :
+  const [ButtonDisable, DisableTheButton] = useState(true);
+  const [disabledButton, ChangeStyle] = useState({ opacity: 0.5 });
+  //Verification des champs et reglage du bouton
+  function verification(input, newValue) {
+    //On Mets les données les plus récentes dans des variables pour que ça s'actualise de suite
+    if (input === "mail") {
+      textmail = newValue;
+    } else {
+      textmail = emailtext;
+    }
+    if (input === "password") {
+      textpassword = newValue;
+    } else {
+      textpassword = passwordtext;
+    }
+
+    if (textmail.includes("@eleve.isep.fr") || textmail.includes("@isep.fr")) {
+      ChangeError("email", "");
+      TestEmail = true;
+    } else {
+      ChangeError("email", "E-MAIL INVALIDE");
+      TestEmail = false;
+    }
+
+    if (textpassword == "") {
+      ChangeError("password", "Invalid");
+      TestPassword = false;
+    } else {
+      TestPassword = true;
+    }
+    // On gère l'état du bouton
+    if (TestPassword && TestEmail) {
+      DisableTheButton(false);
+      ChangeStyle({ opacity: 1 });
+    } else {
+      DisableTheButton(true);
+      ChangeStyle({ opacity: 0.5 });
+    }
+  }
+  //Fonction appellée au clique du bouton, on y reverifie toutes les données
+  function Connexion(Data, force = false) {
+    if (force) {
+      props.route.params.SetIsLoggedIn(true);
+    }
+    console.log(Data);
+    if ([Data.Email] != "") {
+      if (
+        !(
+          emailtext.includes("@eleve.isep.fr") || emailtext.includes("@isep.fr")
+        )
+      ) {
+        console.log("L'email est invalide, connexion refusée");
+        ChangeError("email", "E-MAIL INVALIDE");
+      } else {
+        ChangeError("email", "");
+        if (passwordtext) {
+          props.route.params.SetIsLoggedIn(true);
+        }
+      }
+    }
+
+    if (!passwordtext) {
+      ChangeError("password", "MOT DE PASSE INVALIDE");
+    } else {
+      ChangeError("password", "");
+    }
+  }
+  function ChangeError(name, value) {
+    error[name] = value;
+    ChangeDisplayedError(error);
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <ContacterModale
-          Visible={modalVisible}
-          ChangeVisibility={setModalVisible}
-        />
         <View style={styles.containerTopSection}>
           <Image
             style={styles.stretch}
             source={require("../assets/Images/logo.png")}
           />
           <View style={styles.menuConnexion}>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <TouchableOpacity
+              onPress={() =>
+                Connexion(
+                  {
+                    Email: emailtext,
+                    Password: passwordtext,
+                  },
+                  true
+                )
+              }
+            >
               <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
                 <Text style={styles.buttontext}>Se connecter</Text>
               </View>
@@ -52,17 +150,46 @@ export default function ConnexionScreen(props) {
           </View>
         </View>
         <KeyboardAvoidingView style={styles.containerBottomSection}>
-          <Text style={styleForms.placeholders}>ADRESSE E-MAIL</Text>
-          <TextInput style={styleForms.longinput} />
-          <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
+          <View style={styleForms.placeholders}>
+            <Text style={styleForms.placeholdersText}>ADRESSE E-MAIL</Text>
+            <Text style={styleFormsError.placeholders}>
+              {errorDiplay.email}
+            </Text>
+          </View>
 
-          <TextInput style={styleForms.longinput} />
+          <TextInput
+            style={styleForms.longinput}
+            onChangeText={InputMailChanged}
+            value={emailtext}
+            textContentType="emailAddress"
+            keyboardType="email-address"
+          />
+          <View style={styleForms.placeholders}>
+            <Text style={styleForms.placeholdersText}>MOT DE PASSE</Text>
+            <Text style={styleFormsError.placeholders}>
+              {errorDiplay.password}
+            </Text>
+          </View>
+
+          <TextInput
+            style={styleForms.longinput}
+            onChangeText={InputPassWordChanged}
+            value={passwordtext}
+            secureTextEntry={true}
+            textContentType="password"
+          />
           <Text onPress={() => alert("Todo")} style={styleForms.buttonquestion}>
             Mot de passe oublié ?
           </Text>
           <TouchableOpacity
-            onPress={() => props.route.params.SetIsLoggedIn(true)}
-            style={styleForms.button}
+            disabled={ButtonDisable}
+            onPress={() =>
+              Connexion({
+                Email: emailtext,
+                Password: passwordtext,
+              })
+            }
+            style={[styleForms.button, disabledButton]}
           >
             <Text style={styleForms.buttontext}>Connexion</Text>
           </TouchableOpacity>
@@ -71,6 +198,14 @@ export default function ConnexionScreen(props) {
     </TouchableWithoutFeedback>
   );
 }
+
+const styleFormsError = StyleSheet.create({
+  placeholders: {
+    color: "red",
+    opacity: 1.5,
+    paddingLeft: 10,
+  },
+});
 const styleForms = StyleSheet.create({
   containersmall: {
     width: "100%",
@@ -104,6 +239,9 @@ const styleForms = StyleSheet.create({
     borderBottomColor: "#000000",
   },
   placeholders: {
+    flexDirection: "row",
+  },
+  placeholdersText: {
     opacity: 0.4,
     fontFamily: "Roboto",
     fontSize: 15,

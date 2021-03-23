@@ -1,4 +1,4 @@
-import React, { cloneElement } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -17,6 +17,51 @@ import {
 import { useFonts } from "expo-font";
 
 export default function RegisterScreen({ navigation }) {
+  //Gestion du formulaire
+  //Gestion des Erreurs
+  //variables
+  let textnom, textprenom, textmail, texttelephone, textpassword;
+  let testnom,
+    testprenom,
+    testmail,
+    testtelephone,
+    testpassword = false;
+  let error = { nom: "", prenom: "", telephone: "", email: "", password: "" };
+  const [errorDiplay, ChangeDisplayedError] = useState(error);
+  //Récupération des inputs
+  const [emailtext, onChangeTextemail] = useState("");
+  const [passwordtext, onChangeTextpassword] = useState("");
+  const [nomtext, onChangeTextnom] = useState("");
+  const [prenomtext, onChangeTextprenom] = useState("");
+  const [phonetext, onChangeTextphone] = useState("");
+  //Fonction appelé lors de changement Email
+  function InputMailChanged(text) {
+    onChangeTextemail(text);
+    verification("mail", text);
+  }
+  //Fonction appelé lors de changement Password
+  function InputPassWordChanged(text) {
+    onChangeTextpassword(text);
+    verification("password", text);
+  }
+  //Fonction appelé lors de changement Nom
+  function InputNomChanged(text) {
+    onChangeTextnom(text);
+    verification("nom", text);
+  }
+  //Fonction appelé lors de changement Prénom
+  function InputPrenomChanged(text) {
+    onChangeTextprenom(text);
+    verification("prenom", text);
+  }
+  //Fonction appelé lors de changement Telephone
+  function InputPhoneChanged(text) {
+    onChangeTextphone(text);
+    verification("telephone", text);
+  }
+  function verification(input, newValue) {
+    console.log(newValue);
+  }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -54,20 +99,56 @@ export default function RegisterScreen({ navigation }) {
             <ScrollView style={styleForms.ScrollView}>
               <View style={styleForms.containersmall}>
                 <View style={styleForms.containersmallinput}>
-                  <Text style={styleForms.smallplaceholders}>NOM</Text>
-                  <TextInput style={styleForms.smallinput} />
+                  <View style={{ flexDirection: "row" }}>
+                    <Text style={styleForms.smallplaceholders}>NOM</Text>
+                    <Text style={styleFormsError.placeholders}>
+                      {errorDiplay.nom}
+                    </Text>
+                  </View>
+                  <TextInput
+                    onChangeText={InputNomChanged}
+                    style={styleForms.smallinput}
+                  />
                 </View>
                 <View style={styleForms.containersmallinput}>
-                  <Text style={styleForms.smallplaceholders}>PRÉNOM</Text>
-                  <TextInput style={styleForms.smallinput} />
+                  <View style={{ flexDirection: "row" }}>
+                    <Text style={styleForms.smallplaceholders}>PRÉNOM</Text>
+                    <Text style={styleFormsError.placeholders}>
+                      {errorDiplay.prenom}
+                    </Text>
+                  </View>
+                  <TextInput
+                    onChangeText={InputPrenomChanged}
+                    style={styleForms.smallinput}
+                  />
                 </View>
               </View>
-              <Text style={styleForms.placeholders}>ADRESSE E-MAIL ISEP</Text>
-              <TextInput style={styleForms.longinput} />
-              <Text style={styleForms.placeholders}>TÉLÉPHONE</Text>
-              <TextInput style={styleForms.longinput} />
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styleForms.placeholders}>ADRESSE E-MAIL ISEP</Text>
+                <Text style={styleFormsError.placeholders}>
+                  {errorDiplay.email}
+                </Text>
+              </View>
+              <TextInput
+                onChangeText={InputMailChanged}
+                style={styleForms.longinput}
+              />
+
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styleForms.placeholders}>TÉLÉPHONE</Text>
+                <Text style={styleFormsError.placeholders}>
+                  {errorDiplay.telephone}
+                </Text>
+              </View>
+              <TextInput
+                onChangeText={InputPhoneChanged}
+                style={styleForms.longinput}
+              />
               <Text style={styleForms.placeholders}>MOT DE PASSE</Text>
-              <TextInput style={styleForms.longinput} />
+              <TextInput
+                onChangeText={InputPassWordChanged}
+                style={styleForms.longinput}
+              />
 
               <Text
                 onPress={() => alert("Todo")}
@@ -86,6 +167,13 @@ export default function RegisterScreen({ navigation }) {
   );
 }
 
+const styleFormsError = StyleSheet.create({
+  placeholders: {
+    color: "red",
+    opacity: 1.5,
+    paddingLeft: 10,
+  },
+});
 const styleForms = StyleSheet.create({
   ScrollView: {
     padding: 40,
