@@ -6,8 +6,43 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Button,
+  Pressable,
+  prompt,
 } from "react-native";
+import { lauchCamera, launchImageLibrary } from "react-native-image-picker";
+import * as ImagePicker from "expo-image-picker";
+import Constants from "expo-constants";
+
 export default function NewPlatesScreen({ navigation }) {
+  const [image, setImage] = useState(null);
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const {
+          status,
+        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -25,11 +60,21 @@ export default function NewPlatesScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Coming Soon !
+            Page Under Construction
           </Text>
         </TouchableOpacity>
       </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}></View>
+      <View style={StyleLowerMenu.containerbottom}>
+        {!image && <Button title="Bouton" onPress={pickImage} />}
+        {image && (
+          <Pressable>
+            <Image
+              source={{ uri: image }}
+              style={{ width: 200, height: 200 }}
+            />
+          </Pressable>
+        )}
+      </View>
     </View>
   );
 }
@@ -41,7 +86,12 @@ const StyleLowerMenu = StyleSheet.create({
     backgroundColor: "#F6F6F9",
   },
   containerHeader: {},
-  containerbottom: {},
+  containerbottom: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+    alignSelf: "center",
+  },
   chevron: {},
   title: {},
 });
