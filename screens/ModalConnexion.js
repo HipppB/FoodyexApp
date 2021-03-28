@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
-const ModalConnexion = () => {
+function ModalConnexion() {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
@@ -45,7 +45,7 @@ const ModalConnexion = () => {
       </Pressable>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   centeredView: {

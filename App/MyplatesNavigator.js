@@ -8,7 +8,7 @@ import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
 
 const MyPlatestStack = createStackNavigator();
 
-export default function NavPlates() {
+function NavPlates() {
   return (
     <MyPlatestStack.Navigator screenOptions={{ headerShown: false }}>
       <MyPlatestStack.Screen
@@ -42,3 +42,4 @@ export default function NavPlates() {
     </MyPlatestStack.Navigator>
   );
 }
+export default NavPlates;

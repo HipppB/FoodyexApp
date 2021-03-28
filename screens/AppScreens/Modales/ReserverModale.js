@@ -8,7 +8,7 @@ import {
   View,
   Button,
 } from "react-native";
-
+import ModaleMainComponent from "../../../components/ModaleMainComponent";
 function ReserverModale(props) {
   let nombreDepartMax = props.NumberOfSlice;
   let defaultstep = 1;
@@ -31,69 +31,48 @@ function ReserverModale(props) {
       visible={props.Visible}
       onRequestClose={() => {}}
     >
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          <View style={styles.headermodal}>
-            <Text style={styles.Headertext} numberOfLines={1}>
-              Réservation
-            </Text>
-          </View>
-          <View style={styles.bodyModal}>
-            <View>
-              <Text style={styles.soustitre}>PLAT</Text>
-              <Text style={styles.textInfo}>{props.Plat}</Text>
-            </View>
-            <View style={styles.lineStyle} />
-            <View>
-              <Text style={styles.soustitre}>VENDEUR</Text>
-              <Text style={styles.textInfo}>
-                {props.SellerFirstName} {props.SellerName}
-              </Text>
-            </View>
-            <View style={styles.lineStyle} />
-            <View>
-              <Text style={styles.soustitre}>
-                NOMBRE DE PART ({props.prixUnePart} ‡/PART)
-              </Text>
-              <View style={Stylestepper.container}>
-                <Pressable
-                  style={Stylestepper.button}
-                  onPress={() => changevalue(-defaultstep)}
-                >
-                  <Text style={Stylestepper.text}>-</Text>
-                </Pressable>
-                <Text style={Stylestepper.text}>{stepper}</Text>
-                <Pressable
-                  style={Stylestepper.button}
-                  onPress={() => changevalue(defaultstep)}
-                >
-                  <Text style={Stylestepper.text}>+</Text>
-                </Pressable>
-              </View>
-            </View>
-            <View style={styles.lineStyle} />
-          </View>
-
-          <View style={styles.footerModal}>
-            <View>
-              <Pressable
-                style={[styles.button, styles.buttonCancel]}
-                onPress={() => props.ChangeVisibility(false)}
-              >
-                <Text style={styles.textStyleCancel}>Annuler</Text>
-              </Pressable>
-            </View>
-            <View>
-              <Pressable
-                style={[styles.button, styles.buttonConfirm]}
-                onPress={() => props.ChangeVisibility(false)}
-              >
-                <Text style={styles.textStyle}>Réserver ({totalPrice}‡)</Text>
-              </Pressable>
-            </View>
+      <ModaleMainComponent
+        Header={"Réservation"}
+        ChangeVisibility={props.ChangeVisibility}
+        Buttons={{
+          cancel: "Annuler",
+          submit: "Réserver (" + totalPrice + "‡)",
+        }}
+      >
+        <View>
+          <Text style={styles.soustitre}>PLAT</Text>
+          <Text style={styles.textInfo}>{props.Plat}</Text>
+        </View>
+        <View style={styles.lineStyle} />
+        <View>
+          <Text style={styles.soustitre}>VENDEUR</Text>
+          <Text style={styles.textInfo}>
+            {props.SellerFirstName} {props.SellerName}
+          </Text>
+        </View>
+        <View style={styles.lineStyle} />
+        <View>
+          <Text style={styles.soustitre}>
+            NOMBRE DE PART ({props.prixUnePart} ‡/PART)
+          </Text>
+          <View style={Stylestepper.container}>
+            <Pressable
+              style={Stylestepper.button}
+              onPress={() => changevalue(-defaultstep)}
+            >
+              <Text style={Stylestepper.text}>-</Text>
+            </Pressable>
+            <Text style={Stylestepper.text}>{stepper}</Text>
+            <Pressable
+              style={Stylestepper.button}
+              onPress={() => changevalue(defaultstep)}
+            >
+              <Text style={Stylestepper.text}>+</Text>
+            </Pressable>
           </View>
         </View>
-      </View>
+        <View style={styles.lineStyle} />
+      </ModaleMainComponent>
     </Modal>
   );
 }
@@ -139,84 +118,6 @@ const styles = StyleSheet.create({
   textInfo: {
     fontFamily: "Poppins-Regular",
     fontSize: 17,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  headermodal: {
-    width: "100%",
-    paddingHorizontal: 25,
-    backgroundColor: "#EDEDED",
-    height: 50,
-    alignContent: "center",
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopEndRadius: 30,
-    borderTopLeftRadius: 30,
-  },
-  bodyModal: {
-    flex: 1,
-    padding: 20,
-  },
-  footerModal: {
-    height: 100,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    justifyContent: "space-evenly",
-  },
-  Headertext: {
-    borderRadius: 50,
-    width: "100%",
-    backgroundColor: "#EDEDED",
-    fontFamily: "Poppins-Medium",
-    fontSize: 20,
-  },
-  modalView: {
-    backgroundColor: "white",
-    borderRadius: 30,
-    width: "65%",
-    height: 300,
-    flex: 0.5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonCancel: {
-    backgroundColor: "#FFFFFF",
-  },
-  buttonConfirm: {
-    backgroundColor: "#F29B13",
-  },
-  textStyleCancel: {
-    fontFamily: "Poppins-SemiBold",
-    opacity: 0.5,
-    fontSize: 17,
-    textAlign: "center",
-  },
-  textStyle: {
-    fontFamily: "Poppins-SemiBold",
-    fontSize: 17,
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
   },
 });
 export default ReserverModale;

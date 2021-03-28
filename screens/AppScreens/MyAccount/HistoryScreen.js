@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-export default function HistoryScreen({ navigation }) {
+function HistoryScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -45,3 +45,5 @@ const StyleLowerMenu = StyleSheet.create({
   chevron: {},
   title: {},
 });
+
+export default HistoryScreen;

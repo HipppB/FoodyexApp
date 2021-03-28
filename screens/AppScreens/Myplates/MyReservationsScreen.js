@@ -7,42 +7,15 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
+import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 
-export default function MyReservationsScreen({ navigation }) {
+function MyReservationsScreen({ navigation }) {
   return (
-    <View style={StyleLowerMenu.container}>
-      <SafeAreaView style={StyleLowerMenu.containerHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            style={{ marginLeft: 15 }}
-            source={require("../../../assets/Images/chevron-left.png")}
-          />
-          <Text
-            style={{
-              position: "absolute",
-              alignSelf: "center",
-              top: 2,
-              fontFamily: "Roboto-Thin",
-              fontSize: 18,
-            }}
-          >
-            Coming Soon !
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}></View>
-    </View>
+    <SousPageFormatComponent
+      params={{ title: "Coming Soon !" }}
+      navigation={navigation}
+    ></SousPageFormatComponent>
   );
 }
 
-const StyleLowerMenu = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: "#F6F6F9",
-  },
-  containerHeader: {},
-  containerbottom: {},
-  chevron: {},
-  title: {},
-});
+export default MyReservationsScreen;

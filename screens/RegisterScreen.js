@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 
-export default function RegisterScreen({ navigation }) {
+function RegisterScreen({ navigation }) {
   //Gestion du formulaire
   //Gestion des Erreurs
   //variables
@@ -302,3 +302,5 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
   },
 });
+
+export default RegisterScreen;

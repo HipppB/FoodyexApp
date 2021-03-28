@@ -5,22 +5,30 @@ import MarketScreen from "../screens/AppScreens/MarketScreen";
 import PlateDetailsScreen from "../screens/AppScreens/TheMarket/PlateDetailsScreen";
 import PublicProfileScreen from "../screens/AppScreens/TheMarket/PublicProfileScreen";
 
+//For context :
+import { useContext } from "react";
+import AppContext from "../components/AppContext";
+
 const MarketStack = createStackNavigator();
-export default function NavMarket() {
+function NavMarket({ route }) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
   return (
     <MarketStack.Navigator screenOptions={{ headerShown: false }}>
       <MarketStack.Screen
         name="MarketScreen"
         component={MarketScreen}
         options={{
-          animationEnabled: false,
+          animationEnabled: true,
         }}
+        screenOptions={{ headerShown: true }}
       />
       <MarketStack.Screen
         name="PlateDetailsScreen"
         component={PlateDetailsScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
       <MarketStack.Screen
@@ -29,7 +37,10 @@ export default function NavMarket() {
         options={{
           animationEnabled: true,
         }}
+        screenOptions={{ headerShown: false }}
       />
     </MarketStack.Navigator>
   );
 }
+
+export default NavMarket;

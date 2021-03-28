@@ -12,7 +12,7 @@ import { Directions } from "react-native-gesture-handler";
 import ListMessage from "../../../data/messages.json";
 import * as users from "../../../data/utilisateurs.json";
 let id = 10;
-export default function ListMessageScreen({ navigation }) {
+function ListMessageScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -147,3 +147,5 @@ const StyleLowerMenu = StyleSheet.create({
     paddingBottom: 150,
   },
 });
+
+export default ListMessageScreen;

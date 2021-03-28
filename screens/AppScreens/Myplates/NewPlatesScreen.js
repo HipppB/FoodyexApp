@@ -14,7 +14,7 @@ import { lauchCamera, launchImageLibrary } from "react-native-image-picker";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 
-export default function NewPlatesScreen({ navigation }) {
+function NewPlatesScreen({ navigation }) {
   const [image, setImage] = useState(null);
   useEffect(() => {
     (async () => {
@@ -67,12 +67,26 @@ export default function NewPlatesScreen({ navigation }) {
       <View style={StyleLowerMenu.containerbottom}>
         {!image && <Button title="Bouton" onPress={pickImage} />}
         {image && (
-          <Pressable>
+          <TouchableOpacity
+            onPress={() =>
+              AlertIOS.alert([
+                {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel",
+                },
+                {
+                  text: "Install",
+                  onPress: () => console.log("Install Pressed"),
+                },
+              ])
+            }
+          >
             <Image
               source={{ uri: image }}
               style={{ width: 200, height: 200 }}
             />
-          </Pressable>
+          </TouchableOpacity>
         )}
       </View>
     </View>
@@ -95,3 +109,4 @@ const StyleLowerMenu = StyleSheet.create({
   chevron: {},
   title: {},
 });
+export default NewPlatesScreen;

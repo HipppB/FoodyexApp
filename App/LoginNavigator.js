@@ -6,24 +6,25 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 const LoginStack = createStackNavigator();
 
-export default function NavLogin(props) {
+function LoginNavigator(props) {
   return (
     <LoginStack.Navigator screenOptions={{ headerShown: false }}>
       <LoginStack.Screen
         name="ConnexionScreen"
         component={ConnexionScreen}
         options={{
-          animationEnabled: false,
+          animationEnabled: true,
         }}
-        initialParams={{ SetIsLoggedIn: props.route.params.SetIsLoggedIn }}
       />
       <LoginStack.Screen
         name="RegisterScreen"
         component={RegisterScreen}
         options={{
-          animationEnabled: false,
+          animationEnabled: true,
         }}
       />
     </LoginStack.Navigator>
   );
 }
+
+export default LoginNavigator;

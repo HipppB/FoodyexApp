@@ -8,50 +8,42 @@ import {
   SafeAreaView,
 } from "react-native";
 import ContacterModale from "../Modales/ContacterModale";
+import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 
 let user;
 export default function PublicProfileScreen({ navigation, route }) {
   user = route.params.user;
   const [modalContactVisible, setContactModalVisible] = useState(false);
   return (
-    <View style={StyleLowerMenu.container}>
-      <SafeAreaView style={StyleLowerMenu.containerHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            style={{ marginLeft: 15 }}
-            source={require("../../../assets/Images/chevron-left.png")}
-          />
-          <Text style={StyleLowerMenu.title}>
-            Profil de {user["prenom"]} {user["nom"]}{" "}
-          </Text>
+    <SousPageFormatComponent
+      params={{ title: "Profil de " + user["prenom"] + " " + user["nom"] }}
+      navigation={navigation}
+      morestyle={StyleLowerMenu.containerbottom}
+    >
+      <ContacterModale
+        Visible={modalContactVisible}
+        ChangeVisibility={setContactModalVisible}
+        SellerFirstName={user["prenom"]}
+        SellerName={user["nom"]}
+        Plat={route.params.Plat}
+      />
+      <View style={StyleProfile.container}>
+        <Image style={StyleProfile.Image} source={{ uri: user["photo"] }} />
+        <Text style={StyleProfile.Name}>
+          {user["prenom"]} {user["nom"]}
+        </Text>
+        <Text style={StyleProfile.section}>Adresse e-mail</Text>
+        <Text style={StyleProfile.contenu}>{user["email"]}</Text>
+        <Text style={StyleProfile.section}>Courte présentation :</Text>
+        <Text style={StyleProfile.contenu}>{user["description"]}</Text>
+        <TouchableOpacity
+          style={styleForms.button}
+          onPress={() => setContactModalVisible(true)}
+        >
+          <Text style={styleForms.buttontext}>Contacter</Text>
         </TouchableOpacity>
-      </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}>
-        <ContacterModale
-          Visible={modalContactVisible}
-          ChangeVisibility={setContactModalVisible}
-          SellerFirstName={user["prenom"]}
-          SellerName={user["nom"]}
-          Plat={route.params.Plat}
-        />
-        <View style={StyleProfile.container}>
-          <Image style={StyleProfile.Image} source={{ uri: user["photo"] }} />
-          <Text style={StyleProfile.Name}>
-            {user["prenom"]} {user["nom"]}
-          </Text>
-          <Text style={StyleProfile.section}>Adresse e-mail</Text>
-          <Text style={StyleProfile.contenu}>{user["email"]}</Text>
-          <Text style={StyleProfile.section}>Courte présentation :</Text>
-          <Text style={StyleProfile.contenu}>{user["description"]}</Text>
-          <TouchableOpacity
-            style={styleForms.button}
-            onPress={() => setContactModalVisible(true)}
-          >
-            <Text style={styleForms.buttontext}>Contacter</Text>
-          </TouchableOpacity>
-        </View>
       </View>
-    </View>
+    </SousPageFormatComponent>
   );
 }
 
@@ -114,24 +106,10 @@ const StyleProfile = StyleSheet.create({
   },
 });
 const StyleLowerMenu = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: "#F6F6F9",
-  },
-  containerHeader: {},
   containerbottom: {
     justifyContent: "center",
     alignSelf: "center",
     flex: 1,
     marginVertical: "20%",
-  },
-  chevron: {},
-  title: {
-    position: "absolute",
-    alignSelf: "center",
-    top: 2,
-    fontFamily: "Roboto-Thin",
-    fontSize: 18,
   },
 });
