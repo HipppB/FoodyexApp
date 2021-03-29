@@ -5,7 +5,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 //Import Des sous navigators
 import Loadingscreen from "../screens/LoadingScreen";
 import LoginNavigator from "./LoginNavigator";
+
+//Tab navigator menu
 import MenuNavigator from "./MenuNavigator";
+
+//Navigators SousMenu :
+import NavMarket from "./MarketNavigator";
+import NavPlates from "./MyplatesNavigator";
 
 //Import Page de test sur laquelle je travaille actuellement
 import PageTest from "../screens/AppScreens/Modales/ReserverModale";
@@ -20,6 +26,7 @@ function App() {
   const [HeaderBarLogin, setHeaderBarLoginActive] = useState(false);
   const [isLoading, LoadFinished] = useState(true);
   const [isLoggedIn, SetIsLoggedIn] = useState(false);
+  const [ModalContactShown, SetModalContactShown] = useState(false);
   const Parameters = {
     IsStillLoading: isLoading,
     UserLogged: isLoggedIn,
@@ -29,6 +36,8 @@ function App() {
     setHeaderBarLoginActive,
     LoadFinished,
     SetIsLoggedIn,
+    IsModalContactShown: ModalContactShown,
+    SetModalContactShown,
   };
 
   return (
@@ -57,9 +66,32 @@ function App() {
                 name="MenuNavigator"
                 component={MenuNavigator}
                 options={{
-                  animationEnabled: false,
+                  animationEnabled: true,
                 }}
               />
+              <AppStack.Screen
+                name="PlateNavigator"
+                component={NavPlates}
+                options={{
+                  animationEnabled: true,
+                  headerShown: false,
+                }}
+              />
+              <AppStack.Screen
+                name="MarketNavigator"
+                component={NavMarket}
+                options={{
+                  animationEnabled: true,
+                }}
+              />
+              <AppStack.Screen
+                name="AccountNavigator"
+                component={MenuNavigator}
+                options={{
+                  animationEnabled: true,
+                }}
+              />
+
               <AppStack.Screen
                 name="PageTest"
                 component={PageTest}
