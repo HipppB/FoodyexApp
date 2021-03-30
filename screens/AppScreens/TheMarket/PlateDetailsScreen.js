@@ -16,12 +16,17 @@ import SousPageFormatComponent from "../../../components/SousPageFormatComponent
 let PartIndividuelle = Boolean;
 let iduser;
 
+//For context :
+import { useContext } from "react";
+import AppContext from "../../../components/AppContext";
+
 export default function PlateDetailsScreen({ navigation, route }) {
   let newroute = route.params.parameters.selected;
   let newrouteimage = route.params.parameters.selectedimage;
+  //Global Context:
+  const TheContext = useContext(AppContext);
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalContactVisible, setContactModalVisible] = useState(false);
   if (newroute["PartIndividuelle"]) {
     PartIndividuelle = "Oui";
   } else {
@@ -32,7 +37,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
     <>
       <SousPageFormatComponent params={{ title: "" }} navigation={navigation}>
         <ReserverModale
-          Visible={modalVisible}
+          Visible={TheContext.IsModalReserverShown}
           Plat={newroute["Nom"]}
           SellerFirstName={users[iduser]["prenom"]}
           SellerName={users[iduser]["nom"]}
@@ -41,7 +46,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
           prixUnePart={newroute["prixUnePart"]}
         />
         <ContacterModale
-          Visible={modalContactVisible}
+          Visible={TheContext.IsModalContactShown}
           SellerFirstName={users[iduser]["prenom"]}
           SellerName={users[iduser]["nom"]}
           Plat={newroute["Nom"]}
@@ -96,13 +101,13 @@ export default function PlateDetailsScreen({ navigation, route }) {
       <View style={styleForms.Buttoncontainer}>
         <TouchableOpacity
           style={styleForms.button}
-          onPress={() => setContactModalVisible(true)}
+          onPress={() => TheContext.SetModalContactShown(true)}
         >
           <Text style={styleForms.buttontext}>Contacter</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styleForms.button}
-          onPress={() => setModalVisible(true)}
+          onPress={() => TheContext.SetModalReserverShown(true)}
         >
           <Text style={styleForms.buttontext}>Réserver</Text>
         </TouchableOpacity>

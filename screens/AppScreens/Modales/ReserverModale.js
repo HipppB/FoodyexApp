@@ -8,8 +8,15 @@ import {
   View,
   Button,
 } from "react-native";
+
+//For context :
+import { useContext } from "react";
+import AppContext from "../../../components/AppContext";
+
 import ModaleMainComponent from "../../../components/ModaleMainComponent";
 function ReserverModale(props) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
   let nombreDepartMax = props.NumberOfSlice;
   let defaultstep = 1;
   if (!props.PartIndividuelle) {

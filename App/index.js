@@ -27,6 +27,7 @@ function App() {
   const [isLoading, LoadFinished] = useState(true);
   const [isLoggedIn, SetIsLoggedIn] = useState(false);
   const [ModalContactShown, SetModalContactShown] = useState(false);
+  const [ModalReserverShown, SetModalReserverShown] = useState(false);
   const Parameters = {
     IsStillLoading: isLoading,
     UserLogged: isLoggedIn,
@@ -38,6 +39,8 @@ function App() {
     SetIsLoggedIn,
     IsModalContactShown: ModalContactShown,
     SetModalContactShown,
+    IsModalReserverShown: ModalReserverShown,
+    SetModalReserverShown,
   };
 
   return (

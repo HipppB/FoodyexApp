@@ -19,7 +19,10 @@ function ButtonSubmit({ children }) {
   return (
     <Pressable
       style={[stylesButton.button, stylesButton.buttonConfirm]}
-      onPress={() => TheContext.SetModalContactShown(false)}
+      onPress={() => (
+        TheContext.SetModalContactShown(false),
+        TheContext.SetModalReserverShown(false)
+      )}
     >
       <Text style={stylesButton.textStyle}>{children}</Text>
     </Pressable>
@@ -32,7 +35,10 @@ function ButtonCancel({ children }) {
   return (
     <Pressable
       style={[stylesButton.button, stylesButton.buttonCancel]}
-      onPress={() => TheContext.SetModalContactShown(false)}
+      onPress={() => (
+        TheContext.SetModalContactShown(false),
+        TheContext.SetModalReserverShown(false)
+      )}
     >
       <Text style={stylesButton.textStyleCancel}>{children}</Text>
     </Pressable>
