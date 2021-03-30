@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-
+import Constants from "expo-constants";
 //For context :
 import { useContext } from "react";
 import AppContext from "./AppContext";
@@ -20,7 +20,7 @@ function SousPageFormatComponent({
 }) {
   //Global Context:
   const TheContext = useContext(AppContext);
-
+  console.log(Constants.statusBarHeight);
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -53,8 +53,11 @@ const StyleLowerMenu = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: "#F6F6F9",
   },
-  containerHeader: {},
-  containerbottom: { flex: 2, backgroundColor: "red" },
+  containerHeader: { marginTop: Constants.statusBarHeight },
+  containerbottom: {
+    flex: 2,
+    backgroundColor: "red",
+  },
   chevron: {},
   title: {},
 });

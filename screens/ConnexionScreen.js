@@ -12,6 +12,7 @@ import {
   Button,
 } from "react-native";
 
+import HeaderLogin from "../components/HeaderLogin";
 import NewPlatesScreen from "./AppScreens/Myplates/NewPlatesScreen";
 
 //For context :
@@ -125,37 +126,6 @@ function ConnexionScreen(props) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <View style={styles.containerTopSection}>
-          <Image
-            style={styles.stretch}
-            source={require("../assets/Images/logo.png")}
-          />
-          <View style={styles.menuConnexion}>
-            <TouchableOpacity
-              onPress={() =>
-                Connexion(
-                  {
-                    Email: emailtext,
-                    Password: passwordtext,
-                  },
-                  true
-                )
-              }
-            >
-              <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
-                <Text style={styles.buttontext}>Se connecter</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => props.navigation.push("RegisterScreen")}
-            >
-              <View style={styles.ButtonSlider}>
-                <Text style={styles.buttontext}>S'inscrire</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
         <KeyboardAvoidingView style={styles.containerBottomSection}>
           <View style={styleForms.placeholders}>
             <Text style={styleForms.placeholdersText}>ADRESSE E-MAIL</Text>
@@ -185,7 +155,18 @@ function ConnexionScreen(props) {
             secureTextEntry={true}
             textContentType="password"
           />
-          <Text onPress={() => alert("Todo")} style={styleForms.buttonquestion}>
+          <Text
+            onPress={() =>
+              Connexion(
+                {
+                  Email: emailtext,
+                  Password: passwordtext,
+                },
+                true
+              )
+            }
+            style={styleForms.buttonquestion}
+          >
             Mot de passe oublié ?
           </Text>
           <TouchableOpacity

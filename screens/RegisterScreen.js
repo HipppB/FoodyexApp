@@ -65,25 +65,6 @@ function RegisterScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <View style={styles.containerTopSection}>
-          <Image
-            style={styles.stretch}
-            source={require("../assets/Images/logo.png")}
-          />
-          <View style={styles.menuConnexion}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <View style={styles.ButtonSlider}>
-                <Text style={styles.buttontext}>Se connecter</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
-              <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
-                <Text style={styles.buttontext}>S'inscrire</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
         <View style={styles.containerBottomSection}>
           <KeyboardAvoidingView
             KeyboardAvoidingView

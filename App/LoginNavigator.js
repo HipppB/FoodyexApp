@@ -4,16 +4,29 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ConnexionScreen from "../screens/ConnexionScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 
-const LoginStack = createStackNavigator();
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
+const LoginStack = createMaterialTopTabNavigator();
+import HeaderMenu from "../components/headerMenu";
+import HeaderLogin from "../components/HeaderLogin";
 
 function LoginNavigator(props) {
+  console.log("OUIIIII");
   return (
-    <LoginStack.Navigator screenOptions={{ headerShown: false }}>
+    <LoginStack.Navigator
+      screenOptions={{ headerShown: true }}
+      tabBar={(props) => (
+        <HeaderLogin navigation={props.navigation} active="Connexion" />
+      )}
+    >
       <LoginStack.Screen
         name="ConnexionScreen"
         component={ConnexionScreen}
         options={{
           animationEnabled: true,
+          headerTitle: () => (
+            <HeaderLogin navigation={props.navigation} active="NavMarket" />
+          ),
         }}
       />
       <LoginStack.Screen
