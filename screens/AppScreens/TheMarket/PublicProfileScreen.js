@@ -9,11 +9,21 @@ import {
 } from "react-native";
 import ContacterModale from "../Modales/ContacterModale";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
+//For context :
+import { useContext } from "react";
+import AppContext from "../../../components/AppContext";
+
+import { LogBox } from "react-native";
+LogBox.ignoreLogs([
+  "Accessing the 'state' property of the 'route' object is not supported. If you want to get the focused route name, use the 'getFocusedRouteNameFromRoute' helper instead: https://reactnavigation.org/docs/screen-options-resolution/#setting-parent-screen-options-based-on-child-navigators-state",
+]);
 
 let user;
 export default function PublicProfileScreen({ navigation, route }) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
+
   user = route.params.user;
-  const [modalContactVisible, setContactModalVisible] = useState(false);
   return (
     <SousPageFormatComponent
       params={{ title: "Profil de " + user["prenom"] + " " + user["nom"] }}
@@ -21,8 +31,7 @@ export default function PublicProfileScreen({ navigation, route }) {
       morestyle={StyleLowerMenu.containerbottom}
     >
       <ContacterModale
-        Visible={modalContactVisible}
-        ChangeVisibility={setContactModalVisible}
+        Visible={TheContext.IsModalContactShown}
         SellerFirstName={user["prenom"]}
         SellerName={user["nom"]}
         Plat={route.params.Plat}
@@ -38,7 +47,7 @@ export default function PublicProfileScreen({ navigation, route }) {
         <Text style={StyleProfile.contenu}>{user["description"]}</Text>
         <TouchableOpacity
           style={styleForms.button}
-          onPress={() => setContactModalVisible(true)}
+          onPress={() => TheContext.SetModalContactShown(true)}
         >
           <Text style={styleForms.buttontext}>Contacter</Text>
         </TouchableOpacity>

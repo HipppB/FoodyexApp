@@ -17,88 +17,82 @@ let PartIndividuelle = Boolean;
 let iduser;
 
 export default function PlateDetailsScreen({ navigation, route }) {
+  let newroute = route.params.parameters.selected;
+  let newrouteimage = route.params.parameters.selectedimage;
+
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContactVisible, setContactModalVisible] = useState(false);
-  if (route.params.selected["PartIndividuelle"]) {
+  if (newroute["PartIndividuelle"]) {
     PartIndividuelle = "Oui";
   } else {
     PartIndividuelle = "Non";
   }
-  iduser = route.params.selected["IDVendeur"];
+  iduser = newroute["IDVendeur"];
   return (
-    <SousPageFormatComponent params={{ title: "" }} navigation={navigation}>
-      <ReserverModale
-        Visible={modalVisible}
-        ChangeVisibility={setModalVisible}
-        Plat={route.params.selected["Nom"]}
-        SellerFirstName={users[iduser]["prenom"]}
-        SellerName={users[iduser]["nom"]}
-        NumberOfSlice={route.params.selected["NombrePart"]}
-        PartIndividuelle={route.params.selected["PartIndividuelle"]}
-        prixUnePart={route.params.selected["prixUnePart"]}
-      />
-      <ContacterModale
-        Visible={modalContactVisible}
-        ChangeVisibility={setContactModalVisible}
-        SellerFirstName={users[iduser]["prenom"]}
-        SellerName={users[iduser]["nom"]}
-        Plat={route.params.selected["Nom"]}
-      />
+    <>
+      <SousPageFormatComponent params={{ title: "" }} navigation={navigation}>
+        <ReserverModale
+          Visible={modalVisible}
+          Plat={newroute["Nom"]}
+          SellerFirstName={users[iduser]["prenom"]}
+          SellerName={users[iduser]["nom"]}
+          NumberOfSlice={newroute["NombrePart"]}
+          PartIndividuelle={newroute["PartIndividuelle"]}
+          prixUnePart={newroute["prixUnePart"]}
+        />
+        <ContacterModale
+          Visible={modalContactVisible}
+          SellerFirstName={users[iduser]["prenom"]}
+          SellerName={users[iduser]["nom"]}
+          Plat={newroute["Nom"]}
+        />
 
-      <Image
-        style={StyleDetailsPlat.Image}
-        source={route.params.selectedimage}
-      />
-      <Text style={StyleDetailsPlat.NomPlat}>
-        {route.params.selected["Nom"]}
-      </Text>
-      <Text style={StyleDetailsPlat.Prix}>
-        {route.params.selected["prixUnePart"]} ‡
-      </Text>
-      <ScrollView style={StyleDetailsPlat.Scrollview}>
-        <View style={StyleDetailsPlat.Details}>
-          <Text style={StyleDetailsPlat.Section}>Description du plat</Text>
-          <Text style={StyleDetailsPlat.Infos}>
-            {route.params.selected["Description"]}
-            {route.params.selected["Description"]}
-          </Text>
-          <Text style={StyleDetailsPlat.Section}>
-            Nombre de portions disponible
-          </Text>
-          <Text style={StyleDetailsPlat.Infos}>
-            {route.params.selected["NombrePart"]}
-          </Text>
-          <Text style={StyleDetailsPlat.Section}>Portions individuelles</Text>
-          <Text style={StyleDetailsPlat.Infos}>{PartIndividuelle}</Text>
-        </View>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.push("PublicProfileScreen", {
-              user: users[iduser],
-              Plat: route.params.selected["Nom"],
-            })
-          }
-        >
-          <View style={StyleDetailsPlat.Vendeur}>
-            <Image
-              style={StyleDetailsPlat.PhotoProfil}
-              source={{
-                uri: users[iduser]["photo"],
-              }}
-            />
-            <View style={StyleDetailsPlat.IdentiteTexte}>
-              <Text style={StyleDetailsPlat.Identite}>
-                {users[iduser]["prenom"]} {users[iduser]["nom"]}
-              </Text>
-              <Text style={StyleDetailsPlat.IdentiteDesc} numberOfLines={3}>
-                {users[iduser]["description"]}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                vel dolor nibh. Nam molestie ornare lacus. [...]
-              </Text>
-            </View>
+        <Image style={StyleDetailsPlat.Image} source={newrouteimage} />
+        <Text style={StyleDetailsPlat.NomPlat}>{newroute["Nom"]}</Text>
+        <Text style={StyleDetailsPlat.Prix}>{newroute["prixUnePart"]} ‡</Text>
+        <ScrollView style={StyleDetailsPlat.Scrollview}>
+          <View style={StyleDetailsPlat.Details}>
+            <Text style={StyleDetailsPlat.Section}>Description du plat</Text>
+            <Text style={StyleDetailsPlat.Infos}>
+              {newroute["Description"]}
+              {newroute["Description"]}
+            </Text>
+            <Text style={StyleDetailsPlat.Section}>
+              Nombre de portions disponible
+            </Text>
+            <Text style={StyleDetailsPlat.Infos}>{newroute["NombrePart"]}</Text>
+            <Text style={StyleDetailsPlat.Section}>Portions individuelles</Text>
+            <Text style={StyleDetailsPlat.Infos}>{PartIndividuelle}</Text>
           </View>
-        </TouchableOpacity>
-      </ScrollView>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.push("PublicProfileScreen", {
+                user: users[iduser],
+                Plat: newroute["Nom"],
+              })
+            }
+          >
+            <View style={StyleDetailsPlat.Vendeur}>
+              <Image
+                style={StyleDetailsPlat.PhotoProfil}
+                source={{
+                  uri: users[iduser]["photo"],
+                }}
+              />
+              <View style={StyleDetailsPlat.IdentiteTexte}>
+                <Text style={StyleDetailsPlat.Identite}>
+                  {users[iduser]["prenom"]} {users[iduser]["nom"]}
+                </Text>
+                <Text style={StyleDetailsPlat.IdentiteDesc} numberOfLines={3}>
+                  {users[iduser]["description"]}
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                  vel dolor nibh. Nam molestie ornare lacus. [...]
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </ScrollView>
+      </SousPageFormatComponent>
       <View style={styleForms.Buttoncontainer}>
         <TouchableOpacity
           style={styleForms.button}
@@ -113,7 +107,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
           <Text style={styleForms.buttontext}>Réserver</Text>
         </TouchableOpacity>
       </View>
-    </SousPageFormatComponent>
+    </>
   );
 }
 
@@ -189,14 +183,17 @@ const StyleDetailsPlat = StyleSheet.create({
 
 const styleForms = StyleSheet.create({
   Buttoncontainer: {
+    backgroundColor: "#F6F6F9",
+    paddingTop: 10,
+    alignItems: "center",
+    position: "absolute",
     flexDirection: "row",
     justifyContent: "space-evenly",
     width: "100%",
+    bottom: 30,
   },
   button: {
     alignSelf: "center",
-    bottom: 30,
-    marginTop: 20,
     backgroundColor: "#F29B13",
     borderRadius: 30,
     width: 150,

@@ -14,7 +14,7 @@ function MyPlatesScreen({ navigation }) {
     <View style={styles.container}>
       <ScrollView style={styles.containerBottomSection}>
         <TouchableOpacity
-          onPress={() => navigation.push("MyReservationsScreen")}
+          onPress={() => navigation.navigate("PlateNavigator")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mes réservations (4)</Text>
@@ -24,7 +24,11 @@ function MyPlatesScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("MyDishesOnMarketScreen")}
+          onPress={() =>
+            navigation.navigate("PlateNavigator", {
+              screen: "MyDishesOnMarketScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mes plats sur le marché (2)</Text>
@@ -34,7 +38,11 @@ function MyPlatesScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("NewPlatesScreen")}
+          onPress={() =>
+            navigation.navigate("PlateNavigator", {
+              screen: "NewPlatesScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Nouveau Plat</Text>

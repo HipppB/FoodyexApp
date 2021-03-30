@@ -21,6 +21,7 @@ const IMAGES = {
 };
 
 function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
+  console.log(navigation);
   let stylePlat = styles.touchable;
   let stylesecondaire = styles.touchable;
   if (Numero % 2 == 1) {
@@ -36,12 +37,12 @@ function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
     <TouchableOpacity
       style={(stylePlat, stylesecondaire)}
       onPress={() =>
-        navigation.push("PlateDetailsScreen", {
+        navigation.push("MarketNavigator", {
           selected: plat,
           selectedimage: IMAGES[plat["LinkImage"]],
         })
       }
-      key={plat["ID"]}
+      key={Numero}
     >
       <View style={styles.imagecontainer}>
         <Image style={styles.image} source={IMAGES[plat["LinkImage"]]} />

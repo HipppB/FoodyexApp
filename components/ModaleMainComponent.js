@@ -8,23 +8,31 @@ import {
   Keyboard,
 } from "react-native";
 
+//For context :
+import { useContext } from "react";
+import AppContext from "../components/AppContext";
+
 //Boutton Principal
-function ButtonSubmit({ children, ChangeVisibility }) {
+function ButtonSubmit({ children }) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
   return (
     <Pressable
       style={[stylesButton.button, stylesButton.buttonConfirm]}
-      onPress={() => ChangeVisibility(false)}
+      onPress={() => TheContext.SetModalContactShown(false)}
     >
       <Text style={stylesButton.textStyle}>{children}</Text>
     </Pressable>
   );
 }
 //Bouton Secondaire
-function ButtonCancel({ children, ChangeVisibility }) {
+function ButtonCancel({ children }) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
   return (
     <Pressable
       style={[stylesButton.button, stylesButton.buttonCancel]}
-      onPress={() => ChangeVisibility(false)}
+      onPress={() => TheContext.SetModalContactShown(false)}
     >
       <Text style={stylesButton.textStyleCancel}>{children}</Text>
     </Pressable>
@@ -32,6 +40,8 @@ function ButtonCancel({ children, ChangeVisibility }) {
 }
 
 function ModaleMainComponent(props) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
   useEffect(() => {
     Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
     Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
@@ -47,7 +57,7 @@ function ModaleMainComponent(props) {
     if (keybOpen) {
       Keyboard.dismiss();
     } else {
-      props.ChangeVisibility(false);
+      TheContext.SetModalContactShown(false);
     }
   }
   return (
@@ -61,12 +71,8 @@ function ModaleMainComponent(props) {
           </View>
           <View style={StyleModale.bodyModal}>{props.children}</View>
           <View style={StyleModale.footerModal}>
-            <ButtonCancel ChangeVisibility={props.ChangeVisibility}>
-              {props.Buttons.cancel}
-            </ButtonCancel>
-            <ButtonSubmit ChangeVisibility={props.ChangeVisibility}>
-              {props.Buttons.submit}
-            </ButtonSubmit>
+            <ButtonCancel>{props.Buttons.cancel}</ButtonCancel>
+            <ButtonSubmit>{props.Buttons.submit}</ButtonSubmit>
           </View>
         </View>
       </View>

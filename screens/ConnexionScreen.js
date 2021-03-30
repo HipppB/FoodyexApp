@@ -233,7 +233,7 @@ const styleForms = StyleSheet.create({
   },
   smallplaceholders: {
     opacity: 0.4,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontSize: 15,
     zIndex: 1,
   },
@@ -250,7 +250,7 @@ const styleForms = StyleSheet.create({
   },
   placeholdersText: {
     opacity: 0.4,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontSize: 15,
   },
   buttonquestion: {

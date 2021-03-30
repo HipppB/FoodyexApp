@@ -82,6 +82,7 @@ function PlatMarche(navigation, plat, NbPlatMarket) {
         plat={plat}
         Numero={NbPlat}
         NombredePlatTotaux={NbPlatMarket}
+        key={NbPlat}
       />
     );
   }
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     paddingTop: 0,
-    paddingBottom: 50,
+    paddingBottom: 150,
   },
   imagecontainer: {
     position: "absolute",

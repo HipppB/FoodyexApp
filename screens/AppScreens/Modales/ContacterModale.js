@@ -29,7 +29,6 @@ function ContacterModale(props) {
     >
       <ModaleMainComponent
         Header={"Contacter " + props.SellerFirstName + " " + props.SellerName}
-        ChangeVisibility={props.ChangeVisibility}
         Buttons={{ cancel: "Annuler", submit: "Envoyer" }}
       >
         <View>

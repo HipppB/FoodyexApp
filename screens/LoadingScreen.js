@@ -12,11 +12,10 @@ function Loadingscreen(props) {
   useEffect(() => {
     async function loadFonts() {
       await Font.loadAsync({
-        Roboto: require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
+        "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
         "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
         "Roboto-Thin": require("../assets/fonts/Roboto/Roboto-Thin.ttf"),
         "Roboto-Medium": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
-        "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
         "Poppins-Medium": require("../assets/fonts/Poppins/Poppins-Medium.ttf"),
         "Poppins-SemiBold": require("../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
         "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),

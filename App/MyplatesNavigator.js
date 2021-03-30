@@ -12,17 +12,11 @@ function NavPlates() {
   return (
     <MyPlatestStack.Navigator screenOptions={{ headerShown: false }}>
       <MyPlatestStack.Screen
-        name="MyPlatesScreen"
-        component={MyPlatesScreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <MyPlatestStack.Screen
         name="MyReservationsScreen"
         component={MyReservationsScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
       <MyPlatestStack.Screen
@@ -30,6 +24,7 @@ function NavPlates() {
         component={MyDishesOnMarketScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
       <MyPlatestStack.Screen
@@ -37,6 +32,7 @@ function NavPlates() {
         component={NewPlatesScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
     </MyPlatestStack.Navigator>

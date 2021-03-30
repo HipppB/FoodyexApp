@@ -25,7 +25,7 @@ function MyDishesOnMarketScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Coming Soon !
+            Coming Soon ! TEST
           </Text>
         </TouchableOpacity>
       </SafeAreaView>

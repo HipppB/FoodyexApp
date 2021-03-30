@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import MarketScreen from "../screens/AppScreens/MarketScreen";
 import PlateDetailsScreen from "../screens/AppScreens/TheMarket/PlateDetailsScreen";
 import PublicProfileScreen from "../screens/AppScreens/TheMarket/PublicProfileScreen";
 
@@ -9,16 +10,21 @@ import { useContext } from "react";
 import AppContext from "../components/AppContext";
 
 const MarketStack = createStackNavigator();
-function NavMarket(props) {
-  console.log(props);
-
+function NavMarket({ route }) {
   //Global Context:
   const TheContext = useContext(AppContext);
   return (
-    <MarketStack.Navigator params={props}>
+    <MarketStack.Navigator screenOptions={{ headerShown: false }}>
+      <MarketStack.Screen
+        name="MarketScreen"
+        component={MarketScreen}
+        options={{
+          animationEnabled: true,
+        }}
+        screenOptions={{ headerShown: true }}
+      />
       <MarketStack.Screen
         name="PlateDetailsScreen"
-        initialParams={{ parameters: props.route.params }}
         component={PlateDetailsScreen}
         options={{
           animationEnabled: true,
@@ -30,7 +36,6 @@ function NavMarket(props) {
         component={PublicProfileScreen}
         options={{
           animationEnabled: true,
-          headerShown: false,
         }}
         screenOptions={{ headerShown: false }}
       />

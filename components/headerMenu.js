@@ -8,9 +8,13 @@ import {
   Keyboard,
 } from "react-native";
 
-function HeaderMenu({ navigation, active }) {
+function HeaderMenu(props) {
+  let { navigation, active } = props;
+  console.log(props.navigation.dangerouslyGetState().index);
+  let indexPage = props.navigation.dangerouslyGetState().index;
+  navigator = ["Plates", "NavMarket", "AccountNavigator"];
   function IsActive(Location) {
-    if (Location === active) {
+    if (indexPage === navigator.indexOf(Location)) {
       return styles.ButtonSlider, styles.ButtonSliderOn;
     } else {
       return styles.ButtonSlider;
@@ -19,7 +23,7 @@ function HeaderMenu({ navigation, active }) {
   navigator = ["Plates", "NavMarket", "AccountNavigator"];
   function Direction(WhereToGo) {
     if (navigator.indexOf(WhereToGo) > navigator.indexOf(active)) {
-      navigation.push(WhereToGo);
+      navigation.navigate(WhereToGo);
     } else {
       navigation.navigate(WhereToGo);
     }
@@ -29,12 +33,12 @@ function HeaderMenu({ navigation, active }) {
     return (
       <View style={styles.containerTopSection}>
         <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => Direction("NavPlates")}>
+          <TouchableOpacity onPress={() => Direction("MyPlatesScreen")}>
             <View style={IsActive("Plates")}>
               <Text style={styles.buttontext}>Mes Plats</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Direction("NavMarket")}>
+          <TouchableOpacity onPress={() => Direction("MarketScreen")}>
             <View style={IsActive("NavMarket")}>
               <Text style={styles.buttontext}>Le Marché</Text>
             </View>
@@ -55,14 +59,13 @@ export default HeaderMenu;
 
 const styles = new StyleSheet.create({
   containerTopSection: {
+    backgroundColor: "#FFFFFF",
     width: "100%",
-    height: "100%",
+    height: "8%",
     flexShrink: 1,
     alignContent: "center",
     justifyContent: "flex-end",
     alignItems: "center",
-    borderBottomLeftRadius: 30,
-    borderBottomEndRadius: 30,
     zIndex: 10,
   },
 
@@ -80,11 +83,22 @@ const styles = new StyleSheet.create({
     fontSize: 18,
   },
   menuConnexion: {
+    alignContent: "flex-start",
+    width: "100%",
+    top: 10,
+    backgroundColor: "#FFFFFF",
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
     zIndex: 1,
     borderBottomLeftRadius: 30,
     borderBottomEndRadius: 30,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 6.27,
   },
 });

@@ -54,7 +54,7 @@ const StyleLowerMenu = StyleSheet.create({
     backgroundColor: "#F6F6F9",
   },
   containerHeader: {},
-  containerbottom: {},
+  containerbottom: { flex: 2, backgroundColor: "red" },
   chevron: {},
   title: {},
 });
