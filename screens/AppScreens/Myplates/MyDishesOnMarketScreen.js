@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-export default function MyDishesOnMarketScreen({ navigation }) {
+function MyDishesOnMarketScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -25,7 +25,7 @@ export default function MyDishesOnMarketScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Coming Soon !
+            Coming Soon ! TEST
           </Text>
         </TouchableOpacity>
       </SafeAreaView>
@@ -45,3 +45,4 @@ const StyleLowerMenu = StyleSheet.create({
   chevron: {},
   title: {},
 });
+export default MyDishesOnMarketScreen;

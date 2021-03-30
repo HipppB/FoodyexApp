@@ -12,68 +12,55 @@ import {
 import * as users from "../../../data/utilisateurs.json";
 import ReserverModale from "../Modales/ReserverModale";
 import ContacterModale from "../Modales/ContacterModale";
+import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 let PartIndividuelle = Boolean;
 let iduser;
+
 export default function PlateDetailsScreen({ navigation, route }) {
+  let newroute = route.params.parameters.selected;
+  let newrouteimage = route.params.parameters.selectedimage;
+
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContactVisible, setContactModalVisible] = useState(false);
-  if (route.params.selected["PartIndividuelle"]) {
+  if (newroute["PartIndividuelle"]) {
     PartIndividuelle = "Oui";
   } else {
     PartIndividuelle = "Non";
   }
-  iduser = route.params.selected["IDVendeur"];
+  iduser = newroute["IDVendeur"];
   return (
-    <View style={StyleLowerMenu.container}>
-      <ReserverModale
-        Visible={modalVisible}
-        ChangeVisibility={setModalVisible}
-        Plat={route.params.selected["Nom"]}
-        SellerFirstName={users[iduser]["prenom"]}
-        SellerName={users[iduser]["nom"]}
-        NumberOfSlice={route.params.selected["NombrePart"]}
-        PartIndividuelle={route.params.selected["PartIndividuelle"]}
-        prixUnePart={route.params.selected["prixUnePart"]}
-      />
-      <ContacterModale
-        Visible={modalContactVisible}
-        ChangeVisibility={setContactModalVisible}
-        SellerFirstName={users[iduser]["prenom"]}
-        SellerName={users[iduser]["nom"]}
-        Plat={route.params.selected["Nom"]}
-      />
-      <SafeAreaView style={StyleLowerMenu.containerHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            style={{ marginLeft: 15 }}
-            source={require("../../../assets/Images/chevron-left.png")}
-          />
-        </TouchableOpacity>
-      </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}>
-        <Image
-          style={StyleDetailsPlat.Image}
-          source={route.params.selectedimage}
+    <>
+      <SousPageFormatComponent params={{ title: "" }} navigation={navigation}>
+        <ReserverModale
+          Visible={modalVisible}
+          Plat={newroute["Nom"]}
+          SellerFirstName={users[iduser]["prenom"]}
+          SellerName={users[iduser]["nom"]}
+          NumberOfSlice={newroute["NombrePart"]}
+          PartIndividuelle={newroute["PartIndividuelle"]}
+          prixUnePart={newroute["prixUnePart"]}
         />
-        <Text style={StyleDetailsPlat.NomPlat}>
-          {route.params.selected["Nom"]}
-        </Text>
-        <Text style={StyleDetailsPlat.Prix}>
-          {route.params.selected["prixUnePart"]} ‡
-        </Text>
+        <ContacterModale
+          Visible={modalContactVisible}
+          SellerFirstName={users[iduser]["prenom"]}
+          SellerName={users[iduser]["nom"]}
+          Plat={newroute["Nom"]}
+        />
+
+        <Image style={StyleDetailsPlat.Image} source={newrouteimage} />
+        <Text style={StyleDetailsPlat.NomPlat}>{newroute["Nom"]}</Text>
+        <Text style={StyleDetailsPlat.Prix}>{newroute["prixUnePart"]} ‡</Text>
         <ScrollView style={StyleDetailsPlat.Scrollview}>
           <View style={StyleDetailsPlat.Details}>
             <Text style={StyleDetailsPlat.Section}>Description du plat</Text>
             <Text style={StyleDetailsPlat.Infos}>
-              {route.params.selected["Description"]}
-              {route.params.selected["Description"]}
+              {newroute["Description"]}
+              {newroute["Description"]}
             </Text>
             <Text style={StyleDetailsPlat.Section}>
               Nombre de portions disponible
             </Text>
-            <Text style={StyleDetailsPlat.Infos}>
-              {route.params.selected["NombrePart"]}
-            </Text>
+            <Text style={StyleDetailsPlat.Infos}>{newroute["NombrePart"]}</Text>
             <Text style={StyleDetailsPlat.Section}>Portions individuelles</Text>
             <Text style={StyleDetailsPlat.Infos}>{PartIndividuelle}</Text>
           </View>
@@ -81,7 +68,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
             onPress={() =>
               navigation.push("PublicProfileScreen", {
                 user: users[iduser],
-                Plat: route.params.selected["Nom"],
+                Plat: newroute["Nom"],
               })
             }
           >
@@ -105,40 +92,24 @@ export default function PlateDetailsScreen({ navigation, route }) {
             </View>
           </TouchableOpacity>
         </ScrollView>
-        <View style={styleForms.Buttoncontainer}>
-          <TouchableOpacity
-            style={styleForms.button}
-            onPress={() => setContactModalVisible(true)}
-          >
-            <Text style={styleForms.buttontext}>Contacter</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styleForms.button}
-            onPress={() => setModalVisible(true)}
-          >
-            <Text style={styleForms.buttontext}>Réserver</Text>
-          </TouchableOpacity>
-        </View>
+      </SousPageFormatComponent>
+      <View style={styleForms.Buttoncontainer}>
+        <TouchableOpacity
+          style={styleForms.button}
+          onPress={() => setContactModalVisible(true)}
+        >
+          <Text style={styleForms.buttontext}>Contacter</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styleForms.button}
+          onPress={() => setModalVisible(true)}
+        >
+          <Text style={styleForms.buttontext}>Réserver</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 }
-
-const StyleLowerMenu = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: "#F6F6F9",
-  },
-  containerHeader: {},
-  containerbottom: {
-    paddingTop: 0,
-    marginHorizontal: "0%",
-    flex: 1,
-  },
-  chevron: {},
-  title: {},
-});
 
 const StyleDetailsPlat = StyleSheet.create({
   Image: {
@@ -212,14 +183,17 @@ const StyleDetailsPlat = StyleSheet.create({
 
 const styleForms = StyleSheet.create({
   Buttoncontainer: {
+    backgroundColor: "#F6F6F9",
+    paddingTop: 10,
+    alignItems: "center",
+    position: "absolute",
     flexDirection: "row",
     justifyContent: "space-evenly",
     width: "100%",
+    bottom: 30,
   },
   button: {
     alignSelf: "center",
-    bottom: 30,
-    marginTop: 20,
     backgroundColor: "#F29B13",
     borderRadius: 30,
     width: 150,

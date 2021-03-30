@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 let user;
-export default function PublicProfileScreen({ navigation }) {
+function PublicProfileScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -132,3 +132,4 @@ const StyleLowerMenu = StyleSheet.create({
     fontSize: 18,
   },
 });
+export default PublicProfileScreen;

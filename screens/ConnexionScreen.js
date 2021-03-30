@@ -14,13 +14,20 @@ import {
 
 import NewPlatesScreen from "./AppScreens/Myplates/NewPlatesScreen";
 
+//For context :
+import { useContext } from "react";
+import AppContext from "../components/AppContext";
+
 //On ignore Le warning Non-serializable values
 import { LogBox } from "react-native";
 LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
 
-export default function ConnexionScreen(props) {
+function ConnexionScreen(props) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
+
   //Gestion du formulaire
   //Gestion des Erreurs
   //variables
@@ -85,7 +92,7 @@ export default function ConnexionScreen(props) {
   //Fonction appellée au clique du bouton, on y reverifie toutes les données
   function Connexion(Data, force = false) {
     if (force) {
-      props.route.params.SetIsLoggedIn(true);
+      TheContext.SetIsLoggedIn(true);
     }
     console.log(Data);
     if ([Data.Email] != "") {
@@ -99,7 +106,7 @@ export default function ConnexionScreen(props) {
       } else {
         ChangeError("email", "");
         if (passwordtext) {
-          props.route.params.SetIsLoggedIn(true);
+          TheContext.SetIsLoggedIn(true);
         }
       }
     }
@@ -226,7 +233,7 @@ const styleForms = StyleSheet.create({
   },
   smallplaceholders: {
     opacity: 0.4,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontSize: 15,
     zIndex: 1,
   },
@@ -243,7 +250,7 @@ const styleForms = StyleSheet.create({
   },
   placeholdersText: {
     opacity: 0.4,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontSize: 15,
   },
   buttonquestion: {
@@ -335,3 +342,5 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
   },
 });
+
+export default ConnexionScreen;

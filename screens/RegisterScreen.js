@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 
-export default function RegisterScreen({ navigation }) {
+function RegisterScreen({ navigation }) {
   //Gestion du formulaire
   //Gestion des Erreurs
   //variables
@@ -198,7 +198,7 @@ const styleForms = StyleSheet.create({
   },
   smallplaceholders: {
     opacity: 0.4,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontSize: 15,
   },
   longinput: {
@@ -210,7 +210,7 @@ const styleForms = StyleSheet.create({
   },
   placeholders: {
     opacity: 0.4,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontSize: 15,
   },
   buttonquestion: {
@@ -302,3 +302,5 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
   },
 });
+
+export default RegisterScreen;

@@ -9,32 +9,15 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function AccountScreen(props) {
+//For context :
+import { useContext } from "react";
+import AppContext from "../../components/AppContext";
+
+function AccountScreen(props) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
   return (
     <View style={styles.container}>
-      <View style={styles.containerTopSection}>
-        <View style={styles.menuConnexion}>
-          <TouchableOpacity
-            onPress={() => props.navigation.navigate("NavPlates")}
-          >
-            <View style={styles.ButtonSlider}>
-              <Text style={styles.buttontext}>Mes Plats</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => props.navigation.push("NavMarket")}>
-            <View style={styles.ButtonSlider}>
-              <Text style={styles.buttontext}>Le Marché</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
-            <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
-              <Text style={styles.buttontext}>Mon Compte</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
       <ScrollView style={styles.containerBottomSection}>
         <Text style={styleMenuButton.solde}>Solde : 13 ‡</Text>
         <TouchableOpacity
@@ -68,7 +51,7 @@ export default function AccountScreen(props) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => props.route.params.SetIsLoggedIn(false)}
+          onPress={() => TheContext.SetIsLoggedIn(false)}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Déconnexion</Text>
@@ -173,3 +156,5 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
   },
 });
+
+export default AccountScreen;

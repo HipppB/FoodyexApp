@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, StyleSheet, ActivityIndicator } from "react-native";
 import * as Font from "expo-font";
-export default function Loadingscreen(props) {
+
+//For context :
+import { useContext } from "react";
+import AppContext from "../components/AppContext";
+function Loadingscreen(props) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
+
   useEffect(() => {
     async function loadFonts() {
       await Font.loadAsync({
-        Roboto: require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
+        "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
         "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
         "Roboto-Thin": require("../assets/fonts/Roboto/Roboto-Thin.ttf"),
         "Roboto-Medium": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
-        "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
         "Poppins-Medium": require("../assets/fonts/Poppins/Poppins-Medium.ttf"),
         "Poppins-SemiBold": require("../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
         "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
@@ -17,7 +23,7 @@ export default function Loadingscreen(props) {
         .then((res) => {
           console.log("FONTS LOADED!");
           setTimeout(() => {
-            props.route.params.LoadFinished(false);
+            TheContext.LoadFinished(false);
           }, 500);
         })
         .catch((Err) => {
@@ -67,3 +73,5 @@ const styles = StyleSheet.create({
     transform: [{ translateY: 50 }],
   },
 });
+
+export default Loadingscreen;

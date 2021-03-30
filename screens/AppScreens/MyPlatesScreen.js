@@ -9,33 +9,12 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function MyPlatesScreen({ navigation }) {
+function MyPlatesScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.containerTopSection}>
-        <View style={styles.menuConnexion}>
-          <TouchableOpacity onPress={() => console.log("ButtonPressed")}>
-            <View style={(styles.ButtonSlider, styles.ButtonSliderOn)}>
-              <Text style={styles.buttontext}>Mes Plats</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.push("NavMarket")}>
-            <View style={styles.ButtonSlider}>
-              <Text style={styles.buttontext}>Le Marché</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.push("NavAccount")}>
-            <View style={styles.ButtonSlider}>
-              <Text style={styles.buttontext}>Mon Compte</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
       <ScrollView style={styles.containerBottomSection}>
         <TouchableOpacity
-          onPress={() => navigation.push("MyReservationsScreen")}
+          onPress={() => navigation.navigate("PlateNavigator")}
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mes réservations (4)</Text>
@@ -45,7 +24,11 @@ export default function MyPlatesScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("MyDishesOnMarketScreen")}
+          onPress={() =>
+            navigation.navigate("PlateNavigator", {
+              screen: "MyDishesOnMarketScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mes plats sur le marché (2)</Text>
@@ -55,7 +38,11 @@ export default function MyPlatesScreen({ navigation }) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.push("NewPlatesScreen")}
+          onPress={() =>
+            navigation.navigate("PlateNavigator", {
+              screen: "NewPlatesScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Nouveau Plat</Text>
@@ -148,3 +135,5 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
   },
 });
+
+export default MyPlatesScreen;

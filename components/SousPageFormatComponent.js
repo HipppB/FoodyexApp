@@ -7,14 +7,27 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-function HistoryScreen({ navigation }) {
+
+//For context :
+import { useContext } from "react";
+import AppContext from "./AppContext";
+
+function SousPageFormatComponent({
+  navigation,
+  children,
+  params,
+  morestyle = {},
+}) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
+
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             style={{ marginLeft: 15 }}
-            source={require("../../../assets/Images/chevron-left.png")}
+            source={require("../assets/Images/chevron-left.png")}
           />
           <Text
             style={{
@@ -25,11 +38,11 @@ function HistoryScreen({ navigation }) {
               fontSize: 18,
             }}
           >
-            Coming Soon ! :)
+            {params.title}
           </Text>
         </TouchableOpacity>
       </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}></View>
+      <View style={morestyle}>{children}</View>
     </View>
   );
 }
@@ -41,9 +54,8 @@ const StyleLowerMenu = StyleSheet.create({
     backgroundColor: "#F6F6F9",
   },
   containerHeader: {},
-  containerbottom: {},
+  containerbottom: { flex: 2, backgroundColor: "red" },
   chevron: {},
   title: {},
 });
-
-export default HistoryScreen;
+export default SousPageFormatComponent;

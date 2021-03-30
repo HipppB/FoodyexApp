@@ -8,21 +8,15 @@ import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
 
 const MyPlatestStack = createStackNavigator();
 
-export default function NavPlates() {
+function NavPlates() {
   return (
     <MyPlatestStack.Navigator screenOptions={{ headerShown: false }}>
-      <MyPlatestStack.Screen
-        name="MyPlatesScreen"
-        component={MyPlatesScreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
       <MyPlatestStack.Screen
         name="MyReservationsScreen"
         component={MyReservationsScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
       <MyPlatestStack.Screen
@@ -30,6 +24,7 @@ export default function NavPlates() {
         component={MyDishesOnMarketScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
       <MyPlatestStack.Screen
@@ -37,8 +32,10 @@ export default function NavPlates() {
         component={NewPlatesScreen}
         options={{
           animationEnabled: true,
+          headerShown: false,
         }}
       />
     </MyPlatestStack.Navigator>
   );
 }
+export default NavPlates;
