@@ -10,8 +10,6 @@ import AppContext from "../components/AppContext";
 
 const MarketStack = createStackNavigator();
 function NavMarket(props) {
-  console.log(props);
-
   //Global Context:
   const TheContext = useContext(AppContext);
   return (

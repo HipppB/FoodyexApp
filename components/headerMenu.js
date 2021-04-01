@@ -10,7 +10,6 @@ import {
 
 function HeaderMenu(props) {
   let { navigation, active } = props;
-  console.log(props.navigation.dangerouslyGetState().index);
   let indexPage = props.navigation.dangerouslyGetState().index;
   navigator = ["Plates", "NavMarket", "AccountNavigator"];
   function IsActive(Location) {

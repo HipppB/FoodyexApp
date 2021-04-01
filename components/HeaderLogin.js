@@ -12,8 +12,6 @@ import { Header } from "react-native/Libraries/NewAppScreen";
 
 function HeaderLogin(props) {
   let { navigation, active } = props;
-  console.log(active);
-  console.log(props.navigation.dangerouslyGetState().index);
   let indexPage = props.navigation.dangerouslyGetState().index;
   navigator = ["Connexion", "Inscription"];
   function IsActive(Location) {

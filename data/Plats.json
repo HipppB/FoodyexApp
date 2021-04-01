@@ -9,7 +9,14 @@
     "NombrePart": 6,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "lasagnes"
+    "LinkImage": "lasagnes",
+    "Reserved": [
+      {
+        "IDAcheteur": "4",
+        "NombredePart": 2,
+        "Statut": "Accepted"
+      }
+    ]
   },
   {
     "ID": 1,
@@ -21,7 +28,14 @@
     "NombrePart": 7,
     "PartIndividuelle": false,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "carbonara"
+    "LinkImage": "carbonara",
+    "Reserved": [
+      {
+        "IDAcheteur": "4",
+        "NombredePart": 2,
+        "Statut": "Encours"
+      }
+    ]
   },
   {
     "ID": 2,
@@ -33,7 +47,8 @@
     "NombrePart": 3,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "couscous"
+    "LinkImage": "couscous",
+    "Reserved": []
   },
   {
     "ID": 3,
@@ -45,7 +60,14 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "lasagnesSaumon"
+    "LinkImage": "lasagnesSaumon",
+    "Reserved": [
+      {
+        "IDAcheteur": "4",
+        "NombredePart": 2,
+        "Statut": "Canceled"
+      }
+    ]
   },
   {
     "ID": 4,
@@ -54,10 +76,17 @@
     "IDVendeur": "5",
     "Date": "12/03/2021 17h",
     "prixUnePart": 5,
-    "NombrePart": 2,
+    "NombrePart": 3,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "ratatouille"
+    "LinkImage": "ratatouille",
+    "Reserved": [
+      {
+        "IDAcheteur": "4",
+        "NombredePart": 2,
+        "Statut": "Finished"
+      }
+    ]
   },
   {
     "ID": 5,
@@ -69,7 +98,8 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "rizaulait"
+    "LinkImage": "rizaulait",
+    "Reserved": []
   },
   {
     "ID": 6,
@@ -81,7 +111,8 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "OssoBucco"
+    "LinkImage": "OssoBucco",
+    "Reserved": []
   },
   {
     "ID": 7,
@@ -93,7 +124,8 @@
     "NombrePart": 1,
     "PartIndividuelle": false,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "tartetatin"
+    "LinkImage": "tartetatin",
+    "Reserved": []
   },
   {
     "ID": 8,
@@ -105,7 +137,8 @@
     "NombrePart": 3,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "tartiflette"
+    "LinkImage": "tartiflette",
+    "Reserved": []
   },
   {
     "ID": 9,
@@ -117,19 +150,21 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "tartetatin"
+    "LinkImage": "tartetatin",
+    "Reserved": []
   },
   {
     "ID": 10,
     "OnMarket": true,
     "Nom": "Lasage bolognaise",
-    "IDVendeur": "1",
+    "IDVendeur": "5",
     "Date": "12/03/2021 17h",
     "prixUnePart": 5,
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "lasagnes"
+    "LinkImage": "lasagnes",
+    "Reserved": []
   },
   {
     "ID": 11,
@@ -141,7 +176,8 @@
     "NombrePart": 1,
     "PartIndividuelle": false,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "carbonara"
+    "LinkImage": "carbonara",
+    "Reserved": []
   },
   {
     "ID": 12,
@@ -153,7 +189,8 @@
     "NombrePart": 3,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "couscous"
+    "LinkImage": "couscous",
+    "Reserved": []
   },
   {
     "ID": 13,
@@ -165,7 +202,8 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "lasagnesSaumonEpinard"
+    "LinkImage": "lasagnesSaumonEpinard",
+    "Reserved": []
   },
   {
     "ID": 14,
@@ -177,7 +215,8 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "ratatouille"
+    "LinkImage": "ratatouille",
+    "Reserved": []
   },
   {
     "ID": 15,
@@ -189,7 +228,8 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "rizaulait"
+    "LinkImage": "rizaulait",
+    "Reserved": []
   },
   {
     "ID": 16,
@@ -201,7 +241,8 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "OssoBucco"
+    "LinkImage": "OssoBucco",
+    "Reserved": []
   },
   {
     "ID": 17,
@@ -213,7 +254,8 @@
     "NombrePart": 1,
     "PartIndividuelle": false,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "tartetatin"
+    "LinkImage": "tartetatin",
+    "Reserved": []
   },
   {
     "ID": 18,
@@ -225,7 +267,8 @@
     "NombrePart": 3,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "tartiflette"
+    "LinkImage": "tartiflette",
+    "Reserved": []
   },
   {
     "ID": 19,
@@ -237,6 +280,7 @@
     "NombrePart": 2,
     "PartIndividuelle": true,
     "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis sed ligula id congue. Integer tristique. Sed imperdiet velit quis maximus congue.",
-    "LinkImage": "tartetatin"
+    "LinkImage": "tartetatin",
+    "Reserved": []
   }
 ]

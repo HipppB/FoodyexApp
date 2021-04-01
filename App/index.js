@@ -22,8 +22,7 @@ import AppContext from "../components/AppContext";
 const AppStack = createStackNavigator();
 function App() {
   //GlobalState
-  const [HeaderBar, setHeaderBarActive] = useState(false);
-  const [HeaderBarLogin, setHeaderBarLoginActive] = useState(false);
+
   const [isLoading, LoadFinished] = useState(true);
   const [isLoggedIn, SetIsLoggedIn] = useState(false);
   const [ModalContactShown, SetModalContactShown] = useState(false);
@@ -31,10 +30,6 @@ function App() {
   const Parameters = {
     IsStillLoading: isLoading,
     UserLogged: isLoggedIn,
-    IsHeaderBar: HeaderBar,
-    IsHeaderBarLogin: HeaderBarLogin,
-    setHeaderBarActive,
-    setHeaderBarLoginActive,
     LoadFinished,
     SetIsLoggedIn,
     IsModalContactShown: ModalContactShown,

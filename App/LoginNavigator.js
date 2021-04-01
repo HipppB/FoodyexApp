@@ -11,7 +11,6 @@ import HeaderMenu from "../components/headerMenu";
 import HeaderLogin from "../components/HeaderLogin";
 
 function LoginNavigator(props) {
-  console.log("OUIIIII");
   return (
     <LoginStack.Navigator
       screenOptions={{ headerShown: true }}

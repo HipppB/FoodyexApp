@@ -21,7 +21,6 @@ const IMAGES = {
 };
 
 function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
-  console.log(navigation);
   let stylePlat = styles.touchable;
   let stylesecondaire = styles.touchable;
   if (Numero % 2 == 1) {

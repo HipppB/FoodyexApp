@@ -6,6 +6,8 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
+  RefreshControl,
 } from "react-native";
 import Constants from "expo-constants";
 //For context :
@@ -17,12 +19,28 @@ function SousPageFormatComponent({
   children,
   params,
   morestyle = {},
+  scrollable = false,
 }) {
+  let ViewArea = View;
+  if (scrollable) {
+    ViewArea = ScrollView;
+  }
   //Global Context:
   const TheContext = useContext(AppContext);
   console.log(Constants.statusBarHeight);
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setRefreshing(false);
+  }, []);
   return (
-    <View style={StyleLowerMenu.container}>
+    <ViewArea
+      style={StyleLowerMenu.container}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
@@ -43,7 +61,7 @@ function SousPageFormatComponent({
         </TouchableOpacity>
       </SafeAreaView>
       <View style={morestyle}>{children}</View>
-    </View>
+    </ViewArea>
   );
 }
 
