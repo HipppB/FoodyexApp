@@ -11,13 +11,6 @@ function AccountNavigator(props) {
   return (
     <AccountStack.Navigator screenOptions={{ headerShown: false }}>
       <AccountStack.Screen
-        name="AccountScreen"
-        component={AccountScreen}
-        options={{
-          animationEnabled: false,
-        }}
-      />
-      <AccountStack.Screen
         name="MyProfileScreen"
         component={MyProfileScreen}
         options={{

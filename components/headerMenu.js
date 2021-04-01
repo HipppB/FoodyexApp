@@ -11,7 +11,7 @@ import {
 function HeaderMenu(props) {
   let { navigation, active } = props;
   let indexPage = props.navigation.dangerouslyGetState().index;
-  navigator = ["Plates", "NavMarket", "AccountNavigator"];
+  navigator = ["Plates", "NavMarket", "AccountMenuScreen"];
   function IsActive(Location) {
     if (indexPage === navigator.indexOf(Location)) {
       return styles.ButtonSlider, styles.ButtonSliderOn;
@@ -19,7 +19,7 @@ function HeaderMenu(props) {
       return styles.ButtonSlider;
     }
   }
-  navigator = ["Plates", "NavMarket", "AccountNavigator"];
+  navigator = ["Plates", "NavMarket", "AccountMenuScreen"];
   function Direction(WhereToGo) {
     if (navigator.indexOf(WhereToGo) > navigator.indexOf(active)) {
       navigation.navigate(WhereToGo);
@@ -43,8 +43,8 @@ function HeaderMenu(props) {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => Direction("AccountNavigator")}>
-            <View style={IsActive("AccountNavigator")}>
+          <TouchableOpacity onPress={() => Direction("AccountMenuScreen")}>
+            <View style={IsActive("AccountMenuScreen")}>
               <Text style={styles.buttontext}>Mon Compte</Text>
             </View>
           </TouchableOpacity>

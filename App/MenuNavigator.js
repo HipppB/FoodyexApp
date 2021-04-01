@@ -10,6 +10,8 @@ const MenuTab = createMaterialTopTabNavigator();
 import MarketScreen from "../screens/AppScreens/MarketScreen";
 //Nav Plates
 import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
+//NavAccount
+import AccountScreen from "../screens/AppScreens/AccountScreen";
 
 //Custom Tabnav :
 import { View, TouchableOpacity } from "react-native";
@@ -25,7 +27,7 @@ function MenuNavigator(props) {
   return (
     <MenuTab.Navigator
       initialRouteName="MarketScreen"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: true, headerLeft: null }}
       tabBar={(props) => (
         <HeaderMenu navigation={props.navigation} active="NavMarket" />
       )}
@@ -35,10 +37,6 @@ function MenuNavigator(props) {
         name="MyPlatesScreen"
         component={MyPlatesScreen}
         options={{
-          animationEnabled: true,
-          headerLeft: null,
-          headerStyle: headerStyles.headerStyle,
-          headerShown: true,
           headerTitle: () => (
             <HeaderMenu navigation={props.navigation} active="NavMarket" />
           ),
@@ -48,28 +46,20 @@ function MenuNavigator(props) {
         name="MarketScreen"
         component={MarketScreen}
         options={{
-          animationEnabled: true,
-          headerLeft: null,
-          headerStyle: headerStyles.headerStyle,
-          headerShown: true,
           headerTitle: () => (
-            <HeaderMenu navigation={props.navigation} active="NavMarket" />
+            <HeaderMenu navigation={props.navigation} active="MarketScreen" />
           ),
         }}
       />
 
       <MenuTab.Screen
-        name="AccountNavigator"
-        component={AccountNavigator}
+        name="AccountMenuScreen"
+        component={AccountScreen}
         options={{
-          headerStyle: headerStyles.headerStyle,
-          animationEnabled: true,
-          headerShown: true,
-          headerLeft: null,
           headerTitle: () => (
             <HeaderMenu
               navigation={props.navigation}
-              active="AccountNavigator"
+              active="AccountMenuScreen"
             />
           ),
         }}

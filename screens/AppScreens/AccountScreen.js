@@ -21,7 +21,11 @@ function AccountScreen(props) {
       <ScrollView style={styles.containerBottomSection}>
         <Text style={styleMenuButton.solde}>Solde : 13 ‡</Text>
         <TouchableOpacity
-          onPress={() => props.navigation.push("MyProfileScreen")}
+          onPress={() =>
+            props.navigation.navigate("AccountNavigator", {
+              screen: "MyProfileScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Mon profil</Text>
@@ -31,7 +35,11 @@ function AccountScreen(props) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => props.navigation.push("ListMessageScreen")}
+          onPress={() =>
+            props.navigation.navigate("AccountNavigator", {
+              screen: "ListMessageScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Messages</Text>
@@ -41,7 +49,11 @@ function AccountScreen(props) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => props.navigation.push("HistoryScreen")}
+          onPress={() =>
+            props.navigation.navigate("AccountNavigator", {
+              screen: "HistoryScreen",
+            })
+          }
           style={styleMenuButton.container}
         >
           <Text style={styleMenuButton.texte}>Historique</Text>
