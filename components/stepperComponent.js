@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  Button,
-} from "react-native";
+import { StyleSheet, Text, Pressable, View } from "react-native";
 
 function StepperComponent({ width = "25%", after = "", placeholder = "" }) {
   const [stepper, valuestepper] = useState(1);

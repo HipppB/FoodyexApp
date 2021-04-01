@@ -1,17 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  Button,
-  Pressable,
-  prompt,
-  Input,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { View, StyleSheet, Text, TextInput } from "react-native";
 
 function InputForm({ placeholders, type = "" }) {
   return (

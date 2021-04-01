@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import plats from "../../data/Plats.json";
 import ItemMarketComponent from "../../components/ItemMarketComponent";
 

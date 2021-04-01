@@ -1,12 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Pressable,
-  Keyboard,
-} from "react-native";
+import React from "react";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 function HeaderMenu(props) {
   let { navigation, active } = props;

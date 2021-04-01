@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { StyleSheet } from "react-native";
-import NavMarket from "./MarketNavigator";
-import AccountNavigator from "./AccountNavigor";
+
 import HeaderMenu from "../components/headerMenu";
 const MenuTab = createMaterialTopTabNavigator();
 import MarketScreen from "../screens/AppScreens/MarketScreen";
@@ -12,10 +10,6 @@ import MarketScreen from "../screens/AppScreens/MarketScreen";
 import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
 //NavAccount
 import AccountScreen from "../screens/AppScreens/AccountScreen";
-
-//Custom Tabnav :
-import { View, TouchableOpacity } from "react-native";
-import Animated from "react-native-reanimated";
 
 //For context :
 import { useContext } from "react";

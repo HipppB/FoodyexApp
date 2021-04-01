@@ -1,14 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import {
-  Image,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  RefreshControl,
-} from "react-native";
+import React, { useState, useCallback } from "react";
+import { View, ScrollView, RefreshControl } from "react-native";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 import MesReservationsITEM from "../../../components/MesReservationsITEM";
 import Plats from "../../../data/Plats.json";

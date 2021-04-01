@@ -1,17 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  Button,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-} from "react-native";
+import React from "react";
+import { Modal, StyleSheet, Text, View, TextInput } from "react-native";
 
 import ModaleMainComponent from "../../../components/ModaleMainComponent";
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Image,
   View,
@@ -8,7 +8,6 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import { Directions } from "react-native-gesture-handler";
 import ListMessage from "../../../data/messages.json";
 import * as users from "../../../data/utilisateurs.json";
 let id = 10;

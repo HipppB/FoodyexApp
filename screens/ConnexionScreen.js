@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  Button,
 } from "react-native";
-
-import HeaderLogin from "../components/HeaderLogin";
-import NewPlatesScreen from "./AppScreens/Myplates/NewPlatesScreen";
 
 //For context :
 import { useContext } from "react";
 import AppContext from "../components/AppContext";
-
-//On ignore Le warning Non-serializable values
-import { LogBox } from "react-native";
-LogBox.ignoreLogs([
-  "Non-serializable values were found in the navigation state",
-]);
 
 function ConnexionScreen(props) {
   //Global Context:

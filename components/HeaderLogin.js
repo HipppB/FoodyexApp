@@ -1,14 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Pressable,
-  Keyboard,
-  Image,
-} from "react-native";
-import { Header } from "react-native/Libraries/NewAppScreen";
+import React from "react";
+import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 
 function HeaderLogin(props) {
   let { navigation, active } = props;

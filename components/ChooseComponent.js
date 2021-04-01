@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  Button,
-} from "react-native";
+import React from "react";
+
 import RadioButtonRN from "radio-buttons-react-native";
 
 function ChooseComponent({ values = ["Oui", "Non"] }) {

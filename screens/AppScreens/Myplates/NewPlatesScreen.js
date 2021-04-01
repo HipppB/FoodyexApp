@@ -5,13 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  SafeAreaView,
-  Button,
-  Pressable,
-  prompt,
-  Input,
   Alert,
-  TextInput,
 } from "react-native";
 import { lauchCamera, launchImageLibrary } from "react-native-image-picker";
 import * as ImagePicker from "expo-image-picker";

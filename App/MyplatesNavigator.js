@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import MyReservationsScreen from "../screens/AppScreens/Myplates/MyReservationsScreen";
 import MyDishesOnMarketScreen from "../screens/AppScreens/Myplates/MyDishesOnMarketScreen";
 import NewPlatesScreen from "../screens/AppScreens/Myplates/NewPlatesScreen";
-import MyPlatesScreen from "../screens/AppScreens/MyPlatesScreen";
 
 const MyPlatestStack = createStackNavigator();
 

@@ -1,13 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Pressable,
-  Keyboard,
-  Image,
-} from "react-native";
+import React from "react";
+import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 const IMAGES = {
   lasagnes: require("../assets/Images/Plats/lasagnes.jpg"),
   carbonara: require("../assets/Images/Plats/Carbonara.jpg"),

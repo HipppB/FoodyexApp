@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import React from "react";
+import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import ContacterModale from "../Modales/ContacterModale";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 //For context :

@@ -1,11 +1,10 @@
-import React, { cloneElement } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
-  TextInput,
   ScrollView,
 } from "react-native";
 

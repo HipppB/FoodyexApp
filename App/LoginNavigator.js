@@ -1,5 +1,4 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
 
 import ConnexionScreen from "../screens/ConnexionScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -7,7 +6,6 @@ import RegisterScreen from "../screens/RegisterScreen";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 const LoginStack = createMaterialTopTabNavigator();
-import HeaderMenu from "../components/headerMenu";
 import HeaderLogin from "../components/HeaderLogin";
 
 function LoginNavigator(props) {

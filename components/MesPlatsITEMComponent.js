@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import { createPortal } from "react-dom";
-import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  Image,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ButtonPrincipalComponent from "./ButtonPrincipalComponent";
 const IMAGES = {

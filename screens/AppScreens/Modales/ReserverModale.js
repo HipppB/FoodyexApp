@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  Button,
-} from "react-native";
+import { Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
 //For context :
 import { useContext } from "react";
@@ -22,7 +14,6 @@ function ReserverModale(props) {
   if (!props.PartIndividuelle) {
     defaultstep = props.NumberOfSlice;
   }
-  const [openModal, changeopen] = useState(props.Visible.modalVisible);
   const [stepper, valuestepper] = useState(defaultstep);
   const [totalPrice, changeprice] = useState(defaultstep * props.prixUnePart);
   function changevalue(step) {

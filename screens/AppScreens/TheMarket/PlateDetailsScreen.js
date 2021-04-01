@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
   View,
   StyleSheet,
   Text,
   TouchableOpacity,
-  SafeAreaView,
   ScrollView,
-  Button,
 } from "react-native";
 import * as users from "../../../data/utilisateurs.json";
 import ReserverModale from "../Modales/ReserverModale";
