@@ -1,20 +1,15 @@
-import * as React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import React, { useState, useCallback } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl,
+} from "react-native";
 import plats from "../../data/Plats.json";
 import ItemMarketComponent from "../../components/ItemMarketComponent";
 
-//import { getImage } from "../../assets/Images/Plats/app";
-const IMAGES = {
-  lasagnes: require("../../assets/Images/Plats/lasagnes.jpg"),
-  carbonara: require("../../assets/Images/Plats/Carbonara.jpg"),
-  couscous: require("../../assets/Images/Plats/Couscous.jpg"),
-  lasagnesSaumon: require("../../assets/Images/Plats/lasagnesS.jpg"),
-  OssoBucco: require("../../assets/Images/Plats/OssoBucco.jpg"),
-  ratatouille: require("../../assets/Images/Plats/ratatouille.jpg"),
-  rizaulait: require("../../assets/Images/Plats/rizaulait.jpg"),
-  tartetatin: require("../../assets/Images/Plats/tartetatin.jpg"),
-  tartiflette: require("../../assets/Images/Plats/Tartiflette.jpg"),
-};
+import IMAGES from "../../data/IMAGES";
 
 let NbPlat = 0;
 let NbPlatMarket = 0;
@@ -24,6 +19,12 @@ let imagepath = "";
 import { useContext } from "react";
 import AppContext from "../../components/AppContext";
 function MarketScreen({ navigation }) {
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    console.log("refreshed");
+    setRefreshing(false);
+  }, []);
   //Global Context:
   const TheContext = useContext(AppContext);
   if (NbPlat === 0) {
@@ -32,7 +33,12 @@ function MarketScreen({ navigation }) {
   return (
     <View style={styles.maincontainer}>
       <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollArea}>
+        <ScrollView
+          contentContainerStyle={styles.scrollArea}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
           <Text
             style={{
               fontFamily: "Roboto-Thin",

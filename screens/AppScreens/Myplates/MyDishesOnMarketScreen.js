@@ -21,6 +21,7 @@ function MyReservationsScreen({ navigation }) {
 
   const [refreshing, setRefreshing] = useState(false);
   const [ListPlats, ChangeListPlat] = useState(GetPlats("ByIDSelling", idUser));
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     ChangeListPlat(GetPlats("ByIDSelling", idUser));

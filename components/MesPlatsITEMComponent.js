@@ -2,17 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ButtonPrincipalComponent from "./ButtonPrincipalComponent";
-const IMAGES = {
-  lasagnes: require("../assets/Images/Plats/lasagnes.jpg"),
-  carbonara: require("../assets/Images/Plats/Carbonara.jpg"),
-  couscous: require("../assets/Images/Plats/Couscous.jpg"),
-  lasagnesSaumon: require("../assets/Images/Plats/lasagnesS.jpg"),
-  OssoBucco: require("../assets/Images/Plats/OssoBucco.jpg"),
-  ratatouille: require("../assets/Images/Plats/ratatouille.jpg"),
-  rizaulait: require("../assets/Images/Plats/rizaulait.jpg"),
-  tartetatin: require("../assets/Images/Plats/tartetatin.jpg"),
-  tartiflette: require("../assets/Images/Plats/Tartiflette.jpg"),
-};
+import IMAGES from "../data/IMAGES";
 
 function MesPlatsITEMComponent(props) {
   let reservations = {
@@ -21,7 +11,6 @@ function MesPlatsITEMComponent(props) {
     PartVenduRecuperee: 0,
     PartEnDemande: 0,
   };
-  console.log(props.detailplat.reservations);
   props.detailplat.reservations.forEach((reservation) => {
     if (reservation.Statut == "Encours") {
       reservations.DemandeDeReservations += 1;
@@ -30,8 +19,6 @@ function MesPlatsITEMComponent(props) {
     } else if (reservation.Statut == "Finished") {
       reservations.PartVenduRecuperee += reservation.NombredePart;
     }
-
-    console.log(props.databrute.Plat);
   });
   let PartRestante =
     props.databrute.Plat.NombrePart -

@@ -11,9 +11,6 @@ function MyReservationsScreen({ navigation }) {
       Plats.forEach((Plat) => {
         Plat["Reserved"].forEach((Reserved) => {
           ListPlats.push({ Plat, Reserved });
-          console.log("-------------------");
-          console.log("ID PLAT : " + Plat["ID"]);
-          console.log(ListPlats);
         });
       });
     }
