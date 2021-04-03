@@ -120,7 +120,9 @@ function NewPlatesScreen({ navigation }) {
         <InputForm placeholders="Description du plat (Mentionnez les allergènes !)" />
 
         {!image && (
-          <ButtonSubmit action={pickImage}>Ajouter une image</ButtonSubmit>
+          <View style={{ alignItems: "center" }}>
+            <ButtonSubmit action={pickImage}>Ajouter une image</ButtonSubmit>
+          </View>
         )}
         {image && (
           <TouchableOpacity
@@ -180,7 +182,7 @@ function NewPlatesScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: "5%",
+    marginHorizontal: "2%",
     marginTop: "20%",
   },
 });
@@ -258,6 +260,7 @@ const stylesButton = StyleSheet.create({
   buttonConfirm: {
     backgroundColor: "#F29B13",
     minWidth: "45%",
+    maxWidth: "60%",
   },
   button: {
     borderRadius: 30,

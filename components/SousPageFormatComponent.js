@@ -27,7 +27,7 @@ function SousPageFormatComponent({
   }
   //Global Context:
   const TheContext = useContext(AppContext);
-  console.log(Constants.statusBarHeight);
+
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {

@@ -13,7 +13,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -26,6 +28,7 @@
     "web": {
       "favicon": "./assets/Images/favicon.png"
     },
-    "description": ""
+    "description": "School Project, a food exchange app :)",
+    "githubUrl": "https://github.com/HipppB/FoodyexApp"
   }
 }
