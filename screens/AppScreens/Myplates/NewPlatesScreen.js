@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from "react-native";
 import { lauchCamera, launchImageLibrary } from "react-native-image-picker";
 import * as ImagePicker from "expo-image-picker";
@@ -73,7 +74,7 @@ function NewPlatesScreen({ navigation }) {
       navigation={navigation}
       morestyle={{ flex: 1 }}
     >
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <InputForm placeholders="Nom du plat" width="20%" />
         <View
           style={{
@@ -108,7 +109,6 @@ function NewPlatesScreen({ navigation }) {
                 opacity: 0.4,
                 fontFamily: "Roboto-Regular",
                 fontSize: 15,
-                width: "120%",
               }}
             >
               Les parts sont vendues individuellement ?
@@ -159,12 +159,12 @@ function NewPlatesScreen({ navigation }) {
             />
           </TouchableOpacity>
         )}
-      </View>
+      </ScrollView>
       <View
         style={{
           flexDirection: "row",
           position: "absolute",
-          bottom: "5%",
+          bottom: 20,
           width: "100%",
           justifyContent: "space-evenly",
         }}
@@ -183,7 +183,8 @@ function NewPlatesScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: "2%",
-    marginTop: "20%",
+    marginTop: "10%",
+    marginBottom: 80,
   },
 });
 

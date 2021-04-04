@@ -92,13 +92,13 @@ const StyleModale = new StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: 500,
+    bottom: 50,
   },
   modalView: {
     backgroundColor: "white",
     borderRadius: 30,
     width: "65%",
-    height: 300,
-    flex: 0.5,
+    height: 450,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

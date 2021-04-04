@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  Image,
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import ContacterModale from "../Modales/ContacterModale";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 //For context :
@@ -37,7 +44,9 @@ export default function PublicProfileScreen({ navigation, route }) {
         <Text style={StyleProfile.section}>Adresse e-mail</Text>
         <Text style={StyleProfile.contenu}>{user["email"]}</Text>
         <Text style={StyleProfile.section}>Courte présentation :</Text>
-        <Text style={StyleProfile.contenu}>{user["description"]}</Text>
+        <ScrollView style={StyleProfile.scrollView}>
+          <Text style={StyleProfile.contenu}>{user["description"]}</Text>
+        </ScrollView>
         <TouchableOpacity
           style={styleForms.button}
           onPress={() => TheContext.SetModalContactShown(true)}
@@ -52,8 +61,7 @@ export default function PublicProfileScreen({ navigation, route }) {
 const styleForms = StyleSheet.create({
   button: {
     alignSelf: "center",
-    position: "absolute",
-    bottom: 20,
+    position: "relative",
     backgroundColor: "#F29B13",
     borderRadius: 30,
     width: 200,
@@ -70,11 +78,14 @@ const styleForms = StyleSheet.create({
 });
 
 const StyleProfile = StyleSheet.create({
+  scrollView: {
+    height: 500,
+  },
   container: {
     backgroundColor: "#FFFFFF",
     justifyContent: "flex-start",
     top: "5%",
-    flex: 0.8,
+    flex: 0.95,
     width: "100%",
     padding: 30,
     borderRadius: 30,

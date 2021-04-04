@@ -69,6 +69,7 @@ function RegisterScreen({ navigation }) {
               flex: 1,
               flexDirection: "column",
               justifyContent: "center",
+              marginBottom: 95,
             }}
             behavior={Platform.OS == "ios" ? "height" : "height"}
             enabled
@@ -127,7 +128,6 @@ function RegisterScreen({ navigation }) {
                 onChangeText={InputPassWordChanged}
                 style={styleForms.longinput}
               />
-
               <Text
                 onPress={() => alert("Todo")}
                 style={styleForms.buttonquestion}
@@ -136,6 +136,7 @@ function RegisterScreen({ navigation }) {
               </Text>
             </ScrollView>
           </KeyboardAvoidingView>
+
           <TouchableOpacity style={styleForms.button}>
             <Text style={styleForms.buttontext}>S'inscrire</Text>
           </TouchableOpacity>
@@ -154,8 +155,10 @@ const styleFormsError = StyleSheet.create({
 });
 const styleForms = StyleSheet.create({
   ScrollView: {
-    padding: 40,
     zIndex: 1,
+    paddingHorizontal: 40,
+    paddingTop: 40,
+    flex: 1,
   },
   containersmall: {
     width: "100%",
@@ -195,11 +198,12 @@ const styleForms = StyleSheet.create({
     fontFamily: "Roboto-Bold",
     fontSize: 16,
     color: "#F29B13",
+    paddingBottom: 70,
   },
   button: {
     alignSelf: "center",
     position: "absolute",
-    bottom: 45,
+    bottom: 25,
     backgroundColor: "#F29B13",
     borderRadius: 30,
     width: 314,

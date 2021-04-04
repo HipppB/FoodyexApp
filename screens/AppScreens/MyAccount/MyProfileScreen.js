@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 
 let user;
@@ -28,14 +29,19 @@ function PublicProfileScreen({ navigation }) {
             source={{ uri: "https://randomuser.me/api/portraits/men/99.jpg" }}
           />
           <Text style={StyleProfile.Name}>Prénom Nom</Text>
-          <Text style={StyleProfile.section}>Adresse e-mail</Text>
-          <Text style={StyleProfile.contenu}>email</Text>
-          <Text style={StyleProfile.section}>Numéro de téléphone :</Text>
-          <Text style={StyleProfile.contenu}>## ## ## ## ##</Text>
-          <Text style={StyleProfile.section}>Promotion :</Text>
-          <Text style={StyleProfile.contenu}>Non définie</Text>
-          <Text style={StyleProfile.section}>Courte présentation :</Text>
-          <Text style={StyleProfile.contenu}>description</Text>
+          <ScrollView>
+            <Text style={StyleProfile.section}>Adresse e-mail</Text>
+            <Text style={StyleProfile.contenu}>email</Text>
+            <Text style={StyleProfile.section}>Numéro de téléphone :</Text>
+            <Text style={StyleProfile.contenu}>## ## ## ## ##</Text>
+            <Text style={StyleProfile.section}>Promotion :</Text>
+            <Text style={StyleProfile.contenu}>Non définie</Text>
+            <Text style={StyleProfile.section}>Courte présentation :</Text>
+            <Text style={StyleProfile.contenu}>
+              description{"\n"}description description{"\n"}description
+              description{"\n"}description description{"\n"}description
+            </Text>
+          </ScrollView>
           <TouchableOpacity
             style={styleForms.button}
             onPress={() =>
@@ -53,8 +59,6 @@ function PublicProfileScreen({ navigation }) {
 const styleForms = StyleSheet.create({
   button: {
     alignSelf: "center",
-    position: "absolute",
-    bottom: 20,
     backgroundColor: "#F29B13",
     borderRadius: 30,
     width: 200,
@@ -76,7 +80,7 @@ const StyleProfile = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     justifyContent: "flex-start",
     top: "5%",
-    flex: 0.8,
+    flex: 0.95,
     width: "100%",
     padding: 30,
     borderRadius: 30,

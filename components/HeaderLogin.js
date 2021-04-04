@@ -71,10 +71,11 @@ const styles = StyleSheet.create({
     padding: 40,
   },
   stretch: {
-    width: 250,
-    height: 250,
-    resizeMode: "stretch",
-    bottom: "5%",
+    alignContent: "center",
+    alignSelf: "center",
+    width: "80%",
+    height: "80%",
+    resizeMode: "contain",
   },
   ButtonSlider: {
     backgroundColor: "#FFFFFF",

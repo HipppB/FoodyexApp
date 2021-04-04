@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import * as users from "../../../data/utilisateurs.json";
 import ReserverModale from "../Modales/ReserverModale";
@@ -13,7 +14,8 @@ import ContacterModale from "../Modales/ContacterModale";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 let PartIndividuelle = Boolean;
 let iduser;
-
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 //For context :
 import { useContext } from "react";
 import AppContext from "../../../components/AppContext";
@@ -49,8 +51,9 @@ export default function PlateDetailsScreen({ navigation, route }) {
           SellerName={users[iduser]["nom"]}
           Plat={newroute["Nom"]}
         />
-
-        <Image style={StyleDetailsPlat.Image} source={newrouteimage} />
+        <View style={StyleDetailsPlat.ContainerImage}>
+          <Image style={StyleDetailsPlat.Image} source={newrouteimage} />
+        </View>
         <Text style={StyleDetailsPlat.NomPlat}>{newroute["Nom"]}</Text>
         <Text style={StyleDetailsPlat.Prix}>{newroute["prixUnePart"]} ‡</Text>
         <ScrollView style={StyleDetailsPlat.Scrollview}>
@@ -68,6 +71,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
             <Text style={StyleDetailsPlat.Infos}>{PartIndividuelle}</Text>
           </View>
           <TouchableOpacity
+            style={{ paddingBottom: windowHeight * 0.55 }}
             onPress={() =>
               navigation.push("PublicProfileScreen", {
                 user: users[iduser],
@@ -115,11 +119,17 @@ export default function PlateDetailsScreen({ navigation, route }) {
 }
 
 const StyleDetailsPlat = StyleSheet.create({
+  ContainerImage: {
+    width: windowHeight * 0.25,
+    height: windowHeight * 0.25,
+    alignSelf: "center",
+  },
   Image: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    height: "100%",
     borderRadius: 200,
     alignSelf: "center",
+    resizeMode: "cover",
   },
   NomPlat: {
     textAlign: "center",
@@ -193,7 +203,8 @@ const styleForms = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     width: "100%",
-    bottom: 30,
+    bottom: 0,
+    paddingBottom: 30,
   },
   button: {
     alignSelf: "center",
