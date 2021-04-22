@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import MyReservationsScreen from "../screens/AppScreens/Myplates/MyReservationsScreen";
 import MyDishesOnMarketScreen from "../screens/AppScreens/Myplates/MyDishesOnMarketScreen";
 import NewPlatesScreen from "../screens/AppScreens/Myplates/NewPlatesScreen";
-
+import DetailReservationScreen from "../screens/AppScreens/Myplates/DetailReservationScreen";
 const MyPlatestStack = createStackNavigator();
 
 function NavPlates() {
@@ -21,6 +21,11 @@ function NavPlates() {
       <MyPlatestStack.Screen
         name="NewPlatesScreen"
         component={NewPlatesScreen}
+      />
+      <MyPlatestStack.Screen
+        mode="modal"
+        name="DetailReservationScreen"
+        component={DetailReservationScreen}
       />
     </MyPlatestStack.Navigator>
   );

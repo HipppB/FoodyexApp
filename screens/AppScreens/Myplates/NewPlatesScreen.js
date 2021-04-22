@@ -40,6 +40,15 @@ function ButtonCancel({ children, action }) {
 }
 
 function NewPlatesScreen({ navigation }) {
+  const [NomPlat, onChangeNomPlat] = useState("");
+  function ChangeNomPlat(text) {
+    onChangeNomPlat(text);
+    console.log("heuy");
+  }
+  const [Description, onChangeDescription] = useState("");
+  function ChangeDescription(text) {
+    onChangeDescription(text);
+  }
   const [image, setImage] = useState(null);
   useEffect(() => {
     (async () => {
@@ -172,7 +181,7 @@ function NewPlatesScreen({ navigation }) {
         <ButtonCancel action={() => console.log("Cancel")}>
           Annuler
         </ButtonCancel>
-        <ButtonSubmit action={() => console.log("Send")}>
+        <ButtonSubmit action={() => console.log({ NomPlat })}>
           Mettre en vente
         </ButtonSubmit>
       </View>

@@ -10,51 +10,46 @@ import {
 } from "react-native";
 import ListMessage from "../../../data/messages.json";
 import * as users from "../../../data/utilisateurs.json";
+import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 let id = 10;
 function ListMessageScreen({ navigation }) {
   return (
-    <View style={StyleLowerMenu.container}>
-      <SafeAreaView style={StyleLowerMenu.containerHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            style={{ marginLeft: 15 }}
-            source={require("../../../assets/Images/chevron-left.png")}
-          />
-          <Text style={StyleLowerMenu.title}>Messages</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-      <ScrollView style={StyleLowerMenu.containerbottom}>
-        {ItemMessage(ListMessage[id])}
-        {ItemMessage(ListMessage[id + 1])}
+    <SousPageFormatComponent
+      params={{ title: "Messages" }}
+      navigation={navigation}
+    >
+      <ScrollView>
+        {ItemMessage(ListMessage[id], navigation)}
+        {ItemMessage(ListMessage[id + 1], navigation)}
 
-        {ItemMessage(ListMessage[id + 2])}
+        {ItemMessage(ListMessage[id + 2], navigation)}
 
-        {ItemMessage(ListMessage[id + 3])}
+        {ItemMessage(ListMessage[id + 3], navigation)}
 
-        {ItemMessage(ListMessage[id + 4])}
+        {ItemMessage(ListMessage[id + 4], navigation)}
 
-        {ItemMessage(ListMessage[id + 5])}
+        {ItemMessage(ListMessage[id + 5], navigation)}
 
-        {ItemMessage(ListMessage[id + 6])}
+        {ItemMessage(ListMessage[id + 6], navigation)}
 
-        {ItemMessage(ListMessage[id + 7])}
+        {ItemMessage(ListMessage[id + 7], navigation)}
 
-        {ItemMessage(ListMessage[id + 8])}
+        {ItemMessage(ListMessage[id + 8], navigation)}
 
-        {ItemMessage(ListMessage[id + 9])}
+        {ItemMessage(ListMessage[id + 9], navigation)}
       </ScrollView>
-    </View>
+    </SousPageFormatComponent>
   );
 }
 
-function ItemMessage(data) {
+function ItemMessage(data, navigation) {
   let IDTo = data["IDTo"];
   let IDFrom = data["IDFrom"];
   let content = data["message"];
   let time = data["time"];
 
   return (
-    <TouchableOpacity onPress={() => alert("La fonction arrive bientôt !")}>
+    <TouchableOpacity onPress={() => navigation.navigate("MessageScreen")}>
       <View style={StyleMessage.Vendeur}>
         <Image
           style={StyleMessage.PhotoProfil}
@@ -119,31 +114,6 @@ const StyleMessage = StyleSheet.create({
     opacity: 0.5,
     paddingRight: 10,
     paddingTop: 4,
-  },
-});
-const StyleLowerMenu = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 5,
-    backgroundColor: "#F6F6F9",
-  },
-  containerHeader: {},
-  chevron: {
-    width: 25,
-    height: 25,
-  },
-  title: {
-    position: "absolute",
-    alignSelf: "center",
-    top: 2,
-    fontFamily: "Roboto-Thin",
-    fontSize: 18,
-  },
-  containerbottom: {
-    flex: 1,
-    marginHorizontal: "3%",
-    marginTop: 20,
-    paddingBottom: 150,
   },
 });
 

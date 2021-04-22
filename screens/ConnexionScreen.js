@@ -158,6 +158,7 @@ function ConnexionScreen(props) {
           >
             Mot de passe oublié ?
           </Text>
+
           <TouchableOpacity
             disabled={ButtonDisable}
             onPress={() =>

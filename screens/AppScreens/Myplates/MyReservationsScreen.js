@@ -41,6 +41,7 @@ function MyReservationsScreen({ navigation }) {
           {ListPlats.map((plat) => (
             <MesReservationsITEM
               key={plat.Plat.ID}
+              nav={navigation}
               databrute={plat}
               detailplat={{
                 name: plat.Plat.Nom,

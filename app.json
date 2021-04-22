@@ -4,7 +4,7 @@
     "slug": "Foodyex",
     "version": "0.0.8",
     "orientation": "portrait",
-    "icon": "./assets/Images/icon.png",
+    "icon": "./assets/Images/AppIconeBureau.png",
     "splash": {
       "image": "./assets/Images/splash.png",
       "resizeMode": "contain",

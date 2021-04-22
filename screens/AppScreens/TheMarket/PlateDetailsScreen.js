@@ -21,6 +21,7 @@ import { useContext } from "react";
 import AppContext from "../../../components/AppContext";
 
 export default function PlateDetailsScreen({ navigation, route }) {
+  console.log(route);
   let newroute = route.params.parameters.selected;
   let newrouteimage = route.params.parameters.selectedimage;
   //Global Context:

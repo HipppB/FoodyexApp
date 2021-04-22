@@ -1,17 +1,44 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
-import ButtonPrincipalComponent from "./ButtonPrincipalComponent";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+  Alert,
+} from "react-native";
 import IMAGES from "../data/IMAGES";
 
 function MesReservationsITEM(props) {
+  function createTwoButtonAlert(price) {
+    Alert.alert(
+      "Voulez vous annuler la réservation ?",
+      "Cette action est irréversible et vous coutera " + price + " ‡",
+      [
+        {
+          text: "Ne pas annuler",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Annuler la reservation",
+          onPress: () => console.log("OK Pressed"),
+        },
+      ]
+    );
+  }
+
   let colortext = "#85A93F";
   let textStatus = "Réservation accepté";
   let Annuler = "Annuler";
   let prix = "";
+  let price = 0;
   if (props.detailplat.Statut == "Accepted") {
     textStatus = "Réservation accepté";
     prix = "\n(" + props.detailplat.NbPart + "‡)";
     Annuler = "Annuler";
+    price = props.detailplat.NbPart;
   }
   if (props.detailplat.Statut == "Encours") {
     colortext = "#F29B13";
@@ -24,7 +51,10 @@ function MesReservationsITEM(props) {
   }
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => props.nav.push("DetailReservationScreen")}
+    >
       <View style={styles.topContainer}>
         <View style={styles.imageContainer}>
           <Image source={IMAGES[props.detailplat.image]} style={styles.Image} />
@@ -63,18 +93,22 @@ function MesReservationsITEM(props) {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => createTwoButtonAlert(price)}>
           <Text style={styles.CancelButton}>
             {Annuler}
             {prix}
           </Text>
         </TouchableOpacity>
 
-        <ButtonPrincipalComponent>Contacter</ButtonPrincipalComponent>
+        <TouchableOpacity style={stylesButtons.container}>
+          <Text style={stylesButtons.text}>Contacter</Text>
+        </TouchableOpacity>
 
-        <ButtonPrincipalComponent>Récupéré !</ButtonPrincipalComponent>
+        <TouchableOpacity style={stylesButtons.container}>
+          <Text style={stylesButtons.text}>Récupéré !</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -94,6 +128,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.05,
     shadowRadius: 20,
+    zIndex: 15,
   },
   topContainer: {
     flexDirection: "row",
@@ -129,5 +164,19 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
   },
 });
-
+const stylesButtons = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: "#F29B13",
+    padding: 10,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    alignSelf: "center",
+    zIndex: 10,
+    paddingHorizontal: 10,
+  },
+  text: {
+    color: "#FFFFFF",
+  },
+});
 export default MesReservationsITEM;

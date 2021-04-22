@@ -9,7 +9,6 @@ import {
   ScrollView,
 } from "react-native";
 
-let user;
 function PublicProfileScreen({ navigation }) {
   return (
     <View style={StyleLowerMenu.container}>

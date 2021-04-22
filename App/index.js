@@ -27,6 +27,7 @@ function App() {
 
   //Variable Accessible
   const Parameters = {
+    loggedUserId: 1,
     IsStillLoading: isLoading,
     LoadFinished,
     UserLogged: isLoggedIn,

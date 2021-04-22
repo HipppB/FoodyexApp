@@ -1,10 +1,27 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ButtonPrincipalComponent from "./ButtonPrincipalComponent";
 import IMAGES from "../data/IMAGES";
 
 function MesPlatsITEMComponent(props) {
+  function createTwoButtonAlert(price) {
+    Alert.alert(
+      "Voulez vous annuler la réservation ?",
+      "Cette action est irréversible et vous coutera " + price + " ‡",
+      [
+        {
+          text: "Ne pas annuler",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Annuler la reservation",
+          onPress: () => console.log("OK Pressed"),
+        },
+      ]
+    );
+  }
   let reservations = {
     DemandeDeReservations: 0,
     PartReservee: 0,
@@ -83,7 +100,7 @@ function MesPlatsITEMComponent(props) {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => createTwoButtonAlert(0)}>
           <Text style={styles.CancelButton}>
             {Annuler}
             {prix}

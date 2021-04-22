@@ -12,6 +12,7 @@ function ButtonPrincipalComponent({ children, MinWidth }) {
       paddingHorizontal: 15,
       borderRadius: 20,
       alignSelf: "center",
+      zIndex: 10,
     },
     text: {
       color: "#FFFFFF",
