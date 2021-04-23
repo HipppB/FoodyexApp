@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Messages from "./messages.json";
 function GetMessages(props) {
-  console.log(props);
   let Wantedmessages = [];
   for (const Message in Messages) {
     if (

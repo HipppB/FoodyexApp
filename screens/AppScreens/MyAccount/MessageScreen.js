@@ -17,13 +17,21 @@ import { useContext } from "react";
 import AppContext from "../../../components/AppContext";
 
 function MessageScreen(props) {
+  console.log(props);
   const TheContext = useContext(AppContext);
   const [Messages, updateMessages] = useState(
     GetMessages({ IdFrom: 2, IdTo: TheContext.loggedUserId })
   );
+
   return (
     <SousPageFormatComponent
-      params={{ title: "Message avec " + "Nom" + " " + "Prénom" }}
+      params={{
+        title:
+          "De " +
+          props.route.params.user.prenom +
+          " " +
+          props.route.params.user.nom,
+      }}
       navigation={props.navigation}
       scrollable={false}
       morestyle={{ height: "91%" }}
@@ -31,9 +39,9 @@ function MessageScreen(props) {
       <KeyboardAvoidingView
         KeyboardAvoidingView
         enabled
-        style={{ height: "100%" }}
+        style={{ height: "100%", zIndex: 0 }}
         behavior={Platform.OS == "ios" ? "position" : "height"}
-        keyboardVerticalOffset={40}
+        keyboardVerticalOffset={50}
       >
         <FlatList
           refreshing={false}
@@ -42,7 +50,7 @@ function MessageScreen(props) {
               GetMessages({ IdFrom: 2, IdTo: TheContext.loggedUserId })
             )
           }
-          style={{ height: "88%", paddingBottom: 20 }}
+          style={{ height: "91%", paddingBottom: 20 }}
           data={Messages}
           renderItem={(data) => (
             <MessageComponent

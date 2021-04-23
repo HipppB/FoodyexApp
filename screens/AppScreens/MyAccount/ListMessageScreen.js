@@ -47,22 +47,27 @@ function ItemMessage(data, navigation) {
   let IDFrom = data["IDFrom"];
   let content = data["message"];
   let time = data["time"];
-
+  let user = users[IDFrom];
+  console.log("---");
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("MessageScreen")}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("MessageScreen", { IDFrom, data, user })
+      }
+    >
       <View style={StyleMessage.Vendeur}>
         <Image
           style={StyleMessage.PhotoProfil}
           source={{
-            uri: users[IDFrom]["photo"],
+            uri: user["photo"],
           }}
         />
         <View style={StyleMessage.IdentiteTexte}>
           <Text style={StyleMessage.Identite}>
-            {users[IDFrom]["prenom"]} {users[IDFrom]["nom"]}
+            {user["prenom"]} {user["nom"]}
           </Text>
           <Text style={StyleMessage.IdentiteDesc} numberOfLines={2}>
-            {users[IDFrom]["description"]}
+            {user["description"]}
           </Text>
           <Text style={StyleMessage.IdentiteDesc} numberOfLines={1}>
             {time}
