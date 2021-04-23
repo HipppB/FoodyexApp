@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { FlatList, ScrollView, StyleSheet, View } from "react-native";
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  KeyboardAvoidingView,
+} from "react-native";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 
 import MessageComponent from "../../../components/Messages/MessageComponent";
@@ -20,7 +28,13 @@ function MessageScreen(props) {
       scrollable={false}
       morestyle={{ height: "91%" }}
     >
-      <View style={{ height: "97%" }}>
+      <KeyboardAvoidingView
+        KeyboardAvoidingView
+        enabled
+        style={{ height: "100%" }}
+        behavior={Platform.OS == "ios" ? "position" : "height"}
+        keyboardVerticalOffset={40}
+      >
         <FlatList
           refreshing={false}
           onRefresh={() =>
@@ -41,19 +55,28 @@ function MessageScreen(props) {
           contentContainerStyle={{ flex: 1, justifyContent: "flex-end" }}
         />
 
-        <View
-          style={{
-            height: 45,
-            borderRadius: 10,
-            width: "100%",
-            backgroundColor: "#FFFFFF",
-          }}
-        ></View>
-      </View>
+        <View style={styles.InputMessage}>
+          <TextInput style={styles.Input} placeholder="Envoyer un Message" />
+        </View>
+      </KeyboardAvoidingView>
     </SousPageFormatComponent>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  InputMessage: {
+    height: 45,
+    borderRadius: 10,
+    width: "100%",
+    backgroundColor: "#FFFFFF",
+  },
+  Input: {
+    margin: 5,
+    marginHorizontal: 10,
+    fontSize: 18,
+    height: 35,
+    fontFamily: "Roboto-Regular",
+  },
+});
 
 export default MessageScreen;

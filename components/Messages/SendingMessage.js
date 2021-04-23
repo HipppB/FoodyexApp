@@ -24,7 +24,13 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     right: 6,
   },
-  text: {},
+  text: {
+    fontFamily: "Inter-Regular",
+    fontSize: 15,
+    color: "#FFFFFF",
+    padding: 2,
+    maxWidth: "90%",
+  },
   tail: {
     width: 22,
     height: 23,

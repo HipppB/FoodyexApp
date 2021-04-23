@@ -19,6 +19,7 @@ function Loadingscreen(props) {
         "Poppins-Medium": require("../assets/fonts/Poppins/Poppins-Medium.ttf"),
         "Poppins-SemiBold": require("../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
         "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
+        "Inter-Regular": require("../assets/fonts/Inter/Inter-Regular.ttf"),
       })
         .then((res) => {
           console.log("FONTS LOADED!");
