@@ -17,8 +17,10 @@ import { useContext } from "react";
 import AppContext from "../../../components/AppContext";
 
 function MessageScreen(props) {
-  console.log(props);
+  console.log("------");
+  console.log(props.route.params.conversation);
   const TheContext = useContext(AppContext);
+
   const [Messages, updateMessages] = useState(
     GetMessages({ IdFrom: 2, IdTo: TheContext.loggedUserId })
   );
@@ -45,20 +47,16 @@ function MessageScreen(props) {
       >
         <FlatList
           refreshing={false}
-          onRefresh={() =>
-            updateMessages(
-              GetMessages({ IdFrom: 2, IdTo: TheContext.loggedUserId })
-            )
-          }
+          onRefresh={() => console.log("refreshed")}
           style={{ height: "91%", paddingBottom: 20 }}
-          data={Messages}
+          data={props.route.params.conversation}
           renderItem={(data) => (
             <MessageComponent
               message={data}
               UserViewingId={TheContext.loggedUserId}
             />
           )}
-          keyExtractor={(item) => item.index}
+          keyExtractor={(item) => item.ID.toString()}
           key={Messages}
           contentContainerStyle={{ flex: 1, justifyContent: "flex-end" }}
         />

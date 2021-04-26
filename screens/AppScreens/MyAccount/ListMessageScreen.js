@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Image,
   View,
@@ -7,52 +7,80 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  FlatList,
 } from "react-native";
 import ListMessage from "../../../data/messages.json";
 import * as users from "../../../data/utilisateurs.json";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
-let id = 10;
+import GetConversations from "../../../data/GetConversations";
+import AppContext from "../../../components/AppContext";
+
+let idUserLoggedIn = 1;
 function ListMessageScreen({ navigation }) {
+  const TheContext = useContext(AppContext);
+  let ListConversations = GetConversations({
+    idImplied: TheContext.loggedUserId,
+  });
+  let FinConversations = [];
+  console.log("#####");
+  for (const key in ListConversations) {
+    let lastmessage = ListConversations[key][0];
+    for (const message of ListConversations[key]) {
+      if (message.time >= lastmessage.time) {
+        lastmessage = message;
+      }
+    }
+    FinConversations.push(lastmessage);
+  }
+
   return (
     <SousPageFormatComponent
       params={{ title: "Messages" }}
       navigation={navigation}
+      morestyle={{}}
     >
-      <ScrollView>
-        {ItemMessage(ListMessage[id], navigation)}
-        {ItemMessage(ListMessage[id + 1], navigation)}
-
-        {ItemMessage(ListMessage[id + 2], navigation)}
-
-        {ItemMessage(ListMessage[id + 3], navigation)}
-
-        {ItemMessage(ListMessage[id + 4], navigation)}
-
-        {ItemMessage(ListMessage[id + 5], navigation)}
-
-        {ItemMessage(ListMessage[id + 6], navigation)}
-
-        {ItemMessage(ListMessage[id + 7], navigation)}
-
-        {ItemMessage(ListMessage[id + 8], navigation)}
-
-        {ItemMessage(ListMessage[id + 9], navigation)}
-      </ScrollView>
+      <FlatList
+        style={{ height: "100%" }}
+        refreshing={false}
+        onRefresh={() => console.log("refreshed")}
+        data={FinConversations}
+        initialNumToRender={1}
+        keyExtractor={(item) => item.ID.toString()}
+        renderItem={(item) => (
+          <ItemMessage
+            item={item}
+            navigation={navigation}
+            ListConversations={ListConversations}
+          />
+        )}
+        ListFooterComponent={<View style={{ height: 100 }}></View>}
+      />
     </SousPageFormatComponent>
   );
 }
 
-function ItemMessage(data, navigation) {
-  let IDTo = data["IDTo"];
-  let IDFrom = data["IDFrom"];
-  let content = data["message"];
-  let time = data["time"];
-  let user = users[IDFrom];
-  console.log("---");
+function ItemMessage(props) {
+  const TheContext = useContext(AppContext);
+  let IDTo = props.item.item["IDTo"];
+  let IDFrom = props.item.item["IDFrom"];
+  let content = props.item.item["message"];
+  let time = new Date(props.item.item["time"]);
+  let user;
+  if (IDTo == TheContext.loggedUserId) {
+    user = users[IDFrom];
+  } else {
+    user = users[IDTo];
+  }
+
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("MessageScreen", { IDFrom, data, user })
+        props.navigation.navigate("MessageScreen", {
+          IDImplied: user["ID"],
+          data: props.item.item,
+          user,
+          conversation: props.ListConversations[user["ID"].toString()],
+        })
       }
     >
       <View style={StyleMessage.Vendeur}>
@@ -67,10 +95,10 @@ function ItemMessage(data, navigation) {
             {user["prenom"]} {user["nom"]}
           </Text>
           <Text style={StyleMessage.IdentiteDesc} numberOfLines={2}>
-            {user["description"]}
+            {content}
           </Text>
           <Text style={StyleMessage.IdentiteDesc} numberOfLines={1}>
-            {time}
+            {time.toString()}
           </Text>
         </View>
         <Image

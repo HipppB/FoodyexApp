@@ -13,7 +13,7 @@ function GetMessages(props) {
       Wantedmessages.push(Messages[Message]);
     }
   }
-  console.log(Wantedmessages);
+  //console.log(Wantedmessages);
 
   //Returns All Wanted message in the form of an Array [{Object}, {Object}]
   return Wantedmessages;
