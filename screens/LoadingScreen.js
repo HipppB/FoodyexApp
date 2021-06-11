@@ -25,7 +25,7 @@ function Loadingscreen(props) {
           console.log("FONTS LOADED!");
           setTimeout(() => {
             TheContext.LoadFinished(false);
-          }, 500);
+          }, 1000);
         })
         .catch((Err) => {
           console.log(Err);

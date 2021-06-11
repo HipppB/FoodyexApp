@@ -5,6 +5,7 @@ import ButtonPrincipalComponent from "./ButtonPrincipalComponent";
 import IMAGES from "../data/IMAGES";
 
 function MesPlatsITEMComponent(props) {
+  let dataPlat = new Date(props.detailplat.date);
   function createTwoButtonAlert(price) {
     Alert.alert(
       "Voulez vous annuler la réservation ?",

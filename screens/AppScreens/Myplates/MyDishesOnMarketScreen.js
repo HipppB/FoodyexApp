@@ -5,8 +5,10 @@ import MesPlatsITEMComponent from "../../../components/MesPlatsITEMComponent";
 import Plats from "../../../data/Plats.json";
 
 //Temporaire (simule l'id d'un utilisateur)
-let idUser = 5;
+import { useContext } from "react";
+import AppContext from "../../../components/AppContext";
 function MyReservationsScreen({ navigation }) {
+  const TheContext = useContext(AppContext);
   function GetPlats(Method = "ByIDSelling", IDSearched = 1) {
     let ListPlats = [];
     if (Method == "ByIDSelling") {
@@ -20,11 +22,13 @@ function MyReservationsScreen({ navigation }) {
   }
 
   const [refreshing, setRefreshing] = useState(false);
-  const [ListPlats, ChangeListPlat] = useState(GetPlats("ByIDSelling", idUser));
+  const [ListPlats, ChangeListPlat] = useState(
+    GetPlats("ByIDSelling", TheContext.loggedUserId)
+  );
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    ChangeListPlat(GetPlats("ByIDSelling", idUser));
+    ChangeListPlat(GetPlats("ByIDSelling", TheContext.loggedUserId));
     setRefreshing(false);
   }, []);
 

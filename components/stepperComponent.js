@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, Pressable, View } from "react-native";
 
-function StepperComponent({ width = "25%", after = "", placeholder = "" }) {
+function StepperComponent({
+  width = "25%",
+  after = "",
+  placeholder = "",
+  min = 0,
+}) {
   const [stepper, valuestepper] = useState(1);
-  function changevalue(step) {
-    if (stepper + step > -1) {
+  function changevalue(step, min) {
+    if (stepper + step > min - 1) {
       valuestepper(stepper + step);
     }
   }
@@ -44,14 +49,20 @@ function StepperComponent({ width = "25%", after = "", placeholder = "" }) {
         </Text>
       </View>
       <View style={stylecontainer.container}>
-        <Pressable style={Stylestepper.button} onPress={() => changevalue(-1)}>
+        <Pressable
+          style={Stylestepper.button}
+          onPress={() => changevalue(-1, min)}
+        >
           <Text style={Stylestepper.text}>-</Text>
         </Pressable>
         <Text style={Stylestepper.text}>
           {stepper}
           {after}
         </Text>
-        <Pressable style={Stylestepper.button} onPress={() => changevalue(1)}>
+        <Pressable
+          style={Stylestepper.button}
+          onPress={() => changevalue(1, min)}
+        >
           <Text style={Stylestepper.text}>+</Text>
         </Pressable>
       </View>

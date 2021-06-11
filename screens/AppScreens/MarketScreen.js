@@ -30,6 +30,7 @@ function MarketScreen({ navigation }) {
   if (NbPlat === 0) {
     NbPlatMarket = NombredePlat(plats);
   }
+  console.log("USER ID = ", TheContext.loggedUserId);
   return (
     <View style={styles.maincontainer}>
       <View style={styles.container}>

@@ -11,6 +11,7 @@ import {
 import IMAGES from "../data/IMAGES";
 
 function MesReservationsITEM(props) {
+  console.log(props);
   function createTwoButtonAlert(price) {
     Alert.alert(
       "Voulez vous annuler la réservation ?",
@@ -100,7 +101,14 @@ function MesReservationsITEM(props) {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={stylesButtons.container}>
+        <TouchableOpacity
+          style={stylesButtons.container}
+          onPress={() =>
+            props.nav.navigate("AccountNavigator", {
+              screen: "ListMessageScreen",
+            })
+          }
+        >
           <Text style={stylesButtons.text}>Contacter</Text>
         </TouchableOpacity>
 

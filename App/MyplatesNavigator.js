@@ -5,6 +5,8 @@ import MyReservationsScreen from "../screens/AppScreens/Myplates/MyReservationsS
 import MyDishesOnMarketScreen from "../screens/AppScreens/Myplates/MyDishesOnMarketScreen";
 import NewPlatesScreen from "../screens/AppScreens/Myplates/NewPlatesScreen";
 import DetailReservationScreen from "../screens/AppScreens/Myplates/DetailReservationScreen";
+import CameraScreen from "../screens/AppScreens/Myplates/CameraScreen";
+
 const MyPlatestStack = createStackNavigator();
 
 function NavPlates() {
@@ -26,6 +28,11 @@ function NavPlates() {
         mode="modal"
         name="DetailReservationScreen"
         component={DetailReservationScreen}
+      />
+      <MyPlatestStack.Screen
+        mode="modal"
+        name="CameraScreen"
+        component={CameraScreen}
       />
     </MyPlatestStack.Navigator>
   );

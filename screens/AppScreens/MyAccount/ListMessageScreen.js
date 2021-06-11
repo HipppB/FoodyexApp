@@ -98,7 +98,8 @@ function ItemMessage(props) {
             {content}
           </Text>
           <Text style={StyleMessage.IdentiteDesc} numberOfLines={1}>
-            {time.toString()}
+            {time.getUTCDate().toString()}/0{(time.getMonth() + 1).toString()}{" "}
+            {time.getHours().toString()}:{time.getMinutes().toString()}
           </Text>
         </View>
         <Image

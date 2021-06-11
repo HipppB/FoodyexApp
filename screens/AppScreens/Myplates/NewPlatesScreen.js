@@ -8,6 +8,8 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+
 import { lauchCamera, launchImageLibrary } from "react-native-image-picker";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
@@ -16,7 +18,13 @@ import SousPageFormatComponent from "../../../components/SousPageFormatComponent
 import StepperComponent from "../../../components/stepperComponent";
 import InputForm from "../../../components/inputForm";
 import PagerView from "react-native-pager-view";
+import ImagePickerComponent from "../../../components/ImagePicker";
 //Boutton Principal
+function useForceUpdate() {
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue((value) => value + 1); // update the state to force render
+}
+
 function ButtonSubmit({ children, action }) {
   return (
     <TouchableOpacity
@@ -40,6 +48,17 @@ function ButtonCancel({ children, action }) {
 }
 
 function NewPlatesScreen({ navigation }) {
+  const forceUpdate = useForceUpdate();
+  //Images :
+  const [ListImage, SetlistImage] = useState(Array("Add"));
+  function addImage(uri) {
+    let value = uri;
+    ListImage.push(value);
+    SetlistImage(ListImage);
+    console.log(ListImage);
+  }
+
+  ////////
   const [NomPlat, onChangeNomPlat] = useState("");
   function ChangeNomPlat(text) {
     onChangeNomPlat(text);
@@ -85,6 +104,7 @@ function NewPlatesScreen({ navigation }) {
     >
       <ScrollView style={styles.container}>
         <InputForm placeholders="Nom du plat" width="20%" />
+
         <View
           style={{
             flexDirection: "row",
@@ -92,7 +112,7 @@ function NewPlatesScreen({ navigation }) {
             marginBottom: 40,
           }}
         >
-          <StepperComponent width="25%" placeholder="Nombre de part" />
+          <StepperComponent width="25%" placeholder="Nombre de part" min={1} />
           <StepperComponent
             width="25%"
             after=" ‡"
@@ -178,9 +198,7 @@ function NewPlatesScreen({ navigation }) {
           justifyContent: "space-evenly",
         }}
       >
-        <ButtonCancel action={() => console.log("Cancel")}>
-          Annuler
-        </ButtonCancel>
+        <ButtonCancel action={() => navigation.goBack()}>Annuler</ButtonCancel>
         <ButtonSubmit action={() => console.log({ NomPlat })}>
           Mettre en vente
         </ButtonSubmit>

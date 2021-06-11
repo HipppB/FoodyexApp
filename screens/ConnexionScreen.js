@@ -8,8 +8,10 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Dimensions,
 } from "react-native";
 
+import colors from "../assets/Themes/colors";
 //For context :
 import { useContext } from "react";
 import AppContext from "../components/AppContext";
@@ -18,16 +20,21 @@ function ConnexionScreen(props) {
   //Global Context:
   const TheContext = useContext(AppContext);
 
-  //Gestion du formulaire
-  //Gestion des Erreurs
-  //variables
   let textmail, textpassword;
   let TestPassword,
     TestEmail = false;
   let error = { email: "", password: "" };
   const [errorDiplay, ChangeDisplayedError] = useState(error);
   //Récupération des inputs
-  const [emailtext, onChangeTextemail] = useState("hippolyte.bach@isep.fr");
+  let defaultEmail = "";
+  if (Dimensions.get("window").height == 812) {
+    defaultEmail = "John.lecuistot@eleve.isep.fr";
+  } else {
+    defaultEmail = "Sophie.Dudemaine@eleve.isep.fr";
+  }
+  const [emailtext, onChangeTextemail] = useState(defaultEmail);
+  console.log(Dimensions.get("window").height);
+
   const [passwordtext, onChangeTextpassword] = useState("");
   //Fonction appelé lors de changement Email
   function InputMailChanged(text) {
@@ -60,12 +67,12 @@ function ConnexionScreen(props) {
       ChangeError("email", "");
       TestEmail = true;
     } else {
-      ChangeError("email", "E-MAIL INVALIDE");
+      ChangeError("email", "INVALIDE");
       TestEmail = false;
     }
 
     if (textpassword == "") {
-      ChangeError("password", "Invalid");
+      ChangeError("password", "INVALIDE");
       TestPassword = false;
     } else {
       TestPassword = true;
@@ -81,6 +88,15 @@ function ConnexionScreen(props) {
   }
   //Fonction appellée au clique du bouton, on y reverifie toutes les données
   function Connexion(Data, force = false) {
+    if (emailtext == "John.lecuistot@eleve.isep.fr") {
+      TheContext.SetloggedUserId(1);
+      console.log("Hey");
+    }
+    if (emailtext == "Sophie.Dudemaine@eleve.isep.fr") {
+      TheContext.SetloggedUserId(2);
+      console.log("Ho");
+    }
+
     if (force) {
       TheContext.SetIsLoggedIn(true);
     }
@@ -179,7 +195,7 @@ function ConnexionScreen(props) {
 
 const styleFormsError = StyleSheet.create({
   placeholders: {
-    color: "red",
+    color: colors.ErrorColor,
     opacity: 1.5,
     paddingLeft: 10,
   },
@@ -191,30 +207,13 @@ const styleForms = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
   },
-  containersmallinput: {
-    width: "40%",
-  },
-  smallinput: {
-    flexShrink: 1,
-    height: 35,
-    marginBottom: 30,
-    paddingBottom: 0,
-    borderBottomWidth: 0.7,
-    borderBottomColor: "#000000",
-  },
-  smallplaceholders: {
-    opacity: 0.4,
-    fontFamily: "Roboto-Regular",
-    fontSize: 15,
-    zIndex: 1,
-  },
   longinput: {
     flexShrink: 1,
     height: 35,
     marginBottom: 30,
     paddingBottom: 0,
     borderBottomWidth: 0.7,
-    borderBottomColor: "#000000",
+    color: colors.defaultTextColorBlack,
   },
   placeholders: {
     flexDirection: "row",
@@ -223,17 +222,18 @@ const styleForms = StyleSheet.create({
     opacity: 0.4,
     fontFamily: "Roboto-Regular",
     fontSize: 15,
+    color: colors.defaultTextColorBlack,
   },
   buttonquestion: {
     fontFamily: "Roboto-Bold",
     fontSize: 16,
-    color: "#F29B13",
+    color: colors.buttonMainColor,
   },
   button: {
     alignSelf: "center",
     position: "absolute",
     bottom: 45,
-    backgroundColor: "#F29B13",
+    backgroundColor: colors.buttonMainColor,
     borderRadius: 30,
     width: 314,
     height: 70,
@@ -242,7 +242,7 @@ const styleForms = StyleSheet.create({
   buttontext: {
     alignSelf: "center",
     lineHeight: 70,
-    color: "#F6F6F9",
+    color: colors.buttonMainTextColor,
     fontFamily: "Roboto-Bold",
     fontSize: 24,
     alignItems: "center",
@@ -250,67 +250,13 @@ const styleForms = StyleSheet.create({
 });
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F2F2F2",
     flex: 1,
-    flexDirection: "column", //horizontal
-    justifyContent: "flex-start", //main axis
-    alignItems: "center", //secondary axis
   },
-  containerTopSection: {
-    backgroundColor: "#FFFFFF",
-    width: "100%",
-    height: "40%",
-    flexShrink: 1,
-    alignContent: "center",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    borderBottomLeftRadius: 30,
-    borderBottomEndRadius: 30,
-    zIndex: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.08,
-    shadowRadius: 6.27,
-  },
-
   containerBottomSection: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: colors.GrayBackground,
     width: "100%",
     flex: 1,
     padding: 40,
-  },
-  stretch: {
-    width: 250,
-    height: 250,
-    resizeMode: "stretch",
-    bottom: "5%",
-  },
-  ButtonSlider: {
-    backgroundColor: "#FFFFFF",
-    marginBottom: 5,
-  },
-  ButtonSliderOn: {
-    borderStyle: "solid",
-    borderBottomWidth: 5,
-    borderBottomColor: "#F29B13",
-  },
-  buttontext: {
-    fontFamily: "Roboto-Bold",
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-  menuConnexion: {
-    backgroundColor: "#FFFFFF",
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "flex-end",
-    zIndex: 1,
-    borderBottomLeftRadius: 30,
-    borderBottomEndRadius: 30,
   },
 });
 

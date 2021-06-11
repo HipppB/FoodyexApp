@@ -3,36 +3,36 @@
     "ID": 0,
     "IDTo": 1,
     "IDFrom": 2,
-    "message": "Salut, ça va ?",
-    "time": "2020-07-05T17:25:40"
+    "message": "Salut, j'ai vu tes lasagnes sur le marché, tu peux me dire si les parts sont grosse ? Car j'ai super faim, j'hésite à en prendr une ou deux !",
+    "time": "2021-04-28T10:00:00"
   },
   {
     "ID": 1,
     "IDTo": 2,
     "IDFrom": 1,
-    "message": "Bien et toi ? !!!???",
-    "time": "2020-07-05T17:25:43"
+    "message": "Coucou, les parts sont généreuses, mais si tu as grande faim n'hésite pas à en prendre deux !",
+    "time": "2021-04-28T10:03:00"
   },
   {
     "ID": 2,
     "IDTo": 1,
     "IDFrom": 2,
-    "message": "bien Bien",
-    "time": "2020-07-05T17:25:46"
+    "message": "Dac, je pars la dessus ducoup ! Quand j'aurais réservé on peut se retrouver à NDC",
+    "time": "2021-04-28T10:07:00"
   },
   {
     "ID": 3,
     "IDTo": 2,
     "IDFrom": 1,
-    "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum",
-    "time": "2020-07-05T17:25:47"
+    "message": "Ouaip, en fin de journée par contre, j'ai un rdv à NDL tout à l'heure",
+    "time": "2021-04-28T10:10:00"
   },
   {
     "ID": 50,
     "IDTo": 73,
     "IDFrom": 19,
     "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum",
-    "time": "2020-07-05T17:25:45"
+    "time": "2020-07-15T17:25:45"
   },
   {
     "ID": 51,
@@ -81,7 +81,7 @@
     "IDTo": 23,
     "IDFrom": 20,
     "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque",
-    "time": "2021-12-05T11:29:48"
+    "time": "2021-12-15T11:29:48"
   },
   {
     "ID": 58,
@@ -94,7 +94,7 @@
     "ID": 59,
     "IDTo": 1,
     "IDFrom": 60,
-    "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula",
+    "message": "Super bon le plat, merci encore !",
     "time": "2020-07-19T22:28:32"
   },
   {
@@ -108,7 +108,7 @@
     "ID": 61,
     "IDTo": 2,
     "IDFrom": 85,
-    "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero mauris, aliquam",
+    "message": "Coucou, j'ai annulé ma réservation à regret, une amie m'a apporté à manger au final :/ désolé !",
     "time": "2020-04-17T21:42:36"
   },
   {
@@ -122,15 +122,15 @@
     "ID": 63,
     "IDTo": 1,
     "IDFrom": 88,
-    "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat",
-    "time": "2020-07-05T13:53:10"
+    "message": "T'es un vrai cuisto, tu devrais aller voir IsepFoodCorner si tu n'y es pas déjà !",
+    "time": "2020-07-15T13:53:10"
   },
   {
     "ID": 64,
     "IDTo": 1,
     "IDFrom": 78,
-    "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus",
-    "time": "2021-03-01T23:11:48"
+    "message": "Wow la part était super grosse ! Un régal, merci !",
+    "time": "2021-07-16T23:11:48"
   },
   {
     "ID": 65,
@@ -157,7 +157,7 @@
     "ID": 68,
     "IDTo": 14,
     "IDFrom": 1,
-    "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula",
-    "time": "2020-07-02T21:04:59"
+    "message": "Hey, j'ai du refusé ta reservation car j'ai tout mangé au final désolé ! Promis la prochaine fois je t'offres une part :D",
+    "time": "2020-07-22T21:24:59"
   }
 ]

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   Image,
   View,
@@ -6,31 +6,42 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  FlatList,
 } from "react-native";
+import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
+
+import AllTransaction from "../../../data/AllTransaction.json";
+import ItemHistory from "../../../components/ItemHistory";
+
+//Context
+import AppContext from "../../../components/AppContext";
+
 function HistoryScreen({ navigation }) {
+  const [thedata, setdata] = useState(AllTransaction.reverse());
+  const TheContext = useContext(AppContext);
   return (
-    <View style={StyleLowerMenu.container}>
-      <SafeAreaView style={StyleLowerMenu.containerHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            style={{ marginLeft: 15 }}
-            source={require("../../../assets/Images/chevron-left.png")}
+    <SousPageFormatComponent
+      params={{ title: "Historique des transactions" }}
+      navigation={navigation}
+      scrollable={false}
+    >
+      <FlatList
+        style={{ height: "100%" }}
+        refreshing={false}
+        onRefresh={() => setdata(AllTransaction.reverse())}
+        data={thedata}
+        initialNumToRender={1}
+        keyExtractor={(item) => item.ID.toString()}
+        renderItem={(item) => (
+          <ItemHistory
+            item={item}
+            navigation={navigation}
+            User={TheContext.loggedUserId}
           />
-          <Text
-            style={{
-              position: "absolute",
-              alignSelf: "center",
-              top: 2,
-              fontFamily: "Roboto-Thin",
-              fontSize: 18,
-            }}
-          >
-            Coming Soon ! :)
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-      <View style={StyleLowerMenu.containerbottom}></View>
-    </View>
+        )}
+        ListFooterComponent={<View style={{ height: 100 }}></View>}
+      />
+    </SousPageFormatComponent>
   );
 }
 

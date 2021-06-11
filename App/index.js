@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+//Theme
+import { useColorScheme } from "react-native";
+import DefaultTheme from "../assets/Themes/DefaultTheme";
+import DarkTheme from "../assets/Themes/DarkTheme";
+
 //Import Des sous navigators
 import Loadingscreen from "../screens/LoadingScreen";
 import LoginNavigator from "./LoginNavigator";
@@ -19,15 +24,18 @@ import AppContext from "../components/AppContext";
 
 const AppStack = createStackNavigator();
 function App() {
+  const scheme = useColorScheme();
   //GlobalState
   const [isLoading, LoadFinished] = useState(true);
   const [isLoggedIn, SetIsLoggedIn] = useState(false);
   const [ModalContactShown, SetModalContactShown] = useState(false);
   const [ModalReserverShown, SetModalReserverShown] = useState(false);
+  const [loggedUserId, SetloggedUserId] = useState(1);
 
   //Variable Accessible
   const Parameters = {
-    loggedUserId: 1,
+    loggedUserId: loggedUserId,
+    SetloggedUserId,
     IsStillLoading: isLoading,
     LoadFinished,
     UserLogged: isLoggedIn,
@@ -40,7 +48,7 @@ function App() {
 
   return (
     <AppContext.Provider value={Parameters}>
-      <NavigationContainer>
+      <NavigationContainer theme={scheme === "dark" ? DarkTheme : DefaultTheme}>
         <AppStack.Navigator screenOptions={{ headerShown: false }}>
           {isLoading ? (
             <AppStack.Screen

@@ -18,7 +18,9 @@ function AccountScreen(props) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.containerBottomSection}>
-        <Text style={styleMenuButton.solde}>Solde : 13 ‡</Text>
+        <Text style={styleMenuButton.solde}>
+          Solde : {TheContext.loggedUserId == 1 ? "19" : "6"} ‡
+        </Text>
         <TouchableOpacity
           onPress={() =>
             props.navigation.navigate("AccountNavigator", {

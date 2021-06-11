@@ -8,8 +8,15 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
+import * as users from "../../../data/utilisateurs.json";
+//For context :
+import { useContext } from "react";
+import AppContext from "../../../components/AppContext";
 
 function PublicProfileScreen({ navigation }) {
+  //Global Context:
+  const TheContext = useContext(AppContext);
+  let user = users[TheContext.loggedUserId];
   return (
     <View style={StyleLowerMenu.container}>
       <SafeAreaView style={StyleLowerMenu.containerHeader}>
@@ -18,27 +25,27 @@ function PublicProfileScreen({ navigation }) {
             style={{ marginLeft: 15 }}
             source={require("../../../assets/Images/chevron-left.png")}
           />
-          <Text style={StyleLowerMenu.title}>Profil de Nom Prénom</Text>
+          <Text style={StyleLowerMenu.title}>
+            Profil de {user.nom} {user.prenom}
+          </Text>
         </TouchableOpacity>
       </SafeAreaView>
       <View style={StyleLowerMenu.containerbottom}>
         <View style={StyleProfile.container}>
-          <Image
-            style={StyleProfile.Image}
-            source={{ uri: "https://randomuser.me/api/portraits/men/99.jpg" }}
-          />
-          <Text style={StyleProfile.Name}>Prénom Nom</Text>
+          <Image style={StyleProfile.Image} source={{ uri: user.photo }} />
+          <Text style={StyleProfile.Name}>
+            {user.prenom} {user.nom}
+          </Text>
           <ScrollView>
             <Text style={StyleProfile.section}>Adresse e-mail</Text>
-            <Text style={StyleProfile.contenu}>email</Text>
+            <Text style={StyleProfile.contenu}>{user.email}</Text>
             <Text style={StyleProfile.section}>Numéro de téléphone :</Text>
-            <Text style={StyleProfile.contenu}>## ## ## ## ##</Text>
+            <Text style={StyleProfile.contenu}>{user.phone}</Text>
             <Text style={StyleProfile.section}>Promotion :</Text>
             <Text style={StyleProfile.contenu}>Non définie</Text>
             <Text style={StyleProfile.section}>Courte présentation :</Text>
-            <Text style={StyleProfile.contenu}>
-              description{"\n"}description description{"\n"}description
-              description{"\n"}description description{"\n"}description
+            <Text style={(StyleProfile.contenu, { paddingBottom: 20 })}>
+              {user.description}
             </Text>
           </ScrollView>
           <TouchableOpacity

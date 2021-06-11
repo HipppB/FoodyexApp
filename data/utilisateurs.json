@@ -1,33 +1,33 @@
 [
   {
     "ID": 0,
-    "prenom": "Joel",
-    "nom": "Barron",
-    "email": "JoelBarron@eleve.isep.fr",
-    "phone": "07 42 27 66 43",
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna.",
+    "prenom": "Foodyex",
+    "nom": "App",
+    "email": "Foodyex@isep.fr",
+    "phone": "00 00 00 00 00",
+    "description": "Une très bonne app :)",
     "password": "XUB85BGN",
     "photo": "https://randomuser.me/api/portraits/men/0.jpg"
   },
   {
     "ID": 1,
-    "prenom": "Barclay",
-    "nom": "Reyes",
-    "email": "BarclayReyes@eleve.isep.fr",
+    "prenom": "John",
+    "nom": "Lecuistot",
+    "email": "John.lecuistot@eleve.isep.fr",
     "phone": "05 77 70 89 96",
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper.",
+    "description": "Actuellement en A1, je suis passsionné d'informatique et de cuisine, j'éspère que mes plats vous plairont, n'hésitez pas à me donner votre avis ou me demander de vous prévenir quand je fais un certain plat !",
     "password": "EGJ61AWC",
-    "photo": "https://randomuser.me/api/portraits/men/1.jpg"
+    "photo": "https://image.noelshack.com/fichiers/2021/17/2/1619557687-budget-etudiant-copie.jpg"
   },
   {
     "ID": 2,
-    "prenom": "Colby",
-    "nom": "Sosa",
-    "email": "ColbySosa@eleve.isep.fr",
+    "prenom": "Sophie",
+    "nom": "Dudemaine",
+    "email": "Sophie.Dudemaine@eleve.isep.fr",
     "phone": "04 68 90 95 46",
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et",
+    "description": "Amatrice de bon petit plat je n'ai malheuresement pas le temps pour cuisiner (C'est le désavantage de la P2 !), j'éspère pouvoir me régaler grace à cette application et faire partager mes plats quand j'en fait !",
     "password": "YUB57CJU",
-    "photo": "https://randomuser.me/api/portraits/men/2.jpg"
+    "photo": "https://image.noelshack.com/fichiers/2021/17/2/1619557692-les-bourses-pour-les-etudiants-etrangers-copie.jpg"
   },
   {
     "ID": 3,
