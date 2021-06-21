@@ -1,8 +1,8 @@
 # Foodyex
 
-## Partie FrontEnd
+## Le projet
 
-Le frontEnd cette application est codé en React Native dans le cadre de la **junior Académie**.
+Creer une application d'échange de plats entre Isepiens intégrant un système de monnaie. Cette application est codé en React Native dans le cadre de la **junior Académie**.
 
 ## Fonctionnalités de Foodyex
 
@@ -18,7 +18,7 @@ Le frontEnd cette application est codé en React Native dans le cadre de la **ju
 ## Tester l'application
 
 - Installez Expo Go sur votre téléphone portable depuis le Google Store ou l'App Store
-- Accédez à ce lien depuis le navigateur votre téléphone : [exp://exp.host/@hipppb/Foodyex](exp://exp.host/@hipppb/Foodyex) _Peut ne pas être à jour, L'installer en local est recommandé._
+- Accédez à ce lien depuis le navigateur votre téléphone : [exp://exp.host/@hipppb/Foodyex](exp://exp.host/@hipppb/Foodyex)
 
 ## Travailler sur l'application
 
