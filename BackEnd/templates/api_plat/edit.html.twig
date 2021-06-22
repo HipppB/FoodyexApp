@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Plat{% endblock %}
+
+{% block body %}
+    <h1>Edit Plat</h1>
+
+    {{ include('api_plat/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('api_plat_index') }}">back to list</a>
+
+    {{ include('api_plat/_delete_form.html.twig') }}
+{% endblock %}

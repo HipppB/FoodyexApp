@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plat{% endblock %}
+
+{% block body %}
+    <h1>Plat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ plat.id }}</td>
+            </tr>
+            <tr>
+                <th>OnMarket</th>
+                <td>{{ plat.OnMarket ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ plat.Nom }}</td>
+            </tr>
+            <tr>
+                <th>IDVendeur</th>
+                <td>{{ plat.IDVendeur }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ plat.Date ? plat.Date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PrixUnePart</th>
+                <td>{{ plat.prixUnePart }}</td>
+            </tr>
+            <tr>
+                <th>NombrePart</th>
+                <td>{{ plat.NombrePart }}</td>
+            </tr>
+            <tr>
+                <th>PartIndividuelle</th>
+                <td>{{ plat.PartIndividuelle ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ plat.Description }}</td>
+            </tr>
+            <tr>
+                <th>LinkImage</th>
+                <td>{{ plat.LinkImage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('api_plat_index') }}">back to list</a>
+
+    <a href="{{ path('api_plat_edit', {'id': plat.id}) }}">edit</a>
+
+    {{ include('api_plat/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plat index{% endblock %}
+
+{% block body %}
+    <h1>Plat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>OnMarket</th>
+                <th>Nom</th>
+                <th>IDVendeur</th>
+                <th>Date</th>
+                <th>PrixUnePart</th>
+                <th>NombrePart</th>
+                <th>PartIndividuelle</th>
+                <th>Description</th>
+                <th>LinkImage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plat in plats %}
+            <tr>
+                <td>{{ plat.id }}</td>
+                <td>{{ plat.OnMarket ? 'Yes' : 'No' }}</td>
+                <td>{{ plat.Nom }}</td>
+                <td>{{ plat.IDVendeur }}</td>
+                <td>{{ plat.Date ? plat.Date|date('Y-m-d') : '' }}</td>
+                <td>{{ plat.prixUnePart }}</td>
+                <td>{{ plat.NombrePart }}</td>
+                <td>{{ plat.PartIndividuelle ? 'Yes' : 'No' }}</td>
+                <td>{{ plat.Description }}</td>
+                <td>{{ plat.LinkImage }}</td>
+                <td>
+                    <a href="{{ path('plat_show', {'id': plat.id}) }}">show</a>
+                    <a href="{{ path('plat_edit', {'id': plat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('plat_new') }}">Create new</a>
+{% endblock %}
