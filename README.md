@@ -15,14 +15,6 @@ Creer une application d'échange de plats entre Isepiens intégrant un système 
 - Annuler un plat ayant une réservation déjà confirmée est payant, le coût sert de dédommagement à l'autre personne.
 - L'application s'adapte à toute taille de téléphone
 
-## Tester l'application
+## BackEnd et FrontEnd
 
-- Installez Expo Go sur votre téléphone portable depuis le Google Store ou l'App Store
-- Accédez à ce lien depuis le navigateur votre téléphone : [exp://exp.host/@hipppb/Foodyex](exp://exp.host/@hipppb/Foodyex)
-
-## Travailler sur l'application
-
-- Téléchargez les fichiers ou cloner ce répository GitHub
-- Ouvrez le fichier avec un IDE (Type VisualCode Studio)
-- Lancez le projet avec `npm start` depuis la racine du projet
-- C'est tout !
+Les deux parties de l'applications sont séparés et communiquent grâce à une api.
