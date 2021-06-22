@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 /**
  * @Route("/api/plat")
  */
@@ -19,10 +18,15 @@ class ApiPlatController extends AbstractController
      * @Route("/", name="api_plat_index", methods={"GET"})
      */
     public function index(PlatRepository $platRepository): Response
-    {
-        return $this->render('api_plat/index.html.twig', [
-            'plats' => $platRepository->findAll(),
-        ]);
+    {   
+        $plats = $platRepository->findAll();
+        $response = new Response();
+        $data = [];
+        for ($i = 0; $i < count($plats); ++$i) {
+                array_push($data, $plats[$i]->getAllDataInArray());
+        }
+        return $this->json($data);
+
     }
 
     /**

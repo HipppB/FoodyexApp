@@ -175,8 +175,21 @@ class Plat
         return $this;
     }
 
-    public function getAllDishOnMarket()
+    public function getAllDataInArray()
     {
-        
+        $data = [
+            "id" => $this->getId(),
+            "OnMarket" => $this->getOnMarket(),
+            "Nom" => $this->getNom(),
+            "IDVendeur" => $this->getIDVendeur(),
+            "Date" => $this->getDate(),
+            "PrixUnePart" => $this->getPrixUnePart(),
+            "NombrePart" => $this->getNombrePart(),
+            "PartIndividuelle" => $this->getPartIndividuelle(),
+            "Description" => $this->getDescription(),
+            "LinkImage" => $this->getLinkImage(),
+
+        ];
+        return $data;
     }
 }
