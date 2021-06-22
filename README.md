@@ -18,3 +18,10 @@ Creer une application d'échange de plats entre Isepiens intégrant un système 
 ## BackEnd et FrontEnd
 
 Les deux parties de l'applications sont séparés et communiquent grâce à une api.
+
+## Avancé
+
+- ✅ Front End
+  - Fonctionnel
+- ❌ Back End
+  - En cours de developement
