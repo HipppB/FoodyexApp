@@ -13,6 +13,7 @@ const IMAGES = {
 };
 
 function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
+  console.log(plat["LinkImage"]);
   let stylePlat = styles.touchable;
   let stylesecondaire = styles.touchable;
   if (Numero % 2 == 1) {
@@ -30,12 +31,18 @@ function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
       onPress={() =>
         navigation.push("MarketNavigator", {
           selected: plat,
-          selectedimage: IMAGES[plat["LinkImage"]],
+          selectedimage: plat["LinkImage"],
         })
       }
       key={Numero}
     >
       <View style={styles.imagecontainer}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: "http://localhost:8000/images/" + plat["LinkImage"],
+          }}
+        />
         <Image style={styles.image} source={IMAGES[plat["LinkImage"]]} />
       </View>
       <View style={{ width: "90%", height: 110 }}>
@@ -67,7 +74,7 @@ function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
             color: "#FA4A0C",
           }}
         >
-          {plat["prixUnePart"]} ‡
+          {plat["PrixUnePart"]} ‡
         </Text>
       </View>
     </TouchableOpacity>

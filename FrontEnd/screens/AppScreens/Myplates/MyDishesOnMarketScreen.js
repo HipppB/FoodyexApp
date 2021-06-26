@@ -52,7 +52,7 @@ function MyReservationsScreen({ navigation }) {
               detailplat={{
                 name: plat.Plat.Nom,
                 date: plat.Plat.Date,
-                price: plat.Plat.prixUnePart,
+                price: plat.Plat.PrixUnePart,
                 image: plat.Plat.LinkImage,
                 reservations: plat.Plat.Reserved,
               }}

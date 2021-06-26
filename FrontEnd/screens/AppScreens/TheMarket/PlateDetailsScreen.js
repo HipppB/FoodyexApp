@@ -44,7 +44,7 @@ export default function PlateDetailsScreen({ navigation, route }) {
           SellerName={users[iduser]["nom"]}
           NumberOfSlice={newroute["NombrePart"]}
           PartIndividuelle={newroute["PartIndividuelle"]}
-          prixUnePart={newroute["prixUnePart"]}
+          PrixUnePart={newroute["PrixUnePart"]}
         />
         <ContacterModale
           Visible={TheContext.IsModalContactShown}
@@ -53,10 +53,15 @@ export default function PlateDetailsScreen({ navigation, route }) {
           Plat={newroute["Nom"]}
         />
         <View style={StyleDetailsPlat.ContainerImage}>
-          <Image style={StyleDetailsPlat.Image} source={newrouteimage} />
+          <Image
+            style={StyleDetailsPlat.Image}
+            source={{
+              uri: "http://localhost:8000/images/" + newrouteimage,
+            }}
+          />
         </View>
         <Text style={StyleDetailsPlat.NomPlat}>{newroute["Nom"]}</Text>
-        <Text style={StyleDetailsPlat.Prix}>{newroute["prixUnePart"]} ‡</Text>
+        <Text style={StyleDetailsPlat.Prix}>{newroute["PrixUnePart"]} ‡</Text>
         <ScrollView style={StyleDetailsPlat.Scrollview}>
           <View style={StyleDetailsPlat.Details}>
             <Text style={StyleDetailsPlat.Section}>Description du plat</Text>
