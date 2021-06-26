@@ -6,8 +6,11 @@ function StepperComponent({
   after = "",
   placeholder = "",
   min = 0,
+  valuestepper,
+  stepper,
 }) {
-  const [stepper, valuestepper] = useState(1);
+  //if the stepper has not been defined
+
   function changevalue(step, min) {
     if (stepper + step > min - 1) {
       valuestepper(stepper + step);
