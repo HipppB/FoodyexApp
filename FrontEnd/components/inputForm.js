@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 
-function InputForm({ placeholders, type = "" }) {
+function InputForm({ placeholders, type = "", onChangeText, value }) {
   return (
     <View>
       <View style={styleForms.placeholders}>
@@ -9,7 +9,12 @@ function InputForm({ placeholders, type = "" }) {
         <Text style={styleFormsError.placeholders}></Text>
       </View>
 
-      <TextInput style={styleForms.longinput} secureTextEntry={false} />
+      <TextInput
+        style={styleForms.longinput}
+        secureTextEntry={false}
+        onChangeText={onChangeText}
+        value={value}
+      />
     </View>
   );
 }

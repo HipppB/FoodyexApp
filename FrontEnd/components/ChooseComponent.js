@@ -3,7 +3,7 @@ import React from "react";
 import RadioButtonRN from "radio-buttons-react-native";
 import { View, StyleSheet } from "react-native";
 
-function ChooseComponent({ values = ["Oui", "Non"] }) {
+function ChooseComponent({ receiver }) {
   const data = [
     {
       label: "  Oui",
@@ -26,7 +26,7 @@ function ChooseComponent({ values = ["Oui", "Non"] }) {
           opacity: 0.6,
           fontFamily: "Roboto-Regular",
         }}
-        selectedBtn={(data) => console.log(data.value)}
+        selectedBtn={(data) => receiver(data.value)}
         style={{
           left: 15,
           top: -10,
