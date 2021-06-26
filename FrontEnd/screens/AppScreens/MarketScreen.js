@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,7 +6,6 @@ import {
   ScrollView,
   RefreshControl,
 } from "react-native";
-import plats from "../../data/Plats.json";
 import ItemMarketComponent from "../../components/ItemMarketComponent";
 
 import IMAGES from "../../data/IMAGES";
@@ -19,17 +18,31 @@ let imagepath = "";
 import { useContext } from "react";
 import AppContext from "../../components/AppContext";
 function MarketScreen({ navigation }) {
-  const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    console.log("refreshed");
-    setRefreshing(false);
+  const [refreshing, setRefreshing] = useState(true);
+  const [data, setData] = useState([]);
+  const [NbPlatMarket, setnbPlat] = useState(NombredePlat(data));
+
+  useEffect(() => {
+    RefreshData();
   }, []);
+
+  function actualiseData(newdata) {
+    setData(newdata);
+    setnbPlat(NombredePlat(newdata));
+  }
+  function RefreshData() {
+    fetch("http://localhost:8000/api/plat/")
+      .then((response) => response.json())
+      .then((json) => actualiseData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setRefreshing(false));
+  }
+
   //Global Context:
   const TheContext = useContext(AppContext);
-  if (NbPlat === 0) {
-    NbPlatMarket = NombredePlat(plats);
-  }
+  //if (NbPlat === 0) {
+  //  setnbPlat(NombredePlat(data));
+  //}
   console.log("USER ID = ", TheContext.loggedUserId);
   return (
     <View style={styles.maincontainer}>
@@ -37,7 +50,7 @@ function MarketScreen({ navigation }) {
         <ScrollView
           contentContainerStyle={styles.scrollArea}
           refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            <RefreshControl refreshing={refreshing} onRefresh={RefreshData} />
           }
         >
           <Text
@@ -51,7 +64,7 @@ function MarketScreen({ navigation }) {
           >
             Il y a actuellement {NbPlatMarket} plats sur le Marché
           </Text>
-          {plats.map(
+          {data.map(
             (plat) => PlatMarche(navigation, plat, NbPlatMarket),
             (NbPlat = 0)
           )}
@@ -61,9 +74,9 @@ function MarketScreen({ navigation }) {
   );
 }
 
-function NombredePlat(plats) {
+function NombredePlat(data) {
   let NombredePlatSurLeMarche = 0;
-  plats.map((plat) => {
+  data.map((plat) => {
     if (plat["OnMarket"] === true) {
       NombredePlatSurLeMarche += 1;
     }
