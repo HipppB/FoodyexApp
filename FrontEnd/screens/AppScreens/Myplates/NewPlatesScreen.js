@@ -8,22 +8,16 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 
-import { lauchCamera, launchImageLibrary } from "react-native-image-picker";
 import * as ImagePicker from "expo-image-picker";
-import Constants from "expo-constants";
 import ChooseComponent from "../../../components/ChooseComponent";
 import SousPageFormatComponent from "../../../components/SousPageFormatComponent";
 import StepperComponent from "../../../components/stepperComponent";
 import InputForm from "../../../components/inputForm";
-import PagerView from "react-native-pager-view";
-import ImagePickerComponent from "../../../components/ImagePicker";
+//Context
+import { useContext } from "react";
+import AppContext from "../../../components/AppContext";
 //Boutton Principal
-function useForceUpdate() {
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue((value) => value + 1); // update the state to force render
-}
 
 function ButtonSubmit({ children, action }) {
   return (
@@ -48,7 +42,9 @@ function ButtonCancel({ children, action }) {
 }
 
 function NewPlatesScreen({ navigation }) {
-  const forceUpdate = useForceUpdate();
+  //context
+  const TheContext = useContext(AppContext);
+
   //Images :
   const [ListImage, SetlistImage] = useState(Array("Add"));
   function addImage(uri) {
@@ -59,22 +55,12 @@ function NewPlatesScreen({ navigation }) {
   }
 
   ////////
-  const [NomPlat, onChangeNomPlat] = useState("");
-  function ChangeNomPlat(text) {
-    onChangeNomPlat(text);
-    console.log("heuy");
-  }
-  const [Description, onChangeDescription] = useState("");
-  function ChangeDescription(text) {
-    onChangeDescription(text);
-  }
   const [image, setImage] = useState(null);
   useEffect(() => {
     (async () => {
       if (Platform.OS !== "web") {
-        const {
-          status,
-        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== "granted") {
           alert("Sorry, we need camera roll permissions to make this work!");
         }
@@ -91,11 +77,43 @@ function NewPlatesScreen({ navigation }) {
     });
 
     console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
     }
   };
+  // Variables
+  const [InputNom, SetInputNom] = useState("");
+  function InputNomChanged(text) {
+    SetInputNom(text);
+  }
+  const [InputDescription, SetInputDescription] = useState("");
+  function InputDescriptionChanged(text) {
+    SetInputDescription(text);
+  }
+  const [stepperNombre, valuestepperNombre] = useState(1);
+  const [stepperPrix, valuestepperPrix] = useState(1);
+  const [individuellement, toggleindividuellement] = useState(true);
+  function SendPlat() {
+    let data = {};
+    //Collect all the data
+    data["OnMarket"] = true;
+    data["Nom"] = InputNom;
+    data["Description"] = InputDescription;
+    data["NombrePart"] = stepperNombre;
+    data["prixUnePart"] = stepperPrix;
+    data["PartIndividuelle"] = individuellement;
+    data["LinkImage"] = "CECISTUNEXCELLENTPLAT";
+    data["Date"] = { year: 2019, month: 2, day: 1 };
+    data["IDVendeur"] = TheContext.loggedUserId;
+    fetch("http://localhost:8000/api/plat/new", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+    console.log(JSON.stringify(data));
+  }
+
   return (
     <SousPageFormatComponent
       params={{ title: "Nouveau Plat" }}
@@ -103,7 +121,12 @@ function NewPlatesScreen({ navigation }) {
       morestyle={{ flex: 1 }}
     >
       <ScrollView style={styles.container}>
-        <InputForm placeholders="Nom du plat" width="20%" />
+        <InputForm
+          placeholders="Nom du plat"
+          width="20%"
+          onChangeText={InputNomChanged}
+          value={InputNom}
+        />
 
         <View
           style={{
@@ -112,11 +135,19 @@ function NewPlatesScreen({ navigation }) {
             marginBottom: 40,
           }}
         >
-          <StepperComponent width="25%" placeholder="Nombre de part" min={1} />
+          <StepperComponent
+            width="25%"
+            placeholder="Nombre de part"
+            min={1}
+            valuestepper={valuestepperNombre}
+            stepper={stepperNombre}
+          />
           <StepperComponent
             width="25%"
             after=" ‡"
             placeholder="Prix par part"
+            valuestepper={valuestepperPrix}
+            stepper={stepperPrix}
           />
         </View>
         <View
@@ -143,10 +174,14 @@ function NewPlatesScreen({ navigation }) {
               Les parts sont vendues individuellement ?
             </Text>
           </View>
-          <ChooseComponent />
+          <ChooseComponent receiver={toggleindividuellement} />
         </View>
 
-        <InputForm placeholders="Description du plat (Mentionnez les allergènes !)" />
+        <InputForm
+          placeholders="Description du plat (Mentionnez les allergènes !)"
+          onChangeText={InputDescriptionChanged}
+          values={InputDescription}
+        />
 
         {!image && (
           <View style={{ alignItems: "center" }}>
@@ -199,9 +234,7 @@ function NewPlatesScreen({ navigation }) {
         }}
       >
         <ButtonCancel action={() => navigation.goBack()}>Annuler</ButtonCancel>
-        <ButtonSubmit action={() => console.log({ NomPlat })}>
-          Mettre en vente
-        </ButtonSubmit>
+        <ButtonSubmit action={() => SendPlat()}>Mettre en vente</ButtonSubmit>
       </View>
     </SousPageFormatComponent>
   );

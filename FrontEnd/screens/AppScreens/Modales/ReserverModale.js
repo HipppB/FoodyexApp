@@ -15,11 +15,11 @@ function ReserverModale(props) {
     defaultstep = props.NumberOfSlice;
   }
   const [stepper, valuestepper] = useState(defaultstep);
-  const [totalPrice, changeprice] = useState(defaultstep * props.prixUnePart);
+  const [totalPrice, changeprice] = useState(defaultstep * props.PrixUnePart);
   function changevalue(step) {
     if (stepper + step > 0 && stepper + step < nombreDepartMax + 1) {
       valuestepper(stepper + step);
-      changeprice((stepper + step) * props.prixUnePart);
+      changeprice((stepper + step) * props.PrixUnePart);
     }
   }
   return (
@@ -51,7 +51,7 @@ function ReserverModale(props) {
         <View style={styles.lineStyle} />
         <View>
           <Text style={styles.soustitre}>
-            NOMBRE DE PART ({props.prixUnePart} ‡/PART)
+            NOMBRE DE PART ({props.PrixUnePart} ‡/PART)
           </Text>
           <View style={Stylestepper.container}>
             <Pressable
