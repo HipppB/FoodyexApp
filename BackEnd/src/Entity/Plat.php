@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PlatRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=PlatRepository::class)
  */
@@ -19,36 +19,43 @@ class Plat
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Assert\NotBlank()
      */
     private $OnMarket;
 
     /**
      * @ORM\Column(type="string", length=32)
+     * @Assert\NotBlank()
      */
     private $Nom;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $IDVendeur;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      */
     private $Date;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $prixUnePart;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $NombrePart;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank()
      */
     private $PartIndividuelle;
 
@@ -59,6 +66,7 @@ class Plat
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $LinkImage;
 
@@ -108,7 +116,7 @@ class Plat
         return $this->Date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate($Date): self
     {
         $this->Date = $Date;
 
