@@ -10,17 +10,16 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ImagesController extends AbstractController
 {
     /**
-     * @Route("/images", name="images")
+     * @Route("/images/{id}", name="images")
      */
-    public function index(Request $resquest): Response
+    public function index($id): Response
     {
-        $test = $resquest->query->get("img");
-        $filename = '/Users/hippolytebach/OneDrive/Documents/ISEP/I1/JuniorAcademie/JuniorAcademie/Foodyex/BackEnd/src/Images/carbonara.jpg';
-
-        return new BinaryFileResponse($filename);
-
-        return $this->render('images/index.html.twig', [
-            'controller_name' => 'ImagesController',
-        ]);
+        $path = "../src/Images/" . $id ;
+        if(file_exists($path)) {
+            return new BinaryFileResponse($path);
+        }
+        else {
+            return $this->json(false);
+        }
     }
 }
