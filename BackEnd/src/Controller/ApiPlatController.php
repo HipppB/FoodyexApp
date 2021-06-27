@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Plat;
-use App\Form\Plat1Type;
+use App\Form\PlatType;
 use App\Repository\PlatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,7 +40,7 @@ class ApiPlatController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
         $plat = new Plat();
-        $form = $this->createForm(Plat1Type::class, $plat);
+        $form = $this->createForm(PlatType::class, $plat);
 
         $form->submit($data);
         //$form->handleRequest($request);
@@ -94,7 +94,7 @@ class ApiPlatController extends AbstractController
      */
     public function edit(Request $request, Plat $plat): Response
     {
-        $form = $this->createForm(Plat1Type::class, $plat);
+        $form = $this->createForm(PlatType::class, $plat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

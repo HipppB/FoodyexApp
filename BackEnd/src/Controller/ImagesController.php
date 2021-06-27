@@ -10,9 +10,17 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ImagesController extends AbstractController
 {
     /**
-     * @Route("/images/{id}", name="images")
+     * @Route("/api/images/", name="images")
      */
-    public function index($id): Response
+    public function image(): Response
+    {
+        return $this->json(false);
+    }
+
+    /**
+     * @Route("/api/images/{id}", name="images_byId")
+     */
+    public function getimage($id): Response
     {
         $path = "../src/Images/" . $id ;
         if(file_exists($path)) {

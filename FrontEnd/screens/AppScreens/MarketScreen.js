@@ -7,17 +7,16 @@ import {
   RefreshControl,
 } from "react-native";
 import ItemMarketComponent from "../../components/ItemMarketComponent";
-
-import IMAGES from "../../data/IMAGES";
+import API from "../../assets/api.js";
 
 let NbPlat = 0;
-let NbPlatMarket = 0;
-let path = "../../assets/Images/Plats/";
-let imagepath = "";
+
 //For context :
 import { useContext } from "react";
 import AppContext from "../../components/AppContext";
+
 function MarketScreen({ navigation }) {
+  // Data State
   const [refreshing, setRefreshing] = useState(true);
   const [data, setData] = useState([]);
   const [NbPlatMarket, setnbPlat] = useState(NombredePlat(data));
@@ -31,7 +30,7 @@ function MarketScreen({ navigation }) {
     setnbPlat(NombredePlat(newdata));
   }
   function RefreshData() {
-    fetch("http://localhost:8000/api/plat/")
+    fetch(API.APIURL + "plat/")
       .then((response) => response.json())
       .then((json) => actualiseData(json))
       .catch((error) => console.error(error))
@@ -40,9 +39,7 @@ function MarketScreen({ navigation }) {
 
   //Global Context:
   const TheContext = useContext(AppContext);
-  //if (NbPlat === 0) {
-  //  setnbPlat(NombredePlat(data));
-  //}
+
   console.log("USER ID = ", TheContext.loggedUserId);
   return (
     <View style={styles.maincontainer}>

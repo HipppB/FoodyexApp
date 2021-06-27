@@ -1,19 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
-const IMAGES = {
-  lasagnes: require("../assets/Images/Plats/lasagnes.jpg"),
-  carbonara: require("../assets/Images/Plats/Carbonara.jpg"),
-  couscous: require("../assets/Images/Plats/Couscous.jpg"),
-  lasagnesSaumon: require("../assets/Images/Plats/lasagnesS.jpg"),
-  OssoBucco: require("../assets/Images/Plats/OssoBucco.jpg"),
-  ratatouille: require("../assets/Images/Plats/ratatouille.jpg"),
-  rizaulait: require("../assets/Images/Plats/rizaulait.jpg"),
-  tartetatin: require("../assets/Images/Plats/tartetatin.jpg"),
-  tartiflette: require("../assets/Images/Plats/Tartiflette.jpg"),
-};
+import API from "../assets/api.js";
 
 function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
-  console.log(plat["LinkImage"]);
   let stylePlat = styles.touchable;
   let stylesecondaire = styles.touchable;
   if (Numero % 2 == 1) {
@@ -40,10 +29,9 @@ function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
         <Image
           style={styles.image}
           source={{
-            uri: "http://localhost:8000/images/" + plat["LinkImage"],
+            uri: API.APIURL + "images/" + plat["LinkImage"],
           }}
         />
-        <Image style={styles.image} source={IMAGES[plat["LinkImage"]]} />
       </View>
       <View style={{ width: "90%", height: 110 }}>
         <Text
