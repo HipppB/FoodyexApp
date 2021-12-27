@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import API from "../assets/api.js";
-
+import IMAGES from "../data/IMAGES.js";
 function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
   let stylePlat = styles.touchable;
   let stylesecondaire = styles.touchable;
@@ -20,18 +20,13 @@ function ItemMarketComponent({ navigation, plat, Numero, NombredePlatTotaux }) {
       onPress={() =>
         navigation.push("MarketNavigator", {
           selected: plat,
-          selectedimage: plat["LinkImage"],
+          selectedimage: IMAGES[plat["LinkImage"]],
         })
       }
       key={Numero}
     >
       <View style={styles.imagecontainer}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: API.APIURL + "images/" + plat["LinkImage"],
-          }}
-        />
+        <Image style={styles.image} source={IMAGES[plat["LinkImage"]]} />
       </View>
       <View style={{ width: "90%", height: 110 }}>
         <Text

@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import ItemMarketComponent from "../../components/ItemMarketComponent";
 import API from "../../assets/api.js";
-
+import fakedata from "../../data/Plats.json";
+import IMAGES from "../../data/IMAGES";
 let NbPlat = 0;
 
 //For context :
@@ -33,7 +34,11 @@ function MarketScreen({ navigation }) {
     fetch(API.APIURL + "plat/")
       .then((response) => response.json())
       .then((json) => actualiseData(json))
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.log(error);
+        console.log("HEY");
+        actualiseData(fakedata);
+      })
       .finally(() => setRefreshing(false));
   }
 

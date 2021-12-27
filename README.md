@@ -25,3 +25,8 @@ Les deux parties de l'applications sont séparés et communiquent grâce à une 
   - Fonctionnel
 - ❌ Back End
   - En cours de developement
+
+## Tester l'application :
+
+Ça se passe juste ici -> https://expo.dev/@hipppb/Foodyex
+Pour des raisons pratiques j'ai mis un utilisateur par défaut (moi) : Uniquement le front fonctionne !

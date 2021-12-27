@@ -55,9 +55,10 @@ export default function PlateDetailsScreen({ navigation, route }) {
         <View style={StyleDetailsPlat.ContainerImage}>
           <Image
             style={StyleDetailsPlat.Image}
-            source={{
-              uri: "http://localhost:8000/images/" + newrouteimage,
-            }}
+            // source={{
+            //   uri: "http://localhost:8000/images/" + newrouteimage,
+            // }}
+            source={newrouteimage}
           />
         </View>
         <Text style={StyleDetailsPlat.NomPlat}>{newroute["Nom"]}</Text>

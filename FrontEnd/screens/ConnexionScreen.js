@@ -30,7 +30,7 @@ function ConnexionScreen(props) {
   if (Dimensions.get("window").height == 812) {
     defaultEmail = "John.lecuistot@eleve.isep.fr";
   } else {
-    defaultEmail = "Sophie.Dudemaine@eleve.isep.fr";
+    defaultEmail = "hippolyte.bach@eleve.isep.fr";
   }
   const [emailtext, onChangeTextemail] = useState(defaultEmail);
   console.log(Dimensions.get("window").height);
@@ -92,7 +92,7 @@ function ConnexionScreen(props) {
       TheContext.SetloggedUserId(1);
       console.log("Hey");
     }
-    if (emailtext == "Sophie.Dudemaine@eleve.isep.fr") {
+    if (emailtext == "hippolyte.bach@eleve.isep.fr") {
       TheContext.SetloggedUserId(2);
       console.log("Ho");
     }

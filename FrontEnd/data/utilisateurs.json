@@ -21,13 +21,13 @@
   },
   {
     "ID": 2,
-    "prenom": "Sophie",
-    "nom": "Dudemaine",
-    "email": "Sophie.Dudemaine@eleve.isep.fr",
-    "phone": "04 68 90 95 46",
-    "description": "Amatrice de bon petit plat je n'ai malheuresement pas le temps pour cuisiner (C'est le désavantage de la P2 !), j'éspère pouvoir me régaler grace à cette application et faire partager mes plats quand j'en fait !",
+    "prenom": "Hippolyte",
+    "nom": "Bach",
+    "email": "hippolyte.bach@eleve.isep.fr",
+    "phone": "06 00 00 00 00",
+    "description": "Amateur de bon petit plat je n'ai malheuresement pas le temps pour cuisiner (Enfin je ne prend pas le temps), j'espère pouvoir me régaler grace à cette application et faire partager mes plats !",
     "password": "YUB57CJU",
-    "photo": "https://image.noelshack.com/fichiers/2021/17/2/1619557692-les-bourses-pour-les-etudiants-etrangers-copie.jpg"
+    "photo": "https://avatars.githubusercontent.com/u/79230352?v=4"
   },
   {
     "ID": 3,
